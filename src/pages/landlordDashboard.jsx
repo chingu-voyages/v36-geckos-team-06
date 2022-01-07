@@ -8,7 +8,7 @@ const PageContainer = styled.div`
   justify-content: flex-start;
   height: 100vh;
   min-height: 600px;
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 20px 40px;
 `;
@@ -45,6 +45,11 @@ const Button = styled.button`
   border-radius: 10px;
   border: none;
   font-weight: bold;
+  cursor: pointer;
+  &:hover {
+    transform: scale(0.98);
+    transition: transform 0.3s ease-in-out;
+  }
 `;
 
 const ButtonAndInputContainer = styled.div`
@@ -53,20 +58,31 @@ const ButtonAndInputContainer = styled.div`
   grid-gap: 20px;
   width: 100%;
   margin: 20px 0;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+  }
 `;
 
 const SearchContainer = styled.div`
   display: flex;
-  border-radius: 10px;
   overflow: hidden;
-  border: 2px black solid;
+  @media (max-width: 768px) {
+    grid-column: span 2;
+  }
 `;
 
 const Input = styled.input`
   flex: 1;
   border-right: none;
-  border: none;
+  border-radius: 10px 0 0 10px;
   padding-left: 10px;
+  &:focus {
+    outline: none !important;
+    border: 2px solid #a3293a;
+    border-right: none;
+    overflow: hidden;
+  }
 `;
 const SearchButton = styled.button`
   display: flex;
@@ -78,16 +94,24 @@ const SearchButton = styled.button`
   text-transform: uppercase;
   padding: 15px 15px;
   border: none;
+  border-radius: 0 10px 10px 0;
   font-weight: bold;
+  cursor: pointer;
+  &:hover {
+    color: #e46979;
+  }
 `;
 
 const PropertyContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 20px;
   width: 100%;
   height: 500px;
   overflow: scroll;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 `;
 
 const Property = styled.div`
@@ -104,6 +128,11 @@ const Property = styled.div`
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  cursor: pointer;
+  &:hover {
+    transform: scale(0.98);
+    transition: transform 0.3s ease-in-out;
+  }
 `;
 
 const PropertyName = styled.h3`
