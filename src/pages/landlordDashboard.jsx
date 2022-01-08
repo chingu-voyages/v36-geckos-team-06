@@ -2,23 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import Searchbar from '../components/Searchbar';
 import Button from '../components/Button';
+import PageContainer from '../components/Pagecontainer';
 import Header from '../components/Header';
 import { PROPERTY_DATA, LANDLORD } from '../mockData';
-
-const PageContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  height: 100vh;
-  min-height: 600px;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 20px 40px;
-  @media (max-width: 768px) {
-    padding: 15px;
-  }
-`;
 
 const UserName = styled.h2`
   font-size: 45px;
