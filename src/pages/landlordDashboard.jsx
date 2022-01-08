@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import apartmentPhoto from '../images/apartmentImage.jpg';
+import Searchbar from '../components/Searchbar';
+import ButtonStyled from '../components/Button';
 
 const PageContainer = styled.div`
   display: flex;
@@ -12,9 +13,14 @@ const PageContainer = styled.div`
   max-width: 1100px;
   margin: 0 auto;
   padding: 20px 40px;
+  @media (max-width: 768px) {
+    padding: 15px;
+  }
 `;
 
 const Header = styled.header`
+  position: relative;
+  overflow: hidden;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -32,25 +38,7 @@ const UserName = styled.h2`
   font-size: 45px;
   margin: 0;
   color: white;
-`;
-
-const Button = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  background: ${({ color }) => color};
-  color: ${({ color }) => (color === 'white' ? 'black' : 'white')};
-  text-transform: uppercase;
-  padding: 15px 15px;
-  border-radius: 10px;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-  &:hover {
-    transform: scale(0.98);
-    transition: transform 0.3s ease-in-out;
-  }
+  z-index: 1;
 `;
 
 const ButtonAndInputContainer = styled.div`
@@ -62,44 +50,6 @@ const ButtonAndInputContainer = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: 1fr 1fr;
     grid-gap: 10px;
-  }
-`;
-
-const SearchContainer = styled.div`
-  display: flex;
-  overflow: hidden;
-  @media (max-width: 768px) {
-    grid-column: span 2;
-  }
-`;
-
-const Input = styled.input`
-  flex: 1;
-  border-right: none;
-  border-radius: 10px 0 0 10px;
-  padding-left: 10px;
-  &:focus {
-    outline: none !important;
-    border: 2px solid #a3293a;
-    border-right: none;
-    overflow: hidden;
-  }
-`;
-const SearchButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  background: #333;
-  color: white;
-  text-transform: uppercase;
-  padding: 15px 15px;
-  border: none;
-  border-radius: 0 10px 10px 0;
-  font-weight: bold;
-  cursor: pointer;
-  &:hover {
-    color: #e46979;
   }
 `;
 
@@ -153,20 +103,20 @@ const PropertyCapacity = styled.p`
 
 const propertyArray = [
   { name: 'Building One', location: 'Palm Springs', capacity: 200 },
-  { name: 'Building One', location: 'Palm Springs', capacity: 200 },
-  { name: 'Building One', location: 'Palm Springs', capacity: 200 },
-  { name: 'Building One', location: 'Palm Springs', capacity: 200 },
-  { name: 'Building One', location: 'Palm Springs', capacity: 200 },
-  { name: 'Building One', location: 'Palm Springs', capacity: 200 },
-  { name: 'Building One', location: 'Palm Springs', capacity: 200 },
-  { name: 'Building One', location: 'Palm Springs', capacity: 200 },
-  { name: 'Building One', location: 'Palm Springs', capacity: 200 },
-  { name: 'Building One', location: 'Palm Springs', capacity: 200 },
-  { name: 'Building One', location: 'Palm Springs', capacity: 200 },
-  { name: 'Building One', location: 'Palm Springs', capacity: 200 },
-  { name: 'Building One', location: 'Palm Springs', capacity: 200 },
-  { name: 'Building One', location: 'Palm Springs', capacity: 200 },
-  { name: 'Building One', location: 'Palm Springs', capacity: 200 },
+  { name: 'Building One', location: 'Palm Springs', capacity: 201 },
+  { name: 'Building One', location: 'Palm Springs', capacity: 203 },
+  { name: 'Building One', location: 'Palm Springs', capacity: 204 },
+  { name: 'Building One', location: 'Palm Springs', capacity: 205 },
+  { name: 'Building One', location: 'Palm Springs', capacity: 206 },
+  { name: 'Building One', location: 'Palm Springs', capacity: 207 },
+  { name: 'Building One', location: 'Palm Springs', capacity: 208 },
+  { name: 'Building One', location: 'Palm Springs', capacity: 209 },
+  { name: 'Building One', location: 'Palm Springs', capacity: 210 },
+  { name: 'Building One', location: 'Palm Springs', capacity: 211 },
+  { name: 'Building One', location: 'Palm Springs', capacity: 212 },
+  { name: 'Building One', location: 'Palm Springs', capacity: 213 },
+  { name: 'Building One', location: 'Palm Springs', capacity: 214 },
+  { name: 'Building One', location: 'Palm Springs', capacity: 215 },
 ];
 
 function LandlordDashboardPage() {
@@ -178,19 +128,16 @@ function LandlordDashboardPage() {
           <br />
           Sammie.
         </UserName>
-        <Button color="white">Add Property</Button>
+        <ButtonStyled color="white">Add Property</ButtonStyled>
       </Header>
       <ButtonAndInputContainer>
-        <Button color="#A3293A">Properties</Button>
-        <Button color="#333">Repairs</Button>
-        <SearchContainer>
-          <Input type="text" />
-          <SearchButton>Search</SearchButton>
-        </SearchContainer>
+        <ButtonStyled color="#A3293A">Properties</ButtonStyled>
+        <ButtonStyled color="#333">Repairs</ButtonStyled>
+        <Searchbar />
       </ButtonAndInputContainer>
       <PropertyContainer>
         {propertyArray.map((property) => (
-          <Property>
+          <Property key={property.capacity}>
             <PropertyName>{property.name}</PropertyName>
             <PropertyLocation>{property.location}</PropertyLocation>
             <PropertyCapacity>{property.capacity}</PropertyCapacity>
