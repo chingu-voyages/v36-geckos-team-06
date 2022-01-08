@@ -6,13 +6,6 @@ import Button from '../components/Button';
 import Header from '../components/Header';
 import { PROPERTY_DATA, LANDLORD } from '../mockData';
 
-const UserName = styled.h2`
-  font-size: 45px;
-  margin: 0;
-  color: white;
-  z-index: 1;
-`;
-
 const PropertyContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -62,35 +55,10 @@ const PropertyCapacity = styled.p`
   margin: 0;
 `;
 
-const propertyArray = [
-  { name: 'Building One', location: 'Palm Springs', capacity: 200 },
-  { name: 'Building One', location: 'Palm Springs', capacity: 201 },
-  { name: 'Building One', location: 'Palm Springs', capacity: 203 },
-  { name: 'Building One', location: 'Palm Springs', capacity: 204 },
-  { name: 'Building One', location: 'Palm Springs', capacity: 205 },
-  { name: 'Building One', location: 'Palm Springs', capacity: 206 },
-  { name: 'Building One', location: 'Palm Springs', capacity: 207 },
-  { name: 'Building One', location: 'Palm Springs', capacity: 208 },
-  { name: 'Building One', location: 'Palm Springs', capacity: 209 },
-  { name: 'Building One', location: 'Palm Springs', capacity: 210 },
-  { name: 'Building One', location: 'Palm Springs', capacity: 211 },
-  { name: 'Building One', location: 'Palm Springs', capacity: 212 },
-  { name: 'Building One', location: 'Palm Springs', capacity: 213 },
-  { name: 'Building One', location: 'Palm Springs', capacity: 214 },
-  { name: 'Building One', location: 'Palm Springs', capacity: 215 },
-];
-
 function LandlordDashboardPage() {
   return (
     <PageContainer>
-      <Header justify="space-between" align="flex-end" direction="row">
-        <UserName>
-          Welcome,
-          <br />
-          {LANDLORD.name.split(' ')[0]}.
-        </UserName>
-        <Button color="white">Add Property</Button>
-      </Header>
+      <Header />
       <ButtonsAndSearchbar />
       <PropertyContainer>
         {PROPERTY_DATA.map((property) => (

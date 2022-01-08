@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
+import Button from './Button';
+import { PROPERTY_DATA, LANDLORD } from '../mockData';
 
 const HeaderStyled = styled.header`
   position: relative;
@@ -20,10 +22,22 @@ const HeaderStyled = styled.header`
   text-transform: capitalize;
 `;
 
-function Header({ children }) {
+const UserName = styled.h2`
+  font-size: 45px;
+  margin: 0;
+  color: white;
+  z-index: 1;
+`;
+
+function Header() {
   return (
     <HeaderStyled justify="space-between" align="flex-end">
-      {children}
+      <UserName>
+        Welcome,
+        <br />
+        {LANDLORD.name.split(' ')[0]}.
+      </UserName>
+      <Button color="white">Add Property</Button>
     </HeaderStyled>
   );
 }
