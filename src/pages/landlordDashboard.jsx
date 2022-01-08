@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Searchbar from '../components/Searchbar';
-import Button from '../components/Button';
 import PageContainer from '../components/Pagecontainer';
+import ButtonsAndSearchbar from '../components/ButtonsAndSearchbar';
+import Button from '../components/Button';
 import Header from '../components/Header';
 import { PROPERTY_DATA, LANDLORD } from '../mockData';
 
@@ -11,18 +11,6 @@ const UserName = styled.h2`
   margin: 0;
   color: white;
   z-index: 1;
-`;
-
-const ButtonAndInputContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 2fr;
-  grid-gap: 20px;
-  width: 100%;
-  margin: 20px 0;
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px;
-  }
 `;
 
 const PropertyContainer = styled.div`
@@ -103,11 +91,7 @@ function LandlordDashboardPage() {
         </UserName>
         <Button color="white">Add Property</Button>
       </Header>
-      <ButtonAndInputContainer>
-        <Button color="#A3293A">Properties</Button>
-        <Button color="#333">Repairs</Button>
-        <Searchbar />
-      </ButtonAndInputContainer>
+      <ButtonsAndSearchbar />
       <PropertyContainer>
         {PROPERTY_DATA.map((property) => (
           <Property key={property.id} bg={property.propertyImage}>
