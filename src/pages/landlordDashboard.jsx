@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Searchbar from '../components/Searchbar';
 import ButtonStyled from '../components/Button';
-import { PROPERTY_DATA } from '../mockData';
+import Header from '../components/Header';
+import { PROPERTY_DATA, LANDLORD } from '../mockData';
 
 const PageContainer = styled.div`
   display: flex;
@@ -17,22 +18,6 @@ const PageContainer = styled.div`
   @media (max-width: 768px) {
     padding: 15px;
   }
-`;
-
-const Header = styled.header`
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  height: 300px;
-  width: 100%;
-  background: linear-gradient(to left, #ff00005a 5%, #00000083 100%), url('/apartmentImage.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-radius: 10px;
-  padding: 30px;
 `;
 
 const UserName = styled.h2`
@@ -124,11 +109,11 @@ const propertyArray = [
 function LandlordDashboardPage() {
   return (
     <PageContainer>
-      <Header>
+      <Header justify="space-between" align="flex-end" direction="row">
         <UserName>
           Welcome,
           <br />
-          Sammie.
+          {LANDLORD.name.split(' ')[0]}.
         </UserName>
         <ButtonStyled color="white">Add Property</ButtonStyled>
       </Header>
