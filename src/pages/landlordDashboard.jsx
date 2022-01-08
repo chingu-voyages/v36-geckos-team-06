@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Searchbar from '../components/Searchbar';
-import ButtonStyled from '../components/Button';
+import Button from '../components/Button';
 import Header from '../components/Header';
 import { PROPERTY_DATA, LANDLORD } from '../mockData';
 
@@ -115,11 +115,11 @@ function LandlordDashboardPage() {
           <br />
           {LANDLORD.name.split(' ')[0]}.
         </UserName>
-        <ButtonStyled color="white">Add Property</ButtonStyled>
+        <Button color="white">Add Property</Button>
       </Header>
       <ButtonAndInputContainer>
-        <ButtonStyled color="#A3293A">Properties</ButtonStyled>
-        <ButtonStyled color="#333">Repairs</ButtonStyled>
+        <Button color="#A3293A">Properties</Button>
+        <Button color="#333">Repairs</Button>
         <Searchbar />
       </ButtonAndInputContainer>
       <PropertyContainer>
