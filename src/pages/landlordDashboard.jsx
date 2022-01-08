@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Searchbar from '../components/Searchbar';
 import ButtonStyled from '../components/Button';
+import { PROPERTY_DATA } from '../mockData';
 
 const PageContainer = styled.div`
   display: flex;
@@ -75,10 +76,11 @@ const Property = styled.div`
   aspect-ratio: 1;
   border-radius: 10px;
   padding: 15px;
-  background: linear-gradient(to left, #ff00005a 5%, #00000083 100%), url('/apartmentImage.jpg');
+  background: ${({ bg }) => `url(${bg})`};
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  text-transform: capitalize;
   cursor: pointer;
   &:hover {
     transform: scale(0.98);
@@ -136,10 +138,10 @@ function LandlordDashboardPage() {
         <Searchbar />
       </ButtonAndInputContainer>
       <PropertyContainer>
-        {propertyArray.map((property) => (
-          <Property key={property.capacity}>
+        {PROPERTY_DATA.map((property) => (
+          <Property key={property.id} bg={property.propertyImage}>
             <PropertyName>{property.name}</PropertyName>
-            <PropertyLocation>{property.location}</PropertyLocation>
+            <PropertyLocation>{property.address}</PropertyLocation>
             <PropertyCapacity>{property.capacity}</PropertyCapacity>
           </Property>
         ))}
