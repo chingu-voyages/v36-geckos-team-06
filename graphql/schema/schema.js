@@ -10,28 +10,32 @@ const typeDefs = gql`
     landlord: Landlord
   }
 
+  type Landlord {
+    id: ID!
+    email: String!
+    avatar: String
+    firstName: String
+    lastName: String
+  }
+
   type Property {
     id: ID!
     name: String!
     address: String!
     postcode: String!
     capacity: Int
+    category: String!
     image: String!
     rooms: [Room!]!
   }
 
-  type Landlord {
-    id: ID!
-    name: String!
-    email: String!
-  }
-
   type Room {
     id: ID!
+    property: Property
     name: String!
     available: Boolean
     occupant: Occupant
-    chargers: Charges
+    charges: Charges
     repairs: [Repair!]!
   }
 
@@ -45,6 +49,7 @@ const typeDefs = gql`
   }
 
   type Charges {
+    room: Room
     water: Int
     rent: Int
     electricity: Int
@@ -53,17 +58,11 @@ const typeDefs = gql`
 
   type Repair {
     id: ID!
-    Property: Property!
+    room: Room
     occupant: Occupant!
     issue: String
     details: String
-    status: [Status!]!
-  }
-
-  type Status {
-    ongoing: String
-    fixed: String
-    reported: String
+    status: String
   }
 `;
 
