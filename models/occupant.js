@@ -10,6 +10,6 @@ const OccupantSchema = new mongoose.Schema({
   moveOutDate: { type: Date, required: true },
 });
 
-const Occupant = mongoose.models.OccupantSchema || mongoose.model(`Occupant`, OccupantSchema);
+const Occupant = mongoose.models.Occupant || mongoose.model(`Occupant`, OccupantSchema);
 
 export default Occupant;

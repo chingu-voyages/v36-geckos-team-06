@@ -20,6 +20,6 @@ const PropertySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Property = mongoose.models.PropertySchema || mongoose.model(`Property`, PropertySchema);
+const Property = mongoose.models.Property || mongoose.model(`Property`, PropertySchema);
 
 export default Property;

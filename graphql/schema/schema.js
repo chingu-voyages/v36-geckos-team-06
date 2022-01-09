@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 /* eslint-disable no-unused-vars */
 import { gql } from 'apollo-server-micro';
 import { GraphQLDate } from 'graphql-scalars';
@@ -8,6 +9,10 @@ const typeDefs = gql`
   type Query {
     properties: [Property!]!
     landlord: Landlord
+  }
+
+  type Mutation {
+    newProperty(input: PropertyInput): Property
   }
 
   type Landlord {
@@ -29,6 +34,16 @@ const typeDefs = gql`
     rooms: [Room!]!
   }
 
+  input PropertyInput {
+    name: String!
+    address: String!
+    postcode: String!
+    capacity: Int
+    category: String!
+    image: String!
+    rooms: [RoomInput]
+  }
+
   type Room {
     id: ID!
     property: Property
@@ -37,6 +52,16 @@ const typeDefs = gql`
     occupant: Occupant
     charges: Charges
     repairs: [Repair!]!
+  }
+
+  input RoomInput {
+    id: ID!
+    name: String!
+    address: String!
+    postcode: String!
+    capacity: Int
+    category: String!
+    image: String!
   }
 
   type Occupant {
