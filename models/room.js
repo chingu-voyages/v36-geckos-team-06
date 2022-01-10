@@ -1,18 +1,19 @@
 import mongoose from 'mongoose';
 
 const RoomSchema = new mongoose.Schema({
-  name: {
+  roomNumber: {
     type: String,
     required: true,
     index: { unique: true },
   },
-  available: {
-    Boolean,
-  },
+  available: Boolean,
   occupant: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: `Occupant`,
-    required: true,
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    phoneNumber: { type: String, required: true },
+    email: { type: String, required: true },
+    moveInDate: { type: Date, required: true },
+    moveOutDate: { type: Date, required: true },
   },
   charges: {
     water: Number,

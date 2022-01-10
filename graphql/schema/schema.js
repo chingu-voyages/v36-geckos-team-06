@@ -40,6 +40,14 @@ const typeDefs = gql`
     ): AuthLandlord!
 
     signInLandlord(email: String!, password: String!): AuthLandlord!
+
+    createRoom(
+      roomNumber: String!
+      propertyName: String!
+      available: Boolean
+      occupant: OccupantInput
+      charges: ChargesInput!
+    ): Room
   }
 
   type AuthLandlord {
@@ -79,21 +87,11 @@ const typeDefs = gql`
   type Room {
     id: ID!
     property: Property
-    name: String!
+    roomNumber: String!
     available: Boolean
     occupant: Occupant
     charges: Charges
-    repairs: [Repair!]!
-  }
-
-  input RoomInput {
-    id: ID!
-    name: String!
-    address: String!
-    postcode: String!
-    capacity: Int
-    category: String!
-    image: String!
+    repairs: [Repair]
   }
 
   type Occupant {
@@ -107,6 +105,22 @@ const typeDefs = gql`
 
   type Charges {
     room: Room
+    water: Int
+    rent: Int
+    electricity: Int
+    parking: Int
+  }
+
+  input OccupantInput {
+    firstName: String
+    lastName: String
+    phoneNumber: String
+    email: String
+    moveInDate: GraphQLDate
+    moveOutDate: GraphQLDate
+  }
+
+  input ChargesInput {
     water: Int
     rent: Int
     electricity: Int

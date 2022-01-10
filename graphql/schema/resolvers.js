@@ -95,6 +95,67 @@ const resolvers = {
       }
     },
 
+    // Create Room
+    createRoom: async (
+      _,
+      { roomNumber, available = false, occupant, charges, propertyName },
+      { models }
+    ) => {
+      const roomProperty = await models.Property.findOne({ name: propertyName });
+
+      const newRoom = {
+        property: new mongoose.Types.ObjectId(roomProperty.id),
+        roomNumber: roomNumber,
+        available: available,
+        occupant: {
+          firstName: occupant.firstName,
+          lastName: occupant.lastName,
+          phoneNumber: occupant.phoneNumber,
+          email: occupant.email,
+          moveInDate: new Date(occupant.moveInDate),
+          moveOutDate: new Date(occupant.moveOutDate),
+        },
+        charges: {
+          water: charges.water,
+          rent: charges.rent,
+          electricity: charges.electricity,
+          parking: charges.parking,
+        },
+        repairs: [],
+      };
+
+      const roomToSave = await models.Room.create(newRoom);
+
+      await models.Property.findByIdAndUpdate(
+        roomProperty._id,
+        { $push: { rooms: new mongoose.Types.ObjectId(roomToSave.id) } },
+        { new: true }
+      );
+
+      const RoomToReturn = {
+        property: roomProperty,
+        roomNumber: roomToSave.roomNumber,
+        available: roomToSave.available,
+        occupant: {
+          firstName: roomToSave.occupant.firstName,
+          lastName: roomToSave.occupant.lastName,
+          phoneNumber: roomToSave.occupant.phoneNumber,
+          email: roomToSave.occupant.email,
+          moveInDate: new Date(occupant.moveInDate),
+          moveOutDate: new Date(occupant.moveOutDate),
+        },
+        charges: {
+          water: roomToSave.charges.water,
+          rent: roomToSave.charges.rent,
+          electricity: roomToSave.charges.electricity,
+          parking: roomToSave.charges.parking,
+        },
+        repairs: [],
+      };
+
+      return RoomToReturn;
+    },
+
     // Authentication
     signUpLandlord: async (_, { firstName, lastName, email, password, role = 'landlord' }) => {
       // normalize email address
