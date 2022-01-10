@@ -37,9 +37,9 @@ const typeDefs = gql`
       lastName: String!
       email: String!
       password: String!
-    ): AuthLandlord!
+    ): Landlord!
 
-    signInLandlord(email: String!, password: String!): AuthLandlord!
+    signInLandlord(email: String!, password: String!): Landlord!
 
     createRoom(
       roomNumber: String!
@@ -53,15 +53,6 @@ const typeDefs = gql`
   }
 
   # Types
-  type AuthLandlord {
-    id: ID!
-    role: String
-    firstName: String
-    lastName: String
-    avatar: String
-    jwt: String
-  }
-
   type Landlord {
     id: ID!
     role: String!
@@ -69,7 +60,8 @@ const typeDefs = gql`
     avatar: String
     firstName: String
     lastName: String
-    properties: [Property!]!
+    properties: [Property!]
+    jwt: String
   }
 
   type Property {

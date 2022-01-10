@@ -22,6 +22,9 @@ const Mutation = {
     { name, address, postcode, capacity, category, image },
     { models, landlord }
   ) => {
+    if (!landlord) {
+      throw new AuthenticationError(`You must be signed in to create a property`);
+    }
     const newProperty = {
       name: name,
       address: address,
