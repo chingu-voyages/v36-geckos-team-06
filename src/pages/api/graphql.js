@@ -2,7 +2,7 @@
 import { ApolloServer } from 'apollo-server-micro';
 import Cors from 'micro-cors';
 import jwt from 'jsonwebtoken';
-import resolvers from '../../../graphql/schema/resolvers';
+import resolvers from '../../../graphql/resolvers/index';
 import models from '../../../models/index';
 import dbConnect from '../../../lib/dbConnect';
 import typeDefs from '../../../graphql/schema/schema';

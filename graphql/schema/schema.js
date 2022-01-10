@@ -48,8 +48,11 @@ const typeDefs = gql`
       occupant: OccupantInput
       charges: ChargesInput!
     ): Room
+
+    createRepair(roomNumber: String, issue: String, details: String, status: String): Repair
   }
 
+  # Types
   type AuthLandlord {
     id: ID!
     role: String
@@ -66,7 +69,6 @@ const typeDefs = gql`
     avatar: String
     firstName: String
     lastName: String
-    "A landlord can have many properties"
     properties: [Property!]!
   }
 
@@ -78,9 +80,7 @@ const typeDefs = gql`
     capacity: Int
     category: String!
     image: String!
-    "A property can have one landlord"
     landlord: Landlord!
-    "A property can have many rooms"
     rooms: [Room]
   }
 
@@ -91,7 +91,7 @@ const typeDefs = gql`
     available: Boolean
     occupant: Occupant
     charges: Charges
-    repairs: [Repair]
+    repairs: [Repair!]
   }
 
   type Occupant {
@@ -104,13 +104,21 @@ const typeDefs = gql`
   }
 
   type Charges {
-    room: Room
     water: Int
     rent: Int
     electricity: Int
     parking: Int
   }
 
+  type Repair {
+    id: ID!
+    room: Room
+    issue: String
+    details: String
+    status: String
+  }
+
+  # Inputs
   input OccupantInput {
     firstName: String
     lastName: String
@@ -125,15 +133,6 @@ const typeDefs = gql`
     rent: Int
     electricity: Int
     parking: Int
-  }
-
-  type Repair {
-    id: ID!
-    room: Room
-    occupant: Occupant!
-    issue: String
-    details: String
-    status: String
   }
 `;
 
