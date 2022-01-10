@@ -8,7 +8,6 @@ const RoomSchema = new mongoose.Schema({
   },
   available: {
     Boolean,
-    required: true,
   },
   occupant: {
     type: mongoose.Schema.Types.ObjectId,
@@ -16,9 +15,10 @@ const RoomSchema = new mongoose.Schema({
     required: true,
   },
   charges: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: `Charges`,
-    required: true,
+    water: Number,
+    rent: Number,
+    electricity: Number,
+    parking: Number,
   },
   property: {
     type: mongoose.Schema.Types.ObjectId,

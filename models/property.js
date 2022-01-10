@@ -9,6 +9,10 @@ const PropertySchema = new mongoose.Schema(
     capacity: { type: Number, required: true },
     category: { type: String, required: true },
     image: { type: String, required: true },
+    landlord: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: `Landlord`,
+    },
     // Array of rooms in the property
     rooms: [
       {

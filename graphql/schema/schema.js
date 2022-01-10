@@ -8,19 +8,58 @@ const typeDefs = gql`
 
   type Query {
     properties: [Property!]!
-    landlord: Landlord
   }
 
   type Mutation {
-    newProperty(input: PropertyInput): Property
+    createProperty(
+      name: String!
+      address: String!
+      postcode: String!
+      capacity: Int
+      category: String!
+      image: String!
+    ): Property
+
+    updateProperty(
+      id: ID!
+      name: String!
+      address: String!
+      postcode: String!
+      capacity: Int
+      category: String!
+      image: String!
+    ): Property
+
+    deleteProperty(id: ID!): Boolean!
+
+    signUpLandlord(
+      firstName: String!
+      lastName: String!
+      email: String!
+      password: String!
+    ): AuthLandlord!
+
+    signInLandlord(email: String!, password: String!): AuthLandlord!
+  }
+
+  type AuthLandlord {
+    id: ID!
+    role: String
+    firstName: String
+    lastName: String
+    avatar: String
+    jwt: String
   }
 
   type Landlord {
     id: ID!
+    role: String!
     email: String!
     avatar: String
     firstName: String
     lastName: String
+    "A landlord can have many properties"
+    properties: [Property!]!
   }
 
   type Property {
@@ -31,17 +70,10 @@ const typeDefs = gql`
     capacity: Int
     category: String!
     image: String!
-    rooms: [Room!]!
-  }
-
-  input PropertyInput {
-    name: String!
-    address: String!
-    postcode: String!
-    capacity: Int
-    category: String!
-    image: String!
-    rooms: [RoomInput]
+    "A property can have one landlord"
+    landlord: Landlord!
+    "A property can have many rooms"
+    rooms: [Room]
   }
 
   type Room {
