@@ -3,6 +3,7 @@ import Layout from '../../components/common/Layout';
 import Content from '../../components/dashboard/Content';
 import Header from '../../components/dashboard/Header';
 import Properties from '../../components/dashboard/Properties';
+import Repairs from '../../components/dashboard/Repairs';
 import Actions from '../../components/dashboard/Actions';
 
 const Dashboard = () => {
@@ -16,7 +17,7 @@ const Dashboard = () => {
       <Content>
         {showRepairs === 'properties' && <Properties />}
 
-        {showRepairs === 'repairs' && <h1>Repairs</h1>}
+        {showRepairs === 'repairs' && <Repairs />}
       </Content>
     </Layout>
   );
