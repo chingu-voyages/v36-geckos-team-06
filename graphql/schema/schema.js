@@ -11,6 +11,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
+    # Property
     createProperty(
       name: String!
       address: String!
@@ -32,6 +33,7 @@ const typeDefs = gql`
 
     deleteProperty(id: ID!): Boolean!
 
+    # Auth and Users
     signUpLandlord(
       firstName: String!
       lastName: String!
@@ -41,6 +43,7 @@ const typeDefs = gql`
 
     signInLandlord(email: String!, password: String!): Landlord!
 
+    # Room
     createRoom(
       roomNumber: String!
       propertyName: String!
@@ -49,7 +52,29 @@ const typeDefs = gql`
       charges: ChargesInput!
     ): Room
 
+    updateRoom(
+      id: ID!
+      roomNumber: String!
+      propertyName: String!
+      available: Boolean
+      occupant: OccupantInput
+      charges: ChargesInput!
+    ): Room
+
+    deleteRoom(id: ID!): Boolean!
+
+    # Repair
     createRepair(roomNumber: String, issue: String, details: String, status: String): Repair
+
+    updateRepair(
+      id: ID!
+      roomNumber: String
+      issue: String
+      details: String
+      status: String
+    ): Repair
+
+    deleteRepair(id: ID!): Boolean!
   }
 
   # Types

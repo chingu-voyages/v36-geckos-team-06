@@ -16,6 +16,8 @@ const getAvatar = () => {
 const Mutation = {
   // CRUD mutations
 
+  // PROPERTY
+
   // Create Property
   createProperty: async (
     _,
@@ -39,7 +41,6 @@ const Mutation = {
     const propertyToSave = await models.Property.create(newProperty);
     return propertyToSave;
   },
-
   // Update Property
   updateProperty: async (
     _,
@@ -75,7 +76,6 @@ const Mutation = {
 
     return updatedProperty;
   },
-
   // Delete Property
   deleteProperty: async (_, { id }, { models, landlord }) => {
     if (!landlord) {
@@ -96,6 +96,8 @@ const Mutation = {
       return false;
     }
   },
+
+  // ROOM
 
   // Create Room
   createRoom: async (
@@ -137,7 +139,59 @@ const Mutation = {
     return roomToSave;
   },
 
-  // Repair
+  // Update Room
+  updateRoom: async (
+    _,
+    { roomNumber, available, occupant, charges, propertyName, id },
+    { models, landlord }
+  ) => {
+    if (!landlord) {
+      throw new AuthenticationError(`You must be signed in to update the room`);
+    }
+
+    const updatedRoom = await models.Room.findOneAndUpdate(
+      { _id: id },
+      {
+        $set: {
+          roomNumber,
+          available,
+          occupant,
+          charges,
+          propertyName,
+        },
+      },
+      { new: true }
+    );
+
+    return updatedRoom;
+  },
+
+  // Delete Room
+  deleteRoom: async (_, { id }, { models, landlord }) => {
+    if (!landlord) {
+      throw new AuthenticationError(`You must be signed in to delete a room`);
+    }
+    // find the room
+    const room = await models.Room.findById(id);
+
+    try {
+      // if everything checks out, remove the note
+      await room.remove();
+      // Remove room from property array
+      await models.Property.findByIdAndUpdate(
+        room.property,
+        { $pull: { rooms: new mongoose.Types.ObjectId(room.id) } },
+        { new: true }
+      );
+      return true;
+    } catch (error) {
+      return false;
+    }
+  },
+
+  // REPAIR
+
+  // Create Repair
   createRepair: async (_, { roomNumber, issue, details, status }, { models }) => {
     const roomToRepair = await models.Room.findOne({ roomNumber: roomNumber });
 
@@ -150,7 +204,51 @@ const Mutation = {
 
     const repairToSave = await models.Repair.create(newRepair);
 
+    await models.Room.findByIdAndUpdate(
+      repairToSave.room,
+      { $push: { repairs: new mongoose.Types.ObjectId(repairToSave.id) } },
+      { new: true }
+    );
+
     return repairToSave;
+  },
+
+  // Update Repair
+  updateRepair: async (_, { roomNumber, issue, details, status, id }, { models }) => {
+    const updatedRoom = await models.Repair.findOneAndUpdate(
+      { _id: id },
+      {
+        $set: {
+          roomNumber,
+          issue,
+          details,
+          status,
+        },
+      },
+      { new: true }
+    );
+
+    return updatedRoom;
+  },
+
+  // Delete Repair
+  deleteRepair: async (_, { id }, { models }) => {
+    // find the room
+    const repair = await models.Repair.findById(id);
+
+    try {
+      // if everything checks out, remove the note
+      await repair.remove();
+      // Remove Repair from room  array
+      await models.Room.findByIdAndUpdate(
+        repair.room,
+        { $pull: { repairs: new mongoose.Types.ObjectId(repair.id) } },
+        { new: true }
+      );
+      return true;
+    } catch (error) {
+      return false;
+    }
   },
 
   // Authentication
