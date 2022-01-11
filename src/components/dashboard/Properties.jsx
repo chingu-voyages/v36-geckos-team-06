@@ -1,17 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import PageContainer from '../components/Pagecontainer';
-import ButtonsAndSearchbar from '../components/ButtonsAndSearchbar';
-import Button from '../components/Button';
-import Header from '../components/Header';
-import { PROPERTY_DATA, LANDLORD } from '../mockData';
+import { PROPERTY_DATA } from '../../mockData';
 
-const PropertyContainer = styled.div`
+const PropertyContainer = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 20px;
   width: 100%;
-  height: 500px;
+  height: 750px;
   overflow: scroll;
   @media (max-width: 768px) {
     grid-template-columns: 1fr 1fr 1fr;
@@ -55,22 +51,18 @@ const PropertyCapacity = styled.p`
   margin: 0;
 `;
 
-function LandlordDashboardPage() {
-  return (
-    <PageContainer>
-      <Header />
-      <ButtonsAndSearchbar />
-      <PropertyContainer>
-        {PROPERTY_DATA.map((property) => (
-          <Property key={property.id} bg={property.propertyImage}>
-            <PropertyName>{property.name}</PropertyName>
-            <PropertyLocation>{property.address}</PropertyLocation>
-            <PropertyCapacity>{property.capacity}</PropertyCapacity>
-          </Property>
-        ))}
-      </PropertyContainer>
-    </PageContainer>
-  );
-}
+const Properties = () => (
+  <>
+    <PropertyContainer>
+      {PROPERTY_DATA.map((property) => (
+        <Property key={property.id} bg={property.propertyImage}>
+          <PropertyName>{property.name}</PropertyName>
+          <PropertyLocation>{property.address}</PropertyLocation>
+          <PropertyCapacity>{property.capacity}</PropertyCapacity>
+        </Property>
+      ))}
+    </PropertyContainer>
+  </>
+);
 
-export default LandlordDashboardPage;
+export default Properties;

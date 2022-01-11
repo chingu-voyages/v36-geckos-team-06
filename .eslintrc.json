@@ -1,7 +1,7 @@
 {
   "root": true,
   "extends": ["airbnb", "airbnb/hooks", "prettier"],
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "prefer-arrow-functions"],
   "rules": {
     "prettier/prettier": "error",
     "no-unused-vars": "warn",
@@ -10,6 +10,16 @@
     "no-process-exit": "off",
     "object-shorthand": "off",
     "class-methods-use-this": "off",
-    "react/jsx-props-no-spreading": 0
+    "react/jsx-props-no-spreading": 0,
+    "func-style": [2, "declaration", { "allowArrowFunctions": true }],
+    "prefer-arrow-functions/prefer-arrow-functions": [
+      "warn",
+      {
+        "classPropertiesAllowed": false,
+        "disallowPrototype": false,
+        "returnStyle": "unchanged",
+        "singleReturnOnly": false
+      }
+    ]
   }
 }

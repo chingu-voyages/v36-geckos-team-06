@@ -26,27 +26,29 @@ const SearchButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
-  background: #333;
+  font-size: 22px;
+  background: #242423;
   color: white;
   text-transform: uppercase;
-  padding: 15px 15px;
   border: none;
   border-radius: 0 10px 10px 0;
-  font-weight: bold;
+  padding: 12px;
+  width: 100%;
+  max-width: 150px;
+  border: none;
+  font-weight: 700;
   cursor: pointer;
+  transition: all 0.3s ease;
   &:hover {
     color: #e46979;
   }
 `;
 
-function Searchbar() {
-  return (
-    <SearchContainer>
-      <Input type="text" />
-      <SearchButton>Search</SearchButton>
-    </SearchContainer>
-  );
-}
+const Searchbar = () => (
+  <SearchContainer>
+    <Input type="text" />
+    <SearchButton>Search</SearchButton>
+  </SearchContainer>
+);
 
 export default Searchbar;
