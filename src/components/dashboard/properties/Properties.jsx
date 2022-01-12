@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 import { PROPERTY_DATA } from '../../../mockData';
 
 const PropertyContainer = styled.section`
@@ -29,6 +30,7 @@ const Property = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   text-transform: capitalize;
+  transition: all 0.3s ease;
   cursor: pointer;
   &:hover {
     transform: scale(0.98);
@@ -55,11 +57,13 @@ const Properties = () => (
   <>
     <PropertyContainer>
       {PROPERTY_DATA.map((property) => (
-        <Property key={property.id} bg={property.propertyImage}>
-          <PropertyName>{property.name}</PropertyName>
-          <PropertyLocation>{property.address}</PropertyLocation>
-          <PropertyCapacity>{property.capacity}</PropertyCapacity>
-        </Property>
+        <Link href={`/property/${property.id}`}>
+          <Property key={property.id} bg={property.propertyImage}>
+            <PropertyName>{property.name}</PropertyName>
+            <PropertyLocation>{property.address}</PropertyLocation>
+            <PropertyCapacity>{property.capacity}</PropertyCapacity>
+          </Property>
+        </Link>
       ))}
     </PropertyContainer>
   </>

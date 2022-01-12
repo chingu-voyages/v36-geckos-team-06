@@ -6,15 +6,15 @@ import Button from './Button';
 const Container = styled.div`
   display: grid;
   grid-template-columns: 264px 264px 264px;
-  padding: 20px;
+  padding: 60px;
   justify-content: space-between;
   align-items: center;
   height: 200px;
   width: 100%;
-  border-radius: 10px;
+  border-radius: 16px;
   text-transform: uppercase;
   font-weight: bold;
-  background: url('/repairs.jpg/');
+  background: #491f1e;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
