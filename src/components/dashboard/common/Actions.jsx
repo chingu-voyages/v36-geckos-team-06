@@ -16,16 +16,21 @@ const ActionsContainer = styled.section`
   } */
 `;
 
-const Actions = ({ setShowRepairs }) => (
+const Actions = ({ setShowRepairs, showRepairs }) => (
   <ActionsContainer>
-    <Button onClick={() => setShowRepairs('properties')} color="#A3293A">
+    <Button
+      onClick={() => setShowRepairs('properties')}
+      color={showRepairs === 'properties' ? '#A3293A' : '#242423'}
+    >
       Properties
     </Button>
-    <Button onClick={() => setShowRepairs('repairs')} color="#242423">
+    <Button
+      onClick={() => setShowRepairs('repairs')}
+      color={showRepairs === 'repairs' ? '#A3293A' : '#242423'}
+    >
       Repairs
     </Button>
     <Searchbar />
   </ActionsContainer>
 );
-
 export default Actions;

@@ -13,7 +13,7 @@ const Dashboard = () => {
   return (
     <Layout>
       <Header />
-      <Actions setShowRepairs={setShowRepairs} />
+      <Actions setShowRepairs={setShowRepairs} showRepairs={showRepairs} />
       <Content>
         {showRepairs === 'properties' && <Properties />}
 
