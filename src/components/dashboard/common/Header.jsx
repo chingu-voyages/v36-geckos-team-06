@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
-import { LANDLORD } from '../../mockData';
-import { HeaderStyled, HeaderButton } from '../common/Header';
+import { LANDLORD } from '../../../mockData';
+import { HeaderStyled, HeaderButton } from '../../common/Header';
 
 const UserName = styled.h2`
   font-size: 58px;

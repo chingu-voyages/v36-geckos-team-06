@@ -2,8 +2,8 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import styled from 'styled-components';
-import Searchbar from '../common/SearchBar';
-import Button from '../common/Button';
+import Searchbar from '../../common/SearchBar';
+import Button from '../../common/Button';
 
 const ActionsContainer = styled.section`
   display: grid;

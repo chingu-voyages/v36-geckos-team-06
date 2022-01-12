@@ -37,7 +37,7 @@ const TextContainer = styled.div`
   }
 `;
 
-const RepairSection = ({ repair: { room, property, issue } }) => (
+const Repair = ({ repair: { room, property, issue } }) => (
   <Container>
     <TextContainer>
       <h3>{room}</h3>
@@ -51,4 +51,4 @@ const RepairSection = ({ repair: { room, property, issue } }) => (
   </Container>
 );
 
-export default RepairSection;
+export default Repair;

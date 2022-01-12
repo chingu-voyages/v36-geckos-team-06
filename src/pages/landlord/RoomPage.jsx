@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import RepairSection from '../../components/common/RepairSection';
 import Layout from '../../components/common/Layout';
 import { Container } from '../../components/common/Container';
 
@@ -72,9 +71,9 @@ const RoomPage = () => (
     </RoomHeader>
     <RepairsHeading>Repairs</RepairsHeading>
     <Container>
-      {roomOneRepairs.map((repair) => (
+      {/* {roomOneRepairs.map((repair) => (
         <RepairSection key={repair.id} repair={repair} />
-      ))}
+      ))} */}
     </Container>
   </Layout>
 );

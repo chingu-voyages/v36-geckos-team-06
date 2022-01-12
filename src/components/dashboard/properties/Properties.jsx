@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PROPERTY_DATA } from '../../mockData';
+import { PROPERTY_DATA } from '../../../mockData';
 
 const PropertyContainer = styled.section`
   display: grid;

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Layout from '../../components/common/Layout';
-import Content from '../../components/dashboard/Content';
-import Header from '../../components/dashboard/Header';
-import Properties from '../../components/dashboard/Properties';
-import Repairs from '../../components/dashboard/Repairs';
-import Actions from '../../components/dashboard/Actions';
+import Content from '../../components/dashboard/common/Content';
+import Header from '../../components/dashboard/common/Header';
+import Properties from '../../components/dashboard/properties/Properties';
+import Repairs from '../../components/dashboard/repairs/Repairs';
+import Actions from '../../components/dashboard/common/Actions';
 
 const Dashboard = () => {
   const [showRepairs, setShowRepairs] = useState('properties');
