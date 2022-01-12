@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Layout from '../components/home/Layout';
 import { Container, Buttons, Button } from '../components/home/Common';
 
-export default () => (
+const Home = () => (
   <>
     <Head>
       <title>SURENT</title>
@@ -23,10 +23,11 @@ export default () => (
           <Link href="/landlord/signin">
             <Button background="#A2293A">LANDLORD</Button>
           </Link>
-
           <Button background="#242423">TENANT</Button>
         </Buttons>
       </Container>
     </Layout>
   </>
 );
+
+export default Home;
