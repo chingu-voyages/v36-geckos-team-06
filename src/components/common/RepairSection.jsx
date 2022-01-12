@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
 import Button from './Button';
@@ -36,19 +37,17 @@ const TextContainer = styled.div`
   }
 `;
 
-const RepairSection = () => (
+const RepairSection = ({ repair: { room, property, issue } }) => (
   <Container>
     <TextContainer>
-      <h3>Room 5</h3>
-      <p>Palm Springs</p>
+      <h3>{room}</h3>
+      <p>{property}</p>
     </TextContainer>
     <TextContainer>
       <h3>Issue:</h3>
-      <p>Leaking Pipe</p>
+      <p>{issue}</p>
     </TextContainer>
-    <Button width="30xp" color="white">
-      View Details
-    </Button>
+    <Button color="white">View Details</Button>
   </Container>
 );
 
