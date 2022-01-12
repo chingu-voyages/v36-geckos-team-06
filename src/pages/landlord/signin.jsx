@@ -19,7 +19,10 @@ const SignIn = () => (
         <label htmlFor="password">PASSWORD</label>
         <Input name="password" type="password" id="password" />
       </InputContainer>
-      <Button> Sign In</Button>
+      <Link href="/landlord/dashboard">
+        <Button> Sign In</Button>
+      </Link>
+
       <Link href="/">
         <a href>GO BACK</a>
       </Link>
