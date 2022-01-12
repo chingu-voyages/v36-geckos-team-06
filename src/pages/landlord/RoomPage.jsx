@@ -2,12 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import RepairSection from '../../components/common/RepairSection';
 import Layout from '../../components/common/Layout';
+import { Container } from '../../components/common/Container';
 
 import { REPAIR_DATA } from '../../mockData';
 
 const roomOneRepairs = REPAIR_DATA.filter((repair) => repair.room === 'room 1');
-
-console.log(roomOneRepairs);
 
 const RoomHeader = styled.header`
   display: flex;
@@ -61,15 +60,6 @@ const RepairsHeading = styled.h2`
   font-size: 72px;
 `;
 
-const RepairsContainer = styled.div`
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  gap: 32px;
-  max-height: 750px;
-  overflow: scroll;
-`;
-
 // eslint-disable-next-line prettier/prettier
 const RoomPage = () => (
   <Layout>
@@ -81,11 +71,11 @@ const RoomPage = () => (
       <Button>Edit Room</Button>
     </RoomHeader>
     <RepairsHeading>Repairs</RepairsHeading>
-    <RepairsContainer>
+    <Container>
       {roomOneRepairs.map((repair) => (
         <RepairSection key={repair.id} repair={repair} />
       ))}
-    </RepairsContainer>
+    </Container>
   </Layout>
 );
 
