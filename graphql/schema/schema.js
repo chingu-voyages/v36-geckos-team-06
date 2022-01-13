@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 /* eslint-disable no-unused-vars */
 import { gql } from 'apollo-server-micro';
 import { GraphQLDate } from 'graphql-scalars';
@@ -16,9 +15,10 @@ const typeDefs = gql`
       name: String!
       address: String!
       postcode: String!
+      city: String!
+      country: String!
       capacity: Int
       category: String!
-      image: String!
     ): Property
 
     updateProperty(
@@ -94,6 +94,8 @@ const typeDefs = gql`
     name: String!
     address: String!
     postcode: String!
+    city: String!
+    country: String!
     capacity: Int
     category: String!
     image: String!

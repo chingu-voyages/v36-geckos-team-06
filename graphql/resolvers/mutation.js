@@ -6,12 +6,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { AuthenticationError, ForbiddenError } from 'apollo-server-micro';
 import models from '../../models';
-
-// Get random avatar for landlord
-const getAvatar = () => {
-  const randomNumber = Math.floor(Math.random() * 2000 + 1);
-  return `https://avatars.dicebear.com/api/big-smile/${randomNumber}.svg`;
-};
+import utils from '../../utils';
 
 const Mutation = {
   // CRUD mutations
@@ -21,19 +16,22 @@ const Mutation = {
   // Create Property
   createProperty: async (
     _,
-    { name, address, postcode, capacity, category, image },
+    { name, address, postcode, capacity, category, city, country },
     { models, landlord }
   ) => {
     if (!landlord) {
       throw new AuthenticationError(`You must be signed in to create a property`);
     }
+
     const newProperty = {
-      name: name,
-      address: address,
-      postcode: postcode,
+      name: name.trim().toLowerCase(),
+      address: address.trim().toLowerCase(),
+      postcode: postcode.trim().toLowerCase(),
+      city: city.trim().toLowerCase(),
+      country: country.trim().toLowerCase(),
       capacity: capacity,
-      category: category,
-      image: image,
+      category: category.trim().toLowerCase(),
+      image: utils.getCategoryImage(category),
       landlord: new mongoose.Types.ObjectId(landlord.id),
       rooms: [], // empty array for rooms
     };
@@ -265,7 +263,7 @@ const Mutation = {
         firstName,
         lastName,
         email,
-        avatar: getAvatar(),
+        avatar: utils.getAvatar(),
         password: hashed,
         role,
       });
