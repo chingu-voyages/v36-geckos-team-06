@@ -24,7 +24,7 @@ The first thing husky runs npx `lint-staged`, this command ensures that the code
 
 ### `Commit Messages`
 
-The second thing husky does is run `npx commitlint --edit`, this command checks that your commit messages follows the [conventional commit format](https://www.conventionalcommits.org/). Check the link to read more. But in summary you should structure your commit messages following the pattern below:
+The second thing husky does is run `npx commitlint --edit`, this command checks that your commit messages follows the [conventional commit format](https://www.conventionalcommitrefactors.org/). Check the link to read more. But in summary you should structure your commit messages following the pattern below:
 
 ```
 type(scope?): subject  #scope is optional; multiple scopes are supported (separate multiple scopes with: "/", "\" or ",")
