@@ -7,6 +7,7 @@ const typeDefs = gql`
 
   type Query {
     property(id: ID!): Property
+    landlord(id: ID!): Landlord
     room(id: ID!): Room
     repair(id: ID!): Repair
     repairs: [Repair!]!
@@ -42,9 +43,9 @@ const typeDefs = gql`
       lastName: String!
       email: String!
       password: String!
-    ): Landlord!
+    ): AuthLandlord!
 
-    signInLandlord(email: String!, password: String!): Landlord!
+    signInLandlord(email: String!, password: String!): AuthLandlord!
 
     # Room
     createRoom(
@@ -89,6 +90,14 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     properties: [Property!]
+    jwt: String
+  }
+
+  type AuthLandlord {
+    id: ID!
+    role: String!
+    avatar: String
+    firstName: String
     jwt: String
   }
 

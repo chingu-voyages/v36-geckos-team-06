@@ -26,6 +26,9 @@ const SignIn = () => (
       <Link href="/">
         <a href>GO BACK</a>
       </Link>
+      <Link href="/landlord/signup">
+        <a href>SIGN UP</a>
+      </Link>
     </Form>
   </Layout>
 );
