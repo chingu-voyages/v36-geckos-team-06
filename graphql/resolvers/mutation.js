@@ -103,7 +103,7 @@ const Mutation = {
     { roomNumber, available = false, occupant, charges, propertyName },
     { models }
   ) => {
-    const roomProperty = await models.Property.findOne({ name: propertyName });
+    const roomProperty = await models.Property.findOne({ name: propertyName.trim().toLowerCase() });
 
     const newRoom = {
       property: new mongoose.Types.ObjectId(roomProperty.id),

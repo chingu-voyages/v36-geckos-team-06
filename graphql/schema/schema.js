@@ -6,7 +6,10 @@ const typeDefs = gql`
   scalar GraphQLDate
 
   type Query {
-    properties: [Property!]!
+    property(id: ID!): Property
+    room(id: ID!): Room
+    repair(id: ID!): Repair
+    repairs: [Repair!]!
   }
 
   type Mutation {

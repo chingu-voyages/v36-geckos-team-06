@@ -3,8 +3,10 @@ import Room from './room';
 import Repair from './repair';
 import Landlord from './landlord';
 import Property from './property';
+import Query from './query';
 
 const resolvers = {
+  Query,
   Mutation,
   Room,
   Repair,
