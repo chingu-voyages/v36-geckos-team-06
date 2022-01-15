@@ -9,6 +9,7 @@ const IS_LOGGED_IN = gql`
 const GET_LANDLORD = gql`
   query ($landlordId: ID!) {
     landlord(id: $landlordId) {
+      id
       role
       avatar
       firstName
@@ -19,6 +20,10 @@ const GET_LANDLORD = gql`
         postcode
         city
         country
+        capacity
+        category
+        thumbnail
+        fullImage
       }
     }
   }

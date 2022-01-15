@@ -24,14 +24,18 @@ const Dashboard = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error!</p>;
 
+  console.log(data.landlord);
+
   return (
     <>
-      {addProperty && <AddPropertyForm setAddProperty={setAddProperty} />}
+      {addProperty && (
+        <AddPropertyForm setAddProperty={setAddProperty} landlordID={data.landlord.id} />
+      )}
       <Layout>
         <Header setAddProperty={setAddProperty} firstName={data?.landlord?.firstName} />
         <Actions setShowRepairs={setShowRepairs} showRepairs={showRepairs} />
         <Content>
-          {showRepairs === 'properties' && <Properties properties={data?.properties} />}
+          {showRepairs === 'properties' && <Properties properties={data.landlord.properties} />}
 
           {showRepairs === 'repairs' && <Repairs />}
         </Content>

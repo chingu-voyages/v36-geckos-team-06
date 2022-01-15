@@ -2,7 +2,9 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { CountryDropdown, CategoryDropdown } from '../../common/Dropdowns';
+
 import { CREATE_PROPERTY } from '../../../../services/mutation';
+import { GET_LANDLORD } from '../../../../services/query';
 import {
   Form,
   Container,
@@ -14,7 +16,7 @@ import {
   Blur,
 } from '../../common/FormElements';
 
-const AddPropertyForm = ({ setAddProperty }) => {
+const AddPropertyForm = ({ setAddProperty, landlordID }) => {
   const [values, setValues] = useState({
     name: '',
     address: '',
@@ -33,7 +35,8 @@ const AddPropertyForm = ({ setAddProperty }) => {
   };
 
   const [createProperty, { loading, error }] = useMutation(CREATE_PROPERTY, {
-    onCompleted: (data) => {
+    refetchQueries: [{ query: GET_LANDLORD, variables: { landlordId: landlordID } }],
+    onCompleted: () => {
       setAddProperty(false);
     },
   });

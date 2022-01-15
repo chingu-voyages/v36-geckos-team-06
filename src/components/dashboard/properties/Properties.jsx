@@ -2,18 +2,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-import { PROPERTY_DATA } from '../../../mockData';
 
 const PropertyContainer = styled.section`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
   width: 100%;
-  height: 750px;
   overflow: scroll;
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
 `;
 
 const Property = styled.div`
@@ -22,10 +17,10 @@ const Property = styled.div`
   justify-content: flex-end;
   align-items: flex-start;
   color: white;
-  background: black;
-  aspect-ratio: 1;
+  padding: 24px;
+  width: 100%;
+  aspect-ratio: 1/1;
   border-radius: 10px;
-  padding: 15px;
   background: ${({ bg }) => `url(${bg})`};
   background-position: center;
   background-size: cover;
@@ -57,9 +52,9 @@ const PropertyCapacity = styled.p`
 const Properties = ({ properties }) => (
   <>
     <PropertyContainer>
-      {PROPERTY_DATA.map((property) => (
+      {properties?.map((property) => (
         <Link href={`/property/${property.id}`}>
-          <Property key={property.id} bg={property.propertyImage}>
+          <Property key={property.id} bg={property.thumbnail}>
             <PropertyName>{property.name}</PropertyName>
             <PropertyLocation>{property.address}</PropertyLocation>
             <PropertyCapacity>{property.capacity}</PropertyCapacity>
