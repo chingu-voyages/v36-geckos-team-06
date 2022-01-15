@@ -5,18 +5,7 @@ import { useMutation, gql, useApolloClient } from '@apollo/client';
 import Link from 'next/link';
 import Layout from '../../components/landlordSignin/Layout';
 import { Form, InputContainer, Input, Button, Info } from '../../components/landlordSignin/Form';
-
-const SIGN_IN_LANDLORD = gql`
-  mutation SignInLandlord($email: String!, $password: String!) {
-    signInLandlord(email: $email, password: $password) {
-      id
-      role
-      avatar
-      firstName
-      jwt
-    }
-  }
-`;
+import { SIGN_IN_LANDLORD } from '../../../services/mutation';
 
 const SignIn = () => {
   const client = useApolloClient();

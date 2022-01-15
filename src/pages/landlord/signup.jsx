@@ -4,23 +4,7 @@ import { useRouter } from 'next/router';
 import { useMutation, gql, useApolloClient } from '@apollo/client';
 import { Form, InputContainer, Input, Button, Info } from '../../components/landlordSignin/Form';
 import Layout from '../../components/landlordSignin/Layout';
-
-const SIGN_UP_LANDLORD = gql`
-  mutation SignUpLandlord(
-    $firstName: String!
-    $email: String!
-    $password: String!
-    $lastName: String!
-  ) {
-    signUpLandlord(firstName: $firstName, email: $email, password: $password, lastName: $lastName) {
-      id
-      role
-      avatar
-      firstName
-      jwt
-    }
-  }
-`;
+import { SIGN_UP_LANDLORD } from '../../../services/mutation';
 
 const Signup = () => {
   const client = useApolloClient();

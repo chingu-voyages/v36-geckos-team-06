@@ -3,9 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../components/home/Layout';
 import { Container, Buttons, Button } from '../components/home/Common';
-import utils from '../../utils';
-
-const { withAuth } = utils;
+import { withAuth } from '../../utils';
 
 const Home = () => (
   <>

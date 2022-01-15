@@ -6,7 +6,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { AuthenticationError, ForbiddenError } from 'apollo-server-micro';
 import models from '../../models';
-import utils from '../../utils';
+import { getCategoryImage, getAvatar } from '../../utils';
 
 const Mutation = {
   // CRUD mutations
@@ -31,7 +31,7 @@ const Mutation = {
       country: country.trim().toLowerCase(),
       capacity: capacity,
       category: category.trim().toLowerCase(),
-      image: utils.getCategoryImage(category),
+      image: getCategoryImage(category),
       landlord: new mongoose.Types.ObjectId(landlord.id),
       rooms: [], // empty array for rooms
     };
@@ -263,7 +263,7 @@ const Mutation = {
         firstName,
         lastName,
         email,
-        avatar: utils.getAvatar(),
+        avatar: getAvatar(),
         password: hashed,
         role,
       });
