@@ -51,6 +51,8 @@ const Dashboard = () => {
     variables: { landlordId: landlord?.id },
   });
 
+  console.log(data);
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error!</p>;
 
@@ -61,7 +63,7 @@ const Dashboard = () => {
         <Header setAddProperty={setAddProperty} firstName={data?.landlord?.firstName} />
         <Actions setShowRepairs={setShowRepairs} showRepairs={showRepairs} />
         <Content>
-          {showRepairs === 'properties' && <Properties />}
+          {showRepairs === 'properties' && <Properties properties={data?.properties} />}
 
           {showRepairs === 'repairs' && <Repairs />}
         </Content>
