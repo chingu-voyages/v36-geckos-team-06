@@ -9,20 +9,20 @@ import React, { useEffect } from 'react';
 const withAuth = (WrappedComponent) => (props) => {
   if (typeof window !== `undefined`) {
     const Router = useRouter();
-    const token = localStorage.getItem(`authLandlord`);
-    const authLandlord = token != null && JSON.parse(token);
+    const landlord = localStorage.getItem(`authLandlord`);
+    const authLandlord = landlord != null && JSON.parse(landlord);
 
     useEffect(() => {
-      if (!token) {
+      if (!landlord) {
         Router.replace(`/`);
         return null;
       }
 
-      if (token && authLandlord.role === 'landlord') {
+      if (landlord && authLandlord.role === 'landlord') {
         Router.replace(`/landlord/dashboard`);
         return null;
       }
-    }, [token]);
+    }, [landlord]);
 
     return <WrappedComponent {...props} />;
   }
