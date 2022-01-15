@@ -8,6 +8,9 @@ import Properties from '../../components/dashboard/properties/Properties';
 import Repairs from '../../components/dashboard/repairs/Repairs';
 import Actions from '../../components/dashboard/common/Actions';
 import AddProperty from '../../components/dashboard/addpropertyform/AddProperty';
+import utils from '../../../utils';
+
+const { withAuth } = utils;
 
 const GET_LANDLORD = gql`
   query ($landlordId: ID!) {
