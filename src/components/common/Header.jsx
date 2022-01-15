@@ -30,7 +30,6 @@ export const HeaderButton = styled.button`
   transition: all 0.3s ease;
 
   &:hover {
-    background: darken(#fdfdfd, 8%);
     transform: translateX(0rem) translateY(-0.1125rem);
   }
 

@@ -16,10 +16,9 @@ const UserName = styled.h2`
 
 const Header = ({ setAddProperty, firstName }) => {
   const router = useRouter();
-
   const signOut = () => {
-    localStorage.removeItem(`token`);
-    router.push(`/`);
+    localStorage.removeItem(`authLandlord`);
+    router.push('/');
   };
 
   return (

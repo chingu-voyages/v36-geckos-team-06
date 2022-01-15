@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable consistent-return */
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable no-undef */
@@ -9,18 +10,20 @@ const withAuth = (WrappedComponent) => (props) => {
   if (typeof window !== `undefined`) {
     const Router = useRouter();
     const token = localStorage.getItem(`authLandlord`);
+    const authLandlord = token != null && JSON.parse(token);
 
     useEffect(() => {
       if (!token) {
         Router.replace(`/`);
         return null;
       }
-    }, [Router, token]);
 
-    if (token && authLandlord.role === 'landlord') {
-      Router.replace(`/landlord/dashboard`);
-      return null;
-    }
+      if (token && authLandlord.role === 'landlord') {
+        Router.replace(`/landlord/dashboard`);
+        return null;
+      }
+    }, [token]);
+
     return <WrappedComponent {...props} />;
   }
   return null;
