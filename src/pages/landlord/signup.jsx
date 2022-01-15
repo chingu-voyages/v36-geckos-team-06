@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import { useMutation, useApolloClient, gql } from '@apollo/client';
+import { useMutation, gql } from '@apollo/client';
 import { Form, InputContainer, Input, Button, Info } from '../../components/landlordSignin/Form';
 import Layout from '../../components/landlordSignin/Layout';
 

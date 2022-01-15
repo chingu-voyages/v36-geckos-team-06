@@ -12,12 +12,9 @@ import AddProperty from '../../components/dashboard/addpropertyform/AddProperty'
 const GET_LANDLORD = gql`
   query ($landlordId: ID!) {
     landlord(id: $landlordId) {
-      id
       role
-      email
       avatar
       firstName
-      lastName
       properties {
         id
         name
@@ -30,7 +27,7 @@ const GET_LANDLORD = gql`
   }
 `;
 
-const getIdFromLocalStorage = () => {
+const getLandlordIdFromLocalStorage = () => {
   let authLandlord;
   if (typeof window !== 'undefined') {
     const saved = localStorage.getItem('authLandlord');
@@ -45,19 +42,20 @@ const Dashboard = () => {
   const [showRepairs, setShowRepairs] = useState('properties');
   const [addProperty, setAddProperty] = useState(false);
 
-  const landlord = getIdFromLocalStorage();
+  const landlord = getLandlordIdFromLocalStorage();
 
   const { loading, error, data } = useQuery(GET_LANDLORD, {
     variables: { landlordId: landlord?.id },
   });
 
-  console.log(data);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error!</p>;
 
   return (
     <>
       {addProperty && <AddProperty setAddProperty={setAddProperty} />}
       <Layout>
-        <Header setAddProperty={setAddProperty} />
+        <Header setAddProperty={setAddProperty} firstName={data?.landlord?.firstName} />
         <Actions setShowRepairs={setShowRepairs} showRepairs={showRepairs} />
         <Content>
           {showRepairs === 'properties' && <Properties />}
