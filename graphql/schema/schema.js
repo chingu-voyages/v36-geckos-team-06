@@ -21,7 +21,7 @@ const typeDefs = gql`
       postcode: String!
       city: String!
       country: String!
-      capacity: Int
+      capacity: String
       category: String!
     ): Property
 
@@ -30,7 +30,7 @@ const typeDefs = gql`
       name: String!
       address: String!
       postcode: String!
-      capacity: Int
+      capacity: String
       category: String!
       image: String!
     ): Property
@@ -108,9 +108,10 @@ const typeDefs = gql`
     postcode: String!
     city: String!
     country: String!
-    capacity: Int
+    capacity: String
     category: String!
-    image: String!
+    thumbnail: String!
+    fullImage: String!
     landlord: Landlord!
     rooms: [Room]
   }

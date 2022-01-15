@@ -29,4 +29,37 @@ const SIGN_UP_LANDLORD = gql`
   }
 `;
 
-export { SIGN_IN_LANDLORD, SIGN_UP_LANDLORD };
+const CREATE_PROPERTY = gql`
+  mutation CreateProperty(
+    $name: String!
+    $address: String!
+    $postcode: String!
+    $city: String!
+    $country: String!
+    $category: String!
+    $capacity: String
+  ) {
+    createProperty(
+      name: $name
+      address: $address
+      postcode: $postcode
+      city: $city
+      country: $country
+      category: $category
+      capacity: $capacity
+    ) {
+      id
+      name
+      address
+      postcode
+      city
+      country
+      capacity
+      category
+      thumbnail
+      fullImage
+    }
+  }
+`;
+
+export { SIGN_IN_LANDLORD, SIGN_UP_LANDLORD, CREATE_PROPERTY };

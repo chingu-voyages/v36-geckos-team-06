@@ -7,7 +7,7 @@ export const HeaderStyled = styled.header`
   align-items: ${({ align }) => align};
   height: 350px;
   width: 100%;
-  background: url('https://ucarecdn.com/bf7bc147-a50f-45fb-8620-d618fbae3c43/propertyImage.webp');
+  background: url('https://ik.imagekit.io/txobowsaxlc/dashbaord-pic-main_Jasm7l6BB.png?ik-sdk-version=javascript-1.4.3&updatedAt=1642269286358');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

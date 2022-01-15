@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
@@ -53,7 +54,7 @@ const PropertyCapacity = styled.p`
   margin: 0;
 `;
 
-const Properties = () => (
+const Properties = ({ properties }) => (
   <>
     <PropertyContainer>
       {PROPERTY_DATA.map((property) => (

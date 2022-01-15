@@ -7,7 +7,7 @@ import Header from '../../components/dashboard/common/Header';
 import Properties from '../../components/dashboard/properties/Properties';
 import Repairs from '../../components/dashboard/repairs/Repairs';
 import Actions from '../../components/dashboard/common/Actions';
-import AddProperty from '../../components/dashboard/addpropertyform/AddProperty';
+import AddPropertyForm from '../../components/dashboard/propertyform/AddPropertyForm';
 import { withAuth, getLandlordIdFromLocalStorage } from '../../../utils';
 import { GET_LANDLORD } from '../../../services/query';
 
@@ -21,14 +21,12 @@ const Dashboard = () => {
     variables: { landlordId: landlord?.id },
   });
 
-  console.log(data);
-
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error!</p>;
 
   return (
     <>
-      {addProperty && <AddProperty setAddProperty={setAddProperty} />}
+      {addProperty && <AddPropertyForm setAddProperty={setAddProperty} />}
       <Layout>
         <Header setAddProperty={setAddProperty} firstName={data?.landlord?.firstName} />
         <Actions setShowRepairs={setShowRepairs} showRepairs={showRepairs} />

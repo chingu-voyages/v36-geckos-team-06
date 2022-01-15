@@ -23,6 +23,8 @@ const Mutation = {
       throw new AuthenticationError(`You must be signed in to create a property`);
     }
 
+    const image = getCategoryImage(category);
+
     const newProperty = {
       name: name.trim().toLowerCase(),
       address: address.trim().toLowerCase(),
@@ -31,7 +33,8 @@ const Mutation = {
       country: country.trim().toLowerCase(),
       capacity: capacity,
       category: category.trim().toLowerCase(),
-      image: getCategoryImage(category),
+      fullImage: image.fullImage,
+      thumbnail: image.thumbnail,
       landlord: new mongoose.Types.ObjectId(landlord.id),
       rooms: [], // empty array for rooms
     };
