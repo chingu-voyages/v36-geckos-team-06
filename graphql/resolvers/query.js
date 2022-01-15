@@ -18,6 +18,11 @@ const Query = {
     const repairToReturn = await models.Repair.findById(id);
     return repairToReturn;
   },
+
+  landlord: async (_, { id }, { models }) => {
+    const landlordToReturn = await models.Landlord.findById(id);
+    return landlordToReturn;
+  },
 };
 
 export default Query;

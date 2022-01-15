@@ -13,12 +13,12 @@ const UserName = styled.h2`
   z-index: 1;
 `;
 
-const Header = ({ setAddProperty }) => (
+const Header = ({ setAddProperty, firstName }) => (
   <HeaderStyled direction="row" justify="space-between" align="flex-end">
     <UserName>
       Welcome,
       <br />
-      {LANDLORD.name.split(' ')[0]}.
+      {firstName}.
     </UserName>
     <HeaderButton onClick={() => setAddProperty(true)}>ADD PROPERTY</HeaderButton>
   </HeaderStyled>

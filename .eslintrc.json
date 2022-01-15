@@ -2,6 +2,9 @@
   "root": true,
   "extends": ["airbnb", "airbnb/hooks", "prettier"],
   "plugins": ["prettier", "prefer-arrow-functions"],
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
   "rules": {
     "prettier/prettier": "error",
     "jsx-a11y/label-has-associated-control": [
