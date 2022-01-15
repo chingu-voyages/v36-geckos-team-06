@@ -21,11 +21,9 @@ export const HeaderButton = styled.button`
   justify-content: center;
   font-size: 24px;
   font-weight: 800;
-  background: #fdfdfd;
-  color: #242423;
-  padding: 16px;
-  width: 100%;
-  max-width: 250px;
+  background: ${({ bg }) => bg || '#fdfdfd'};
+  color: ${({ color }) => color || '#242423'};
+  padding: 12px 24px;
   border-radius: 16px;
   border: none;
   cursor: pointer;
@@ -39,4 +37,9 @@ export const HeaderButton = styled.button`
   &:active {
     transform: translateX(0rem) translateY(0.125rem);
   }
+`;
+
+export const Buttons = styled.div`
+  display: flex;
+  gap: 24px;
 `;

@@ -3,7 +3,9 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../components/home/Layout';
 import { Container, Buttons, Button } from '../components/home/Common';
-import withAuth from '../../utils/withAuth';
+import utils from '../../utils';
+
+const { withAuth } = utils;
 
 const Home = () => (
   <>
@@ -31,4 +33,4 @@ const Home = () => (
   </>
 );
 
-export default withAuth(Home);
+export default Home;
