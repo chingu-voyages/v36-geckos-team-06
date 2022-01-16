@@ -35,7 +35,7 @@ export const Form = styled.form`
   border-radius: 16px;
   justify-content: center;
   padding: 68px 32px;
-  width: 550px;
+  width: 650px;
   box-shadow: 3px 4px 15px -8px rgba(0, 0, 0, 0.71);
 
   a {
@@ -65,6 +65,7 @@ export const Input = styled.input`
   padding: 16px;
   border-radius: 8px;
   border: 0.2px solid;
+  background-color: white;
 `;
 
 export const Button = styled.button`

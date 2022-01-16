@@ -48,7 +48,12 @@ const Header = ({ setAddProperty, firstName }) => {
   };
 
   return (
-    <HeaderStyled direction="row" justify="space-between" align="flex-end">
+    <HeaderStyled
+      direction="row"
+      justify="space-between"
+      align="flex-end"
+      bg="https://ik.imagekit.io/txobowsaxlc/dashbaord-pic-main_Jasm7l6BB.png?ik-sdk-version=javascript-1.4.3&updatedAt=1642269286358"
+    >
       <UserName>
         Welcome,
         <br />

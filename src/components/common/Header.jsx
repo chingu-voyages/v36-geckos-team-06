@@ -6,8 +6,9 @@ export const HeaderStyled = styled.header`
   justify-content: ${({ justify }) => justify};
   align-items: ${({ align }) => align};
   height: 350px;
+  gap: 24px;
   width: 100%;
-  background: url('https://ik.imagekit.io/txobowsaxlc/dashbaord-pic-main_Jasm7l6BB.png?ik-sdk-version=javascript-1.4.3&updatedAt=1642269286358');
+  background: url(${({ bg }) => bg});
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

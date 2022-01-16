@@ -4,9 +4,10 @@ import styled from 'styled-components';
 
 const Select = styled.select`
   width: 100%;
-  padding: 16px;
+  padding: 18px;
   border-radius: 8px;
   border: 0.2px solid;
+  background-color: white;
 `;
 
 export const CountryDropdown = ({ onChange }) => (

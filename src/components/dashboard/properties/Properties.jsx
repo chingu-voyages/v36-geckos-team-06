@@ -8,11 +8,24 @@ const PropertyContainer = styled.section`
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   width: 100%;
+  max-height: 760px;
   overflow: scroll;
+`;
+
+const Gradient = styled.div`
+  background: linear-gradient(180deg, rgba(36, 36, 35, 0.2) 0%, rgba(255, 0, 0, 0.2) 100%);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
 `;
 
 const Property = styled.div`
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
@@ -55,6 +68,7 @@ const Properties = ({ properties }) => (
       {properties?.map((property) => (
         <Link href={`/property/${property.id}`}>
           <Property key={property.id} bg={property.thumbnail}>
+            <Gradient />
             <PropertyName>{property.name}</PropertyName>
             <PropertyLocation>{property.address}</PropertyLocation>
             <PropertyCapacity>{property.capacity}</PropertyCapacity>

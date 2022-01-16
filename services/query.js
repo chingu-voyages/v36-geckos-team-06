@@ -29,4 +29,24 @@ const GET_LANDLORD = gql`
   }
 `;
 
-export { GET_LANDLORD, IS_LOGGED_IN };
+const GET_PROPERTY = gql`
+  query Property($propertyId: ID!) {
+    property(id: $propertyId) {
+      id
+      name
+      address
+      postcode
+      city
+      country
+      capacity
+      category
+      thumbnail
+      fullImage
+      rooms {
+        id
+      }
+    }
+  }
+`;
+
+export { GET_LANDLORD, IS_LOGGED_IN, GET_PROPERTY };
