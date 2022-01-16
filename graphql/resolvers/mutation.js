@@ -45,7 +45,7 @@ const Mutation = {
   // Update Property
   updateProperty: async (
     _,
-    { id, name, address, postcode, capacity, category, image },
+    { id, name, address, postcode, capacity, category },
     { models, landlord }
   ) => {
     if (!landlord) {
@@ -69,7 +69,6 @@ const Mutation = {
           postcode,
           capacity,
           category,
-          image,
         },
       },
       { new: true }

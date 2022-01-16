@@ -45,6 +45,9 @@ const GET_PROPERTY = gql`
       rooms {
         id
       }
+      landlord {
+        id
+      }
     }
   }
 `;

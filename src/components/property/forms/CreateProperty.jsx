@@ -16,7 +16,7 @@ import {
   Blur,
 } from '../../common/FormElements';
 
-const AddPropertyForm = ({ setAddProperty, landlordID }) => {
+const CreateProperty = ({ setCreateProperty, landlordID }) => {
   const [values, setValues] = useState({
     name: '',
     address: '',
@@ -37,14 +37,12 @@ const AddPropertyForm = ({ setAddProperty, landlordID }) => {
   const [createProperty, { loading, error }] = useMutation(CREATE_PROPERTY, {
     refetchQueries: [{ query: GET_LANDLORD, variables: { landlordId: landlordID } }],
     onCompleted: () => {
-      setAddProperty(false);
+      setCreateProperty(false);
     },
   });
 
   if (loading) return 'Submitting...';
   if (error) return `Submission error! ${error.message}`;
-
-  console.log(values);
 
   return (
     <Container>
@@ -136,15 +134,14 @@ const AddPropertyForm = ({ setAddProperty, landlordID }) => {
           <Button type="submit" background="#a2293a">
             ADD PROPERTY
           </Button>
-          <Button background="#242423" onClick={() => setAddProperty(false)}>
-            {' '}
+          <Button background="#242423" onClick={() => setCreateProperty(false)}>
             CANCEL
           </Button>
         </Buttons>
       </Form>
-      <Blur onClick={() => setAddProperty(false)} />
+      <Blur onClick={() => setCreateProperty(false)} />
     </Container>
   );
 };
 
-export default AddPropertyForm;
+export default CreateProperty;

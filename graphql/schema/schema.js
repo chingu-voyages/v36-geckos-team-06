@@ -32,7 +32,6 @@ const typeDefs = gql`
       postcode: String!
       capacity: String
       category: String!
-      image: String!
     ): Property
 
     deleteProperty(id: ID!): Boolean!
