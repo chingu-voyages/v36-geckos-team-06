@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import { useMutation } from '@apollo/client';
 import { CountryDropdown, CategoryDropdown } from '../../common/Dropdowns';
-
-import { CREATE_PROPERTY } from '../../../../services/mutation';
-import { GET_LANDLORD } from '../../../../services/query';
+import { UPDATE_PROPERTY, DELETE_PROPERTY } from '../../../../services/mutation';
+import { GET_PROPERTY, GET_LANDLORD } from '../../../../services/query';
 import {
   Form,
   Container,
@@ -16,15 +16,16 @@ import {
   Blur,
 } from '../../common/FormElements';
 
-const AddPropertyForm = ({ setAddProperty, landlordID }) => {
+const EditPropertyForm = ({ setEditProperty, property }) => {
+  const router = useRouter();
   const [values, setValues] = useState({
-    name: '',
-    address: '',
-    postcode: '',
-    city: '',
-    country: '',
-    category: '',
-    capacity: '',
+    name: property.name || '',
+    address: property.address || '',
+    postcode: property.postcode || '',
+    city: property.city || '',
+    country: property.country || '',
+    category: property.category || '',
+    capacity: property.capacity || '',
   });
 
   const onChange = (event) => {
@@ -34,10 +35,18 @@ const AddPropertyForm = ({ setAddProperty, landlordID }) => {
     });
   };
 
-  const [createProperty, { loading, error }] = useMutation(CREATE_PROPERTY, {
-    refetchQueries: [{ query: GET_LANDLORD, variables: { landlordId: landlordID } }],
+  const [updateProperty, { loading, error }] = useMutation(UPDATE_PROPERTY, {
+    refetchQueries: [{ query: GET_PROPERTY, variables: { propertyId: property.id } }],
     onCompleted: () => {
-      setAddProperty(false);
+      setEditProperty(false);
+    },
+  });
+
+  const [deleteProperty] = useMutation(DELETE_PROPERTY, {
+    refetchQueries: [{ query: GET_LANDLORD, variables: { landlordId: property.landlord.id } }],
+    onCompleted: () => {
+      setEditProperty(false);
+      router.push(`/landlord/dashboard`);
     },
   });
 
@@ -49,8 +58,9 @@ const AddPropertyForm = ({ setAddProperty, landlordID }) => {
       <Form
         onSubmit={(event) => {
           event.preventDefault();
-          createProperty({
+          updateProperty({
             variables: {
+              updatePropertyId: property.id,
               ...values,
             },
           });
@@ -132,17 +142,28 @@ const AddPropertyForm = ({ setAddProperty, landlordID }) => {
 
         <Buttons>
           <Button type="submit" background="#a2293a">
-            ADD PROPERTY
+            EDIT PROPERTY
           </Button>
-          <Button background="#242423" onClick={() => setAddProperty(false)}>
+
+          <Button
+            background="#242423"
+            onClick={(event) => {
+              event.preventDefault();
+              deleteProperty({
+                variables: {
+                  deletePropertyId: property.id,
+                },
+              });
+            }}
+          >
             {' '}
-            CANCEL
+            DELETE PROPERTY
           </Button>
         </Buttons>
       </Form>
-      <Blur onClick={() => setAddProperty(false)} />
+      <Blur onClick={() => setEditProperty(false)} />
     </Container>
   );
 };
 
-export default AddPropertyForm;
+export default EditPropertyForm;

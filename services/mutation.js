@@ -62,4 +62,44 @@ const CREATE_PROPERTY = gql`
   }
 `;
 
-export { SIGN_IN_LANDLORD, SIGN_UP_LANDLORD, CREATE_PROPERTY };
+const UPDATE_PROPERTY = gql`
+  mutation UpdateProperty(
+    $updatePropertyId: ID!
+    $name: String!
+    $address: String!
+    $postcode: String!
+    $category: String!
+    $capacity: String
+  ) {
+    updateProperty(
+      id: $updatePropertyId
+      name: $name
+      address: $address
+      postcode: $postcode
+      category: $category
+      capacity: $capacity
+    ) {
+      id
+      name
+      address
+      city
+      postcode
+      country
+      capacity
+      category
+      thumbnail
+      fullImage
+      rooms {
+        id
+      }
+    }
+  }
+`;
+
+const DELETE_PROPERTY = gql`
+  mutation DeleteProperty($deletePropertyId: ID!) {
+    deleteProperty(id: $deletePropertyId)
+  }
+`;
+
+export { SIGN_IN_LANDLORD, SIGN_UP_LANDLORD, CREATE_PROPERTY, UPDATE_PROPERTY, DELETE_PROPERTY };
