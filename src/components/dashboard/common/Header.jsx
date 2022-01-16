@@ -3,6 +3,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
+import { useQuery, gql } from '@apollo/client';
 import { HeaderStyled, HeaderButton, Buttons } from '../../common/Header';
 
 const UserName = styled.h2`
@@ -14,16 +15,45 @@ const UserName = styled.h2`
   z-index: 1;
 `;
 
+// Query apollo cache to check if landlord is signed in
+const IS_LOGGED_IN = gql`
+  {
+    landlordIsLoggedIn @client
+  }
+`;
+
 const Header = ({ setAddProperty, firstName }) => {
   const router = useRouter();
+  // query hook for user logged-in state,
+  // including the client for referencing the Apollo store
+  const { client } = useQuery(IS_LOGGED_IN);
 
   const signOut = () => {
-    localStorage.removeItem(`token`);
-    router.push(`/`);
+    // remove the token
+    localStorage.removeItem(`authLandlord`);
+    // clear the application's cache
+    client.resetStore();
+    // update local state
+    client.writeQuery({
+      query: gql`
+        query getAuth {
+          isLoggedIn
+        }
+      `,
+      data: {
+        isLoggedIn: false,
+      },
+    });
+    router.push('/');
   };
 
   return (
-    <HeaderStyled direction="row" justify="space-between" align="flex-end">
+    <HeaderStyled
+      direction="row"
+      justify="space-between"
+      align="flex-end"
+      bg="https://ik.imagekit.io/txobowsaxlc/dashbaord-pic-main_Jasm7l6BB.png?ik-sdk-version=javascript-1.4.3&updatedAt=1642269286358"
+    >
       <UserName>
         Welcome,
         <br />

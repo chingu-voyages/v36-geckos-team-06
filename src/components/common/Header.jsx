@@ -6,8 +6,9 @@ export const HeaderStyled = styled.header`
   justify-content: ${({ justify }) => justify};
   align-items: ${({ align }) => align};
   height: 350px;
+  gap: 24px;
   width: 100%;
-  background: url('https://ucarecdn.com/bf7bc147-a50f-45fb-8620-d618fbae3c43/propertyImage.webp');
+  background: url(${({ bg }) => bg});
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -30,7 +31,6 @@ export const HeaderButton = styled.button`
   transition: all 0.3s ease;
 
   &:hover {
-    background: darken(#fdfdfd, 8%);
     transform: translateX(0rem) translateY(-0.1125rem);
   }
 

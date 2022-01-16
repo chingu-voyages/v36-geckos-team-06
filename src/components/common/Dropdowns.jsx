@@ -1,15 +1,17 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
 
 const Select = styled.select`
   width: 100%;
-  padding: 16px;
+  padding: 18px;
   border-radius: 8px;
   border: 0.2px solid;
+  background-color: white;
 `;
 
-const Dropdown = () => (
-  <Select id="country" name="country">
+export const CountryDropdown = ({ onChange }) => (
+  <Select id="country" name="country" onChange={onChange}>
     <option value="Afganistan">Afghanistan</option>
     <option value="Albania">Albania</option>
     <option value="Algeria">Algeria</option>
@@ -259,4 +261,12 @@ const Dropdown = () => (
   </Select>
 );
 
-export default Dropdown;
+export const CategoryDropdown = ({ onChange }) => (
+  <Select id="category" name="category" onChange={onChange}>
+    <option value="servicedApartments">Serviced Apartments</option>
+    <option value="normalApartments">Normal Apartments</option>
+
+    <option value="singleFamilyHome">Single Family Home</option>
+    <option value="studentHousing">Student Housing</option>
+  </Select>
+);

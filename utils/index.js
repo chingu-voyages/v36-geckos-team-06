@@ -1,7 +1,6 @@
 import getAvatar from './getAvatar';
 import getCategoryImage from './getCategoryImage';
 import withAuth from './withAuth';
+import getLandlordIdFromLocalStorage from './getLandlordIdFromLocalStorage';
 
-const utils = { getAvatar, getCategoryImage, withAuth };
-
-export default utils;
+export { getAvatar, getCategoryImage, withAuth, getLandlordIdFromLocalStorage };

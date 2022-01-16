@@ -12,6 +12,7 @@ const SearchContainer = styled.div`
 const Input = styled.input`
   flex: 1;
   border-right: none;
+  border: solid 1px;
   border-radius: 10px 0 0 10px;
   padding-left: 10px;
   &:focus {

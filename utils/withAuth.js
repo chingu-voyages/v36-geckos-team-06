@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable consistent-return */
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable no-undef */
@@ -8,19 +9,21 @@ import React, { useEffect } from 'react';
 const withAuth = (WrappedComponent) => (props) => {
   if (typeof window !== `undefined`) {
     const Router = useRouter();
-    const token = localStorage.getItem(`authLandlord`);
+    const landlord = localStorage.getItem(`authLandlord`);
+    const authLandlord = landlord != null && JSON.parse(landlord);
 
     useEffect(() => {
-      if (!token) {
+      if (!landlord) {
         Router.replace(`/`);
         return null;
       }
-    }, [Router, token]);
 
-    if (token && authLandlord.role === 'landlord') {
-      Router.replace(`/landlord/dashboard`);
-      return null;
-    }
+      if (landlord && authLandlord.role === 'landlord') {
+        Router.replace(`/landlord/dashboard`);
+        return null;
+      }
+    }, [landlord]);
+
     return <WrappedComponent {...props} />;
   }
   return null;

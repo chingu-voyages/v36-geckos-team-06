@@ -1,24 +1,14 @@
 /* eslint-disable no-undef */
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import { useMutation, gql } from '@apollo/client';
+import { useMutation, gql, useApolloClient } from '@apollo/client';
 import Link from 'next/link';
 import Layout from '../../components/landlordSignin/Layout';
 import { Form, InputContainer, Input, Button, Info } from '../../components/landlordSignin/Form';
-
-const SIGN_IN_LANDLORD = gql`
-  mutation SignInLandlord($email: String!, $password: String!) {
-    signInLandlord(email: $email, password: $password) {
-      id
-      role
-      avatar
-      firstName
-      jwt
-    }
-  }
-`;
+import { SIGN_IN_LANDLORD } from '../../../services/mutation';
 
 const SignIn = () => {
+  const client = useApolloClient();
   const router = useRouter();
   // set the default state of the form
   const [values, setValues] = useState({
@@ -38,7 +28,17 @@ const SignIn = () => {
     onCompleted: (data) => {
       // store the authenticated landlord in local storage
       localStorage.setItem('authLandlord', JSON.stringify(data.signInLandlord));
-      console.log(data);
+      // update the local cache
+      client.writeQuery({
+        query: gql`
+          query getAuth {
+            landlordIsLoggedIn
+          }
+        `,
+        data: {
+          landlordIsLoggedIn: true,
+        },
+      });
 
       // redirect landlord to dashboard
       router.push(`/landlord/dashboard`);
