@@ -22,7 +22,7 @@ const IS_LOGGED_IN = gql`
   }
 `;
 
-const Header = ({ setAddProperty, firstName }) => {
+const Header = ({ setCreateProperty, firstName }) => {
   const router = useRouter();
   // query hook for user logged-in state,
   // including the client for referencing the Apollo store
@@ -60,7 +60,7 @@ const Header = ({ setAddProperty, firstName }) => {
         {firstName}
       </UserName>
       <Buttons>
-        <HeaderButton onClick={() => setAddProperty(true)}>ADD PROPERTY</HeaderButton>
+        <HeaderButton onClick={() => setCreateProperty(true)}>ADD PROPERTY</HeaderButton>
         <HeaderButton onClick={signOut} bg="#242423" color="#fdfdfd">
           LOG OUT
         </HeaderButton>

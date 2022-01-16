@@ -4,10 +4,10 @@ import { useQuery } from '@apollo/client';
 import { GET_PROPERTY } from '../../../services/query';
 import Layout from '../../components/common/Layout';
 import Header from '../../components/property/Header';
-import EditPropertyForm from '../../components/dashboard/propertyform/EditPropertyForm';
+import UpdateProperty from '../../components/property/forms/UpdateProperty';
 
 const Property = () => {
-  const [editProperty, setEditProperty] = useState(false);
+  const [updateProperty, setUpdateProperty] = useState(false);
   const router = useRouter();
   const { property } = router.query;
   const { loading, error, data } = useQuery(GET_PROPERTY, {
@@ -19,15 +19,15 @@ const Property = () => {
 
   return (
     <>
-      {editProperty && (
-        <EditPropertyForm setEditProperty={setEditProperty} property={data.property} />
+      {updateProperty && (
+        <UpdateProperty setUpdateProperty={setUpdateProperty} property={data.property} />
       )}
 
       <Layout>
         <Header
           name={data.property.name}
           image={data.property.fullImage}
-          setEditProperty={setEditProperty}
+          setUpdateProperty={setUpdateProperty}
         />
       </Layout>
     </>

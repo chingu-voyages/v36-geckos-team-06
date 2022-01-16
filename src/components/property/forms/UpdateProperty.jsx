@@ -16,7 +16,7 @@ import {
   Blur,
 } from '../../common/FormElements';
 
-const EditPropertyForm = ({ setEditProperty, property }) => {
+const UpdateProperty = ({ setUpdateProperty, property }) => {
   const router = useRouter();
   const [values, setValues] = useState({
     name: property.name || '',
@@ -38,14 +38,13 @@ const EditPropertyForm = ({ setEditProperty, property }) => {
   const [updateProperty, { loading, error }] = useMutation(UPDATE_PROPERTY, {
     refetchQueries: [{ query: GET_PROPERTY, variables: { propertyId: property.id } }],
     onCompleted: () => {
-      setEditProperty(false);
+      setUpdateProperty(false);
     },
   });
 
   const [deleteProperty] = useMutation(DELETE_PROPERTY, {
     refetchQueries: [{ query: GET_LANDLORD, variables: { landlordId: property.landlord.id } }],
     onCompleted: () => {
-      setEditProperty(false);
       router.push(`/landlord/dashboard`);
     },
   });
@@ -161,9 +160,9 @@ const EditPropertyForm = ({ setEditProperty, property }) => {
           </Button>
         </Buttons>
       </Form>
-      <Blur onClick={() => setEditProperty(false)} />
+      <Blur onClick={() => setUpdateProperty(false)} />
     </Container>
   );
 };
 
-export default EditPropertyForm;
+export default UpdateProperty;

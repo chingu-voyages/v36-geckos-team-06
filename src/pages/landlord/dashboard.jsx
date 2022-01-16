@@ -2,18 +2,18 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import Layout from '../../components/common/Layout';
-import Content from '../../components/dashboard/common/Content';
-import Header from '../../components/dashboard/common/Header';
-import Properties from '../../components/dashboard/properties/Properties';
-import Repairs from '../../components/dashboard/repairs/Repairs';
-import Actions from '../../components/dashboard/common/Actions';
-import AddPropertyForm from '../../components/dashboard/propertyform/AddPropertyForm';
+import Content from '../../components/landlord/common/Content';
+import Header from '../../components/landlord/common/Header';
+import Properties from '../../components/landlord/dashboard/Properties';
+import Repairs from '../../components/landlord/dashboard/Repairs';
+import Actions from '../../components/landlord/common/Actions';
+import CreateProperty from '../../components/property/forms/CreateProperty';
 import { withAuth, getLandlordIdFromLocalStorage } from '../../../utils';
 import { GET_LANDLORD } from '../../../services/query';
 
 const Dashboard = () => {
   const [showRepairs, setShowRepairs] = useState('properties');
-  const [addProperty, setAddProperty] = useState(false);
+  const [createProperty, setCreateProperty] = useState(false);
 
   const landlord = getLandlordIdFromLocalStorage();
 
@@ -26,11 +26,11 @@ const Dashboard = () => {
 
   return (
     <>
-      {addProperty && (
-        <AddPropertyForm setAddProperty={setAddProperty} landlordID={data.landlord.id} />
+      {createProperty && (
+        <CreateProperty setCreateProperty={setCreateProperty} landlordID={data.landlord.id} />
       )}
       <Layout>
-        <Header setAddProperty={setAddProperty} firstName={data?.landlord?.firstName} />
+        <Header setCreateProperty={setCreateProperty} firstName={data?.landlord?.firstName} />
         <Actions setShowRepairs={setShowRepairs} showRepairs={showRepairs} />
         <Content>
           {showRepairs === 'properties' && <Properties properties={data.landlord.properties} />}
