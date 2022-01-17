@@ -13,6 +13,7 @@ import { GET_LANDLORD } from '../../../services/query';
 
 const Dashboard = () => {
   const [showRepairs, setShowRepairs] = useState('properties');
+
   const [createProperty, setCreateProperty] = useState(false);
 
   const landlord = getLandlordIdFromLocalStorage();

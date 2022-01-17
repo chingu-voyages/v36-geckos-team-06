@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { useQuery } from '@apollo/client';
 import styled from 'styled-components';
 import Repair from '../../common/Repair';
-import { REPAIR_DATA } from '../../../mockData';
+import { GET_REPAIRS } from '../../../../services/query';
 
 const Container = styled.section`
   display: flex;
@@ -10,12 +11,19 @@ const Container = styled.section`
   gap: 24px;
 `;
 
-const Repairs = () => (
-  <Container>
-    {REPAIR_DATA.map((repair) => (
-      <Repair repair={repair} />
-    ))}
-  </Container>
-);
+const Repairs = () => {
+  const { data, loading, error } = useQuery(GET_REPAIRS);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error!</p>;
+
+  return (
+    <Container>
+      {data?.repairs.map((repair) => (
+        <Repair repair={repair} />
+      ))}
+    </Container>
+  );
+};
 
 export default Repairs;

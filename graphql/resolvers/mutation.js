@@ -45,7 +45,7 @@ const Mutation = {
   // Update Property
   updateProperty: async (
     _,
-    { id, name, address, postcode, capacity, category },
+    { id, name, address, postcode, capacity, category, country },
     { models, landlord }
   ) => {
     if (!landlord) {
@@ -60,6 +60,11 @@ const Mutation = {
       throw new ForbiddenError(`You don't have permissions to delete the note`);
     }
 
+    // Get Property Image
+    const image = getCategoryImage(category);
+    const { fullImage } = image;
+    const { thumbnail } = image;
+
     const updatedProperty = await models.Property.findOneAndUpdate(
       { _id: id },
       {
@@ -69,6 +74,9 @@ const Mutation = {
           postcode,
           capacity,
           category,
+          country,
+          fullImage,
+          thumbnail,
         },
       },
       { new: true }

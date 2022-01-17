@@ -29,7 +29,7 @@ const CATEGORIES = {
       thumbnail:
         'https://ik.imagekit.io/txobowsaxlc/studentHousing--thumbnail_VzB2Yr3to.png?ik-sdk-version=javascript-1.4.3&updatedAt=1642268566797',
       fullImage:
-        'https://ik.imagekit.io/txobowsaxlc/studentHousing--thumbnail_VzB2Yr3to.png?ik-sdk-version=javascript-1.4.3&updatedAt=1642268566797',
+        'https://ik.imagekit.io/txobowsaxlc/studentHousing--fullImage_1AVCdhJD0.png?ik-sdk-version=javascript-1.4.3&updatedAt=1642268567568',
     },
   ],
 };

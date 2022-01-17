@@ -70,12 +70,14 @@ const UPDATE_PROPERTY = gql`
     $postcode: String!
     $category: String!
     $capacity: String
+    $country: String!
   ) {
     updateProperty(
       id: $updatePropertyId
       name: $name
       address: $address
       postcode: $postcode
+      country: $country
       category: $category
       capacity: $capacity
     ) {

@@ -10,8 +10,8 @@ const Select = styled.select`
   background-color: white;
 `;
 
-export const CountryDropdown = ({ onChange }) => (
-  <Select id="country" name="country" onChange={onChange}>
+export const CountryDropdown = ({ onChange, value }) => (
+  <Select id="country" name="country" onChange={onChange} value={value}>
     <option value="Afganistan">Afghanistan</option>
     <option value="Albania">Albania</option>
     <option value="Algeria">Algeria</option>
@@ -261,8 +261,8 @@ export const CountryDropdown = ({ onChange }) => (
   </Select>
 );
 
-export const CategoryDropdown = ({ onChange }) => (
-  <Select id="category" name="category" onChange={onChange}>
+export const CategoryDropdown = ({ onChange, value }) => (
+  <Select id="category" name="category" onChange={onChange} value={value}>
     <option value="servicedApartments">Serviced Apartments</option>
     <option value="normalApartments">Normal Apartments</option>
 
