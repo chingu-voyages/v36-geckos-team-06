@@ -52,4 +52,18 @@ const GET_PROPERTY = gql`
   }
 `;
 
-export { GET_LANDLORD, IS_LOGGED_IN, GET_PROPERTY };
+const GET_REPAIRS = gql`
+  query Repairs {
+    repairs {
+      id
+      room {
+        id
+      }
+      issue
+      details
+      status
+    }
+  }
+`;
+
+export { GET_LANDLORD, IS_LOGGED_IN, GET_PROPERTY, GET_REPAIRS };

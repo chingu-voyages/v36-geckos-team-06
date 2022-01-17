@@ -31,6 +31,7 @@ const typeDefs = gql`
       address: String!
       postcode: String!
       capacity: String
+      country: String!
       category: String!
     ): Property
 
