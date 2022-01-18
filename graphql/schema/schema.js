@@ -51,16 +51,16 @@ const typeDefs = gql`
     createRoom(
       roomNumber: String!
       propertyName: String!
-      available: Boolean
+      available: String!
       occupant: OccupantInput
-      charges: ChargesInput!
+      charges: ChargesInput
     ): Room
 
     updateRoom(
       id: ID!
       roomNumber: String!
       propertyName: String!
-      available: Boolean
+      available: String!
       occupant: OccupantInput
       charges: ChargesInput!
     ): Room
@@ -120,10 +120,10 @@ const typeDefs = gql`
     id: ID!
     property: Property
     roomNumber: String!
-    available: Boolean
+    available: String!
     occupant: Occupant
     charges: Charges
-    repairs: [Repair!]
+    repairs: [Repair]
   }
 
   type Occupant {

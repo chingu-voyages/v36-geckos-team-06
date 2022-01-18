@@ -270,3 +270,10 @@ export const CategoryDropdown = ({ onChange, value }) => (
     <option value="studentHousing">Student Housing</option>
   </Select>
 );
+
+export const AvailableDropdown = ({ onChange, value }) => (
+  <Select id="available" name="available" onChange={onChange} value={value}>
+    <option value="yes">Yes</option>
+    <option value="no">No</option>
+  </Select>
+);
