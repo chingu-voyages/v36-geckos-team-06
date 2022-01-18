@@ -108,16 +108,13 @@ const Mutation = {
   // ROOM
 
   // Create Room
-  createRoom: async (
-    _,
-    { roomNumber, available = false, occupant, charges, propertyName },
-    { models }
-  ) => {
-    const roomProperty = await models.Property.findOne({ name: propertyName.trim().toLowerCase() });
+  createRoom: async (_, { roomNumber, available, occupant, charges, propertyName }, { models }) => {
+    const roomProperty = await models.Property.findOne({ name: propertyName.trim() });
 
     const newRoom = {
       property: new mongoose.Types.ObjectId(roomProperty.id),
       roomNumber: roomNumber,
+      // eslint-disable-next-line no-unneeded-ternary
       available: available,
       occupant: {
         firstName: occupant.firstName,

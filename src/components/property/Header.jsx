@@ -13,11 +13,11 @@ const UserName = styled.h2`
   z-index: 1;
 `;
 
-const Header = ({ image, name, setUpdateProperty }) => (
+const Header = ({ image, name, setUpdateProperty, setCreateRoom }) => (
   <HeaderStyled direction="column" justify="center" align="center" bg={image}>
     <UserName>{name}</UserName>
     <Buttons>
-      <HeaderButton>ADD ROOM</HeaderButton>
+      <HeaderButton onClick={() => setCreateRoom(true)}>ADD ROOM</HeaderButton>
       <HeaderButton onClick={() => setUpdateProperty(true)}>EDIT PROPERTY</HeaderButton>
     </Buttons>
   </HeaderStyled>

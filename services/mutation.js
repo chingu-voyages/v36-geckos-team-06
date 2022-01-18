@@ -104,4 +104,53 @@ const DELETE_PROPERTY = gql`
   }
 `;
 
-export { SIGN_IN_LANDLORD, SIGN_UP_LANDLORD, CREATE_PROPERTY, UPDATE_PROPERTY, DELETE_PROPERTY };
+const CREATE_ROOM = gql`
+  mutation CreateRoom(
+    $roomNumber: String!
+    $propertyName: String!
+    $available: String!
+    $occupant: OccupantInput
+    $charges: ChargesInput
+  ) {
+    createRoom(
+      roomNumber: $roomNumber
+      propertyName: $propertyName
+      available: $available
+      occupant: $occupant
+      charges: $charges
+    ) {
+      id
+      property {
+        id
+      }
+      roomNumber
+      available
+      occupant {
+        firstName
+        lastName
+        phoneNumber
+        email
+        moveInDate
+        moveOutDate
+      }
+      charges {
+        water
+        rent
+        electricity
+        parking
+      }
+      repairs {
+        id
+      }
+    }
+  }
+`;
+
+export {
+  SIGN_IN_LANDLORD,
+  SIGN_UP_LANDLORD,
+  CREATE_PROPERTY,
+  UPDATE_PROPERTY,
+  DELETE_PROPERTY,
+  CREATE_ROOM,
+};
