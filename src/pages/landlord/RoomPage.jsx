@@ -5,6 +5,8 @@ import { FaFileContract } from 'react-icons/fa';
 import { AiFillCar, AiOutlineCarryOut } from 'react-icons/ai';
 import { BsHouse, BsWrench, BsCircle } from 'react-icons/bs';
 import Image from 'next/image';
+
+import DoughnutChart from '../../components/Room/DoughnutChart';
 import RepairSection from '../../components/common/RepairSection';
 import Layout from '../../components/common/Layout';
 import profilePic from '../../../public/profilePic.jpg';
@@ -101,7 +103,7 @@ const CurrentBalances = styled.div`
   height: 300px;
   background: #491f1e;
   border-radius: 10px;
-  height: 532px;
+  height: 700px;
 `;
 
 const CurrentBalanceTile = styled.div`
@@ -211,6 +213,7 @@ const RoomPage = () => (
             <AiOutlineCarryOut />
             Overview
           </TileHeader>
+          <DoughnutChart charges={roomData.charges} />
         </CurrentBalanceTile>
       </CurrentBalances>
     </ProfileSection>
