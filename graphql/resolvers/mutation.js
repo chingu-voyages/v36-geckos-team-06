@@ -32,11 +32,11 @@ const Mutation = {
       city: city.trim().toLowerCase(),
       country: country.trim().toLowerCase(),
       capacity: capacity,
-      category: category.trim().toLowerCase(),
+      category: category,
       fullImage: image.fullImage,
       thumbnail: image.thumbnail,
       landlord: new mongoose.Types.ObjectId(landlord.id),
-      rooms: [], // empty array for rooms
+      rooms: [],
     };
 
     const propertyToSave = await models.Property.create(newProperty);
@@ -108,13 +108,12 @@ const Mutation = {
   // ROOM
 
   // Create Room
-  createRoom: async (_, { roomNumber, available, occupant, charges, propertyName }, { models }) => {
-    const roomProperty = await models.Property.findOne({ name: propertyName.trim() });
+  createRoom: async (_, { roomNumber, available, occupant, charges, propertyId }, { models }) => {
+    const roomProperty = await models.Property.findById(propertyId);
 
     const newRoom = {
       property: new mongoose.Types.ObjectId(roomProperty.id),
       roomNumber: roomNumber,
-      // eslint-disable-next-line no-unneeded-ternary
       available: available,
       occupant: {
         firstName: occupant.firstName,
@@ -136,7 +135,7 @@ const Mutation = {
     const roomToSave = await models.Room.create(newRoom);
 
     await models.Property.findByIdAndUpdate(
-      roomProperty._id,
+      propertyId,
       { $push: { rooms: new mongoose.Types.ObjectId(roomToSave.id) } },
       { new: true }
     );

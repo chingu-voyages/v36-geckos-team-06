@@ -6,10 +6,11 @@ const typeDefs = gql`
   scalar GraphQLDate
 
   type Query {
-    property(id: ID!): Property
-    landlord(id: ID!): Landlord
-    room(id: ID!): Room
-    repair(id: ID!): Repair
+    property(id: ID): Property
+    properties: [Property]
+    landlord(id: ID): Landlord
+    room(id: ID): Room
+    repair(id: ID): Repair
     repairs: [Repair!]!
   }
 
@@ -50,7 +51,7 @@ const typeDefs = gql`
     # Room
     createRoom(
       roomNumber: String!
-      propertyName: String!
+      propertyId: String!
       available: String!
       occupant: OccupantInput
       charges: ChargesInput
@@ -136,10 +137,10 @@ const typeDefs = gql`
   }
 
   type Charges {
-    water: Int
-    rent: Int
-    electricity: Int
-    parking: Int
+    water: String
+    rent: String
+    electricity: String
+    parking: String
   }
 
   type Repair {
@@ -161,10 +162,10 @@ const typeDefs = gql`
   }
 
   input ChargesInput {
-    water: Int
-    rent: Int
-    electricity: Int
-    parking: Int
+    water: String
+    rent: String
+    electricity: String
+    parking: String
   }
 `;
 

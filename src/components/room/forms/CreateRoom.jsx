@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
+import { GET_PROPERTY } from '../../../../services/query';
 import { AvailableDropdown } from '../../common/Dropdowns';
-
 import { CREATE_ROOM } from '../../../../services/mutation';
-
 import {
   Form,
   Container,
@@ -16,7 +15,7 @@ import {
   Blur,
 } from '../../common/FormElements';
 
-const CreateRoom = ({ setCreateRoom, propertyName }) => {
+const CreateRoom = ({ setCreateRoom, propertyId }) => {
   const [values, setValues] = useState({
     roomNumber: '',
     water: '',
@@ -40,6 +39,7 @@ const CreateRoom = ({ setCreateRoom, propertyName }) => {
   };
 
   const [createRoom, { loading, error }] = useMutation(CREATE_ROOM, {
+    refetchQueries: [{ query: GET_PROPERTY, variables: { propertyId: propertyId } }],
     onCompleted: () => {
       setCreateRoom(false);
     },
@@ -48,7 +48,7 @@ const CreateRoom = ({ setCreateRoom, propertyName }) => {
   if (loading) return 'Submitting...';
   if (error) return `Submission error! ${error.message}`;
 
-  console.log(propertyName);
+  console.log(propertyId);
 
   return (
     <Container>
@@ -57,7 +57,7 @@ const CreateRoom = ({ setCreateRoom, propertyName }) => {
           event.preventDefault();
           createRoom({
             variables: {
-              propertyName: propertyName,
+              propertyId: propertyId,
               roomNumber: values.roomNumber,
               charges: {
                 water: values.water,

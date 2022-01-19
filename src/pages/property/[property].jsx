@@ -6,6 +6,7 @@ import Layout from '../../components/common/Layout';
 import Header from '../../components/property/Header';
 import UpdateProperty from '../../components/property/forms/UpdateProperty';
 import CreateRoom from '../../components/room/forms/CreateRoom';
+import Rooms from '../../components/property/Rooms';
 
 const Property = () => {
   const [updateProperty, setUpdateProperty] = useState(false);
@@ -25,9 +26,7 @@ const Property = () => {
         <UpdateProperty setUpdateProperty={setUpdateProperty} property={data.property} />
       )}
 
-      {createRoom && (
-        <CreateRoom setCreateRoom={setCreateRoom} propertyName={data?.property.name} />
-      )}
+      {createRoom && <CreateRoom setCreateRoom={setCreateRoom} propertyId={property} />}
 
       <Layout>
         <Header
@@ -36,6 +35,8 @@ const Property = () => {
           image={data.property.fullImage}
           setUpdateProperty={setUpdateProperty}
         />
+
+        <Rooms rooms={data.property.rooms} />
       </Layout>
     </>
   );

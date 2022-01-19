@@ -107,14 +107,14 @@ const DELETE_PROPERTY = gql`
 const CREATE_ROOM = gql`
   mutation CreateRoom(
     $roomNumber: String!
-    $propertyName: String!
+    $propertyId: String!
     $available: String!
     $occupant: OccupantInput
     $charges: ChargesInput
   ) {
     createRoom(
       roomNumber: $roomNumber
-      propertyName: $propertyName
+      propertyId: $propertyId
       available: $available
       occupant: $occupant
       charges: $charges

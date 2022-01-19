@@ -7,7 +7,7 @@ const IS_LOGGED_IN = gql`
 `;
 
 const GET_LANDLORD = gql`
-  query ($landlordId: ID!) {
+  query ($landlordId: ID) {
     landlord(id: $landlordId) {
       id
       role
@@ -30,7 +30,7 @@ const GET_LANDLORD = gql`
 `;
 
 const GET_PROPERTY = gql`
-  query Property($propertyId: ID!) {
+  query Property($propertyId: ID) {
     property(id: $propertyId) {
       id
       name
@@ -42,16 +42,17 @@ const GET_PROPERTY = gql`
       category
       thumbnail
       fullImage
-      rooms {
-        id
-      }
       landlord {
         id
+      }
+      rooms {
+        id
+        roomNumber
+        available
       }
     }
   }
 `;
-
 const GET_REPAIRS = gql`
   query Repairs {
     repairs {

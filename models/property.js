@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import mongoose from 'mongoose';
 
 // Define the property database schema
@@ -27,6 +28,17 @@ const PropertySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+PropertySchema.set(`toJSON`, {
+  transform: (document, returnedObject) => {
+    const object = returnedObject;
+    object.id = object._id.toString();
+    delete object._id;
+    delete object.__v;
+  },
+});
+
 const Property = mongoose.models.Property || mongoose.model(`Property`, PropertySchema);
+
+Property.syncIndexes();
 
 export default Property;
