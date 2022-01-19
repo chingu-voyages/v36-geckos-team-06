@@ -2,9 +2,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { AvailableDropdown } from '../../common/Dropdowns';
-
 import { CREATE_ROOM } from '../../../../services/mutation';
-
 import {
   Form,
   Container,

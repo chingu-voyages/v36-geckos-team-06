@@ -136,10 +136,10 @@ const typeDefs = gql`
   }
 
   type Charges {
-    water: Int
-    rent: Int
-    electricity: Int
-    parking: Int
+    water: String
+    rent: String
+    electricity: String
+    parking: String
   }
 
   type Repair {
@@ -161,10 +161,10 @@ const typeDefs = gql`
   }
 
   input ChargesInput {
-    water: Int
-    rent: Int
-    electricity: Int
-    parking: Int
+    water: String
+    rent: String
+    electricity: String
+    parking: String
   }
 `;
 

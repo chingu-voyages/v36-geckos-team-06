@@ -6,7 +6,7 @@ const RoomSchema = new mongoose.Schema({
     required: true,
     index: { unique: true },
   },
-  available: Boolean,
+  available: String,
   occupant: {
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
@@ -16,10 +16,10 @@ const RoomSchema = new mongoose.Schema({
     moveOutDate: { type: Date, required: true },
   },
   charges: {
-    water: Number,
-    rent: Number,
-    electricity: Number,
-    parking: Number,
+    water: String,
+    rent: String,
+    electricity: String,
+    parking: String,
   },
   property: {
     type: mongoose.Schema.Types.ObjectId,

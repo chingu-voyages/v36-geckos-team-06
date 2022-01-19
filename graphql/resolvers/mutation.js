@@ -112,7 +112,7 @@ const Mutation = {
     const roomProperty = await models.Property.findOne({ name: propertyName.trim() });
 
     const newRoom = {
-      property: new mongoose.Types.ObjectId(roomProperty.id),
+      property: new mongoose.Types.ObjectId(roomProperty._id),
       roomNumber: roomNumber,
       // eslint-disable-next-line no-unneeded-ternary
       available: available,
