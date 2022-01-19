@@ -5,7 +5,7 @@ const Property = {
   },
 
   rooms: async (property, __, { models }) => {
-    const rooms = await models.Room.find({ id: { $in: property.rooms } });
+    const rooms = await models.Room.find({ _id: { $in: property.rooms } });
 
     return rooms || [];
   },

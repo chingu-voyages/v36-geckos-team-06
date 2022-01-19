@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
+import { GET_PROPERTY } from '../../../../services/query';
 import { AvailableDropdown } from '../../common/Dropdowns';
 import { CREATE_ROOM } from '../../../../services/mutation';
 import {
@@ -38,6 +39,7 @@ const CreateRoom = ({ setCreateRoom, propertyId }) => {
   };
 
   const [createRoom, { loading, error }] = useMutation(CREATE_ROOM, {
+    refetchQueries: [{ query: GET_PROPERTY, variables: { propertyId: propertyId } }],
     onCompleted: () => {
       setCreateRoom(false);
     },

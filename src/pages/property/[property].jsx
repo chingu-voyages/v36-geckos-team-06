@@ -6,6 +6,7 @@ import Layout from '../../components/common/Layout';
 import Header from '../../components/property/Header';
 import UpdateProperty from '../../components/property/forms/UpdateProperty';
 import CreateRoom from '../../components/room/forms/CreateRoom';
+import Rooms from '../../components/property/Rooms';
 
 const Property = () => {
   const [updateProperty, setUpdateProperty] = useState(false);
@@ -15,8 +16,6 @@ const Property = () => {
   const { loading, error, data } = useQuery(GET_PROPERTY, {
     variables: { propertyId: property },
   });
-
-  console.log(data);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error!</p>;
@@ -36,6 +35,8 @@ const Property = () => {
           image={data.property.fullImage}
           setUpdateProperty={setUpdateProperty}
         />
+
+        <Rooms rooms={data.property.rooms} />
       </Layout>
     </>
   );
