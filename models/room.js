@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import mongoose from 'mongoose';
 
 const RoomSchema = new mongoose.Schema({
@@ -31,6 +32,15 @@ const RoomSchema = new mongoose.Schema({
       ref: `Repair`,
     },
   ],
+});
+
+RoomSchema.set(`toJSON`, {
+  transform: (document, returnedObject) => {
+    const object = returnedObject;
+    object.id = object._id.toString();
+    delete object._id;
+    delete object.__v;
+  },
 });
 
 const Room = mongoose.models.Room || mongoose.model(`Room`, RoomSchema);

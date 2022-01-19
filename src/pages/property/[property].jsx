@@ -16,6 +16,8 @@ const Property = () => {
     variables: { propertyId: property },
   });
 
+  console.log(typeof property);
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error!</p>;
 

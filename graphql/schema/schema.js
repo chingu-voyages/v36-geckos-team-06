@@ -6,10 +6,10 @@ const typeDefs = gql`
   scalar GraphQLDate
 
   type Query {
-    property(id: ID!): Property
-    landlord(id: ID!): Landlord
-    room(id: ID!): Room
-    repair(id: ID!): Repair
+    property(id: ID): Property
+    landlord(id: ID): Landlord
+    room(id: ID): Room
+    repair(id: ID): Repair
     repairs: [Repair!]!
   }
 

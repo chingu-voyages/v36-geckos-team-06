@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import mongoose from 'mongoose';
 
 const LandlordSchema = new mongoose.Schema(
@@ -32,6 +33,15 @@ const LandlordSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+LandlordSchema.set(`toJSON`, {
+  transform: (document, returnedObject) => {
+    const object = returnedObject;
+    object.id = object._id.toString();
+    delete object._id;
+    delete object.__v;
+  },
+});
 
 const Landlord = mongoose.models.Landlord || mongoose.model(`Landlord`, LandlordSchema);
 
