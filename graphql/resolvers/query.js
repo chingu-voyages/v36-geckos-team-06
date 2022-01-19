@@ -4,6 +4,11 @@ const Query = {
     return propertyToReturn;
   },
 
+  properties: async (_, __, { models }) => {
+    const propertyToReturn = await models.Property.find({});
+    return propertyToReturn;
+  },
+
   room: async (_, { id }, { models }) => {
     const roomToReturn = await models.Room.findById(id);
     return roomToReturn;

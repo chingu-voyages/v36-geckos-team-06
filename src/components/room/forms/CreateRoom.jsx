@@ -14,7 +14,7 @@ import {
   Blur,
 } from '../../common/FormElements';
 
-const CreateRoom = ({ setCreateRoom, propertyName }) => {
+const CreateRoom = ({ setCreateRoom, propertyId }) => {
   const [values, setValues] = useState({
     roomNumber: '',
     water: '',
@@ -46,7 +46,7 @@ const CreateRoom = ({ setCreateRoom, propertyName }) => {
   if (loading) return 'Submitting...';
   if (error) return `Submission error! ${error.message}`;
 
-  console.log(propertyName);
+  console.log(propertyId);
 
   return (
     <Container>
@@ -55,7 +55,7 @@ const CreateRoom = ({ setCreateRoom, propertyName }) => {
           event.preventDefault();
           createRoom({
             variables: {
-              propertyName: propertyName,
+              propertyId: propertyId,
               roomNumber: values.roomNumber,
               charges: {
                 water: values.water,

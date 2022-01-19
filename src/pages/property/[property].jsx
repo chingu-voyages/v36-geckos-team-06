@@ -16,7 +16,7 @@ const Property = () => {
     variables: { propertyId: property },
   });
 
-  console.log(typeof property);
+  console.log(data);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error!</p>;
@@ -27,9 +27,7 @@ const Property = () => {
         <UpdateProperty setUpdateProperty={setUpdateProperty} property={data.property} />
       )}
 
-      {createRoom && (
-        <CreateRoom setCreateRoom={setCreateRoom} propertyName={data?.property.name} />
-      )}
+      {createRoom && <CreateRoom setCreateRoom={setCreateRoom} propertyId={property} />}
 
       <Layout>
         <Header

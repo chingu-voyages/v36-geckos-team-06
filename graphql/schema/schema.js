@@ -7,6 +7,7 @@ const typeDefs = gql`
 
   type Query {
     property(id: ID): Property
+    properties: [Property]
     landlord(id: ID): Landlord
     room(id: ID): Room
     repair(id: ID): Repair
@@ -50,7 +51,7 @@ const typeDefs = gql`
     # Room
     createRoom(
       roomNumber: String!
-      propertyName: String!
+      propertyId: String!
       available: String!
       occupant: OccupantInput
       charges: ChargesInput

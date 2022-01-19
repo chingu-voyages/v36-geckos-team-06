@@ -5,7 +5,6 @@ const RoomSchema = new mongoose.Schema({
   roomNumber: {
     type: String,
     required: true,
-    index: { unique: true },
   },
   available: String,
   occupant: {

@@ -42,16 +42,12 @@ const GET_PROPERTY = gql`
       category
       thumbnail
       fullImage
-      rooms {
-        id
-      }
       landlord {
         id
       }
     }
   }
 `;
-
 const GET_REPAIRS = gql`
   query Repairs {
     repairs {

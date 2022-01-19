@@ -39,4 +39,6 @@ PropertySchema.set(`toJSON`, {
 
 const Property = mongoose.models.Property || mongoose.model(`Property`, PropertySchema);
 
+Property.syncIndexes();
+
 export default Property;

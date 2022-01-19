@@ -13,17 +13,14 @@ const RepairSchema = new mongoose.Schema({
   issue: {
     type: String,
     required: true,
-    index: { unique: true },
   },
   details: {
     type: String,
     required: true,
-    index: { unique: true },
   },
   status: {
     type: String,
     required: true,
-    index: { unique: true },
   },
 });
 
