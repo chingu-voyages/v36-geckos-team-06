@@ -27,10 +27,8 @@ import {
   Title,
   Tooltip,
 } from 'chart.js';
-import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 Chart.register(
-  ChartDataLabels,
   ArcElement,
   LineElement,
   BarElement,
@@ -70,7 +68,6 @@ const data = {
         'rgba(153, 102, 255, 1)',
         'rgba(255, 159, 64, 1)',
       ],
-      borderWidth: 1,
     },
   ],
 };
@@ -113,7 +110,6 @@ const DoughnutChart = ({ charges: { water, rent, electricity, parking } }) => (
       ],
     }}
     options={options}
-    plugins={[ChartDataLabels]}
   />
 );
 export default DoughnutChart;

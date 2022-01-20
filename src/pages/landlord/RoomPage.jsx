@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import styled from 'styled-components';
 import { GiFamilyHouse, GiMoneyStack, GiSpanner, GiWaterDrop, GiElectric } from 'react-icons/gi';
@@ -5,7 +6,6 @@ import { FaFileContract } from 'react-icons/fa';
 import { AiFillCar, AiOutlineCarryOut } from 'react-icons/ai';
 import { BsHouse, BsWrench, BsCircle } from 'react-icons/bs';
 import Image from 'next/image';
-import 'react-step-progress-bar/styles.css';
 
 import DoughnutChart from '../../components/Room/DoughnutChart';
 import RepairSection from '../../components/common/RepairSection';
