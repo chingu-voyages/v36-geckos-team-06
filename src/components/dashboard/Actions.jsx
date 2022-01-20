@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import styled from 'styled-components';
-import Searchbar from '../common/SearchBar';
+import SearchBar from '../common/SearchBar';
 import Button from '../common/Button';
 
 const ActionsContainer = styled.section`
@@ -24,7 +24,7 @@ const Actions = ({ setShowRepairs }) => (
     <Button onClick={() => setShowRepairs('repairs')} color="#242423">
       Repairs
     </Button>
-    <Searchbar />
+    <SearchBar />
   </ActionsContainer>
 );
 

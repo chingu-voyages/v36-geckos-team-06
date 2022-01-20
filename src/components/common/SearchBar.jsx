@@ -44,11 +44,11 @@ const SearchButton = styled.button`
   }
 `;
 
-const Searchbar = () => (
+const SearchBar = () => (
   <SearchContainer>
     <Input type="text" />
     <SearchButton>Search</SearchButton>
   </SearchContainer>
 );
 
-export default Searchbar;
+export default SearchBar;
