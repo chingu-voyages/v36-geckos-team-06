@@ -14,7 +14,7 @@ const Container = styled.div`
   border-radius: 10px;
   text-transform: uppercase;
   font-weight: bold;
-  background: url('/repairs.jpg/');
+  background: #491f1e;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

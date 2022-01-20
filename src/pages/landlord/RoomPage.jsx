@@ -5,15 +5,16 @@ import { FaFileContract } from 'react-icons/fa';
 import { AiFillCar, AiOutlineCarryOut } from 'react-icons/ai';
 import { BsHouse, BsWrench, BsCircle } from 'react-icons/bs';
 import Image from 'next/image';
+import 'react-step-progress-bar/styles.css';
 
 import DoughnutChart from '../../components/Room/DoughnutChart';
 import RepairSection from '../../components/common/RepairSection';
 import Layout from '../../components/common/Layout';
 import profilePic from '../../../public/profilePic.jpg';
+import ProgressBar from '../../components/Room/ProgressBar';
 import { REPAIR_DATA, PROPERTY_DATA } from '../../mockData';
 
 const roomData = PROPERTY_DATA[0].rooms[0];
-console.log(roomData);
 // name charges occupant
 const roomOneRepairs = REPAIR_DATA.filter((repair) => repair.room === 'room 1');
 
@@ -183,6 +184,7 @@ const RoomPage = () => (
             <BsCircle style={{ color: 'orange' }} />
             Remaining: 40 days
           </p>
+          <ProgressBar moveInDate={roomData.moveInDate} moveOutDate={roomData.moveOutDate} />
         </CurrentBalanceTile>
         <CurrentBalanceTile>
           <TileHeader>
@@ -192,7 +194,7 @@ const RoomPage = () => (
         </CurrentBalanceTile>
         <CurrentBalanceTile>
           <TileHeader>
-            <BsHouse /> Utilities
+            <GiElectric /> Utilities
           </TileHeader>
         </CurrentBalanceTile>
         <CurrentBalanceTile>
