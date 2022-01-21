@@ -6,10 +6,9 @@ export const Blur = styled.div`
   backdrop-filter: blur(9px);
   z-index: 2;
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  height: 100vh;
+  width: 100%;
+  padding: 40px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -29,19 +28,13 @@ export const Container = styled.section`
 `;
 
 export const Form = styled.form`
-  position: relative;
   z-index: 3;
   background-color: #ffffff;
-  display: grid;
-  grid-gap: 24px;
-  grid-template-areas:
-    'propertyName propertyName'
-    'propertyAddress propertyAddress'
-    'city postcode'
-    'country capacity'
-    'category category'
-    'buttons buttons';
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
   border-radius: 16px;
+  justify-content: center;
   padding: 68px 32px;
   width: 650px;
   box-shadow: 3px 4px 15px -8px rgba(0, 0, 0, 0.71);
@@ -59,21 +52,21 @@ export const Form = styled.form`
     font-weight: 600;
     font-size: 18px;
   }
-  input {
-    width: 100%;
-    padding: 16px;
-    border-radius: 8px;
-    border: 0.2px solid;
-    background-color: white;
-  }
 `;
 
-export const CloseButton = styled(AiOutlineCloseCircle)`
-  position: absolute;
-  font-size: 24px;
-  top: 20px;
-  right: 20px;
-  cursor: pointer;
+export const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+`;
+
+export const Input = styled.input`
+  width: 100%;
+  padding: 16px;
+  border-radius: 8px;
+  border: 0.2px solid;
+  background-color: white;
 `;
 
 export const Button = styled.button`
@@ -102,7 +95,20 @@ export const Button = styled.button`
   }
 `;
 
+export const CloseButton = styled(AiOutlineCloseCircle)`
+  position: absolute;
+  font-size: 24px;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+`;
+
 export const Buttons = styled.div`
   display: flex;
   gap: 24px;
+`;
+
+export const Inputs = styled.div`
+  display: flex;
+  gap: 16px;
 `;
