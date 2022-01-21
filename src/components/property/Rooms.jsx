@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 
 const RoomsContainer = styled.section`
   display: grid;
@@ -15,14 +16,13 @@ const Room = styled.div`
   display: flex;
   position: relative;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
+  justify-content: space-between;
   color: white;
   padding: 24px;
   width: 100%;
   aspect-ratio: 1/1;
   border-radius: 10px;
-  background: #491f1e;
+  background: ${({ bg }) => bg || '#491f1e'};
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -35,13 +35,57 @@ const Room = styled.div`
   }
 `;
 
+const RoomNum = styled.p`
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 64px;
+  color: #ffffff;
+`;
+
+const Status = styled.p`
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 32px;
+  color: #ffffff;
+`;
+
+const RoomDetails = styled.div``;
+
+const RoomBtn = styled.button`
+  background: #ffffff;
+  border-radius: 10px;
+  width: 100%;
+  border: none;
+  font-weight: 900;
+  font-size: 20px;
+  height: 56px;
+  color: #242423;
+  cursor: pointer;
+`;
+
 const Rooms = ({ rooms }) => {
-  const test = 34;
+  console.log(rooms.slice().sort((a, b) => a.roomNumber - b.roomNumber));
   return (
     <RoomsContainer>
-      {rooms.map((room) => (
-        <Room key={room.id}>Test</Room>
-      ))}
+      {rooms
+        // Sort the array, so room numbers are arranged in ascending order
+        .slice()
+        .sort((a, b) => a.roomNumber - b.roomNumber)
+        .map((room) => (
+          <Room key={room.id} bg={room.available === 'yes' && '#943939'}>
+            <RoomDetails>
+              <RoomNum>ROOM {room.roomNumber}</RoomNum>
+              <Status> {room.available === 'yes' ? '✅ AVAILABLE' : '🔴 OCCUPIED'}</Status>
+            </RoomDetails>
+            <Link href={`/room/${room.id}`}>
+              <RoomBtn>VIEW ROOM</RoomBtn>
+            </Link>
+          </Room>
+        ))}
     </RoomsContainer>
   );
 };
