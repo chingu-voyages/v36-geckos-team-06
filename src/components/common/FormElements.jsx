@@ -101,6 +101,7 @@ export const CloseButton = styled(AiOutlineCloseCircle)`
   top: 20px;
   right: 20px;
   cursor: pointer;
+  color: ${({ color }) => color || 'black'}; ;
 `;
 
 export const Buttons = styled.div`
