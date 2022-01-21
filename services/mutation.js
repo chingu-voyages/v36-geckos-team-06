@@ -146,6 +146,45 @@ const CREATE_ROOM = gql`
   }
 `;
 
+const UPDATE_ROOM = gql`
+  mutation UpdateRoom(
+    $updateRoomId: ID!
+    $roomNumber: String!
+    $available: String!
+    $charges: ChargesInput!
+    $occupant: OccupantInput
+  ) {
+    updateRoom(
+      id: $updateRoomId
+      roomNumber: $roomNumber
+      available: $available
+      charges: $charges
+      occupant: $occupant
+    ) {
+      id
+      roomNumber
+      available
+      occupant {
+        firstName
+        lastName
+        phoneNumber
+        email
+        moveInDate
+        moveOutDate
+      }
+      charges {
+        water
+        rent
+        electricity
+        parking
+      }
+      repairs {
+        id
+      }
+    }
+  }
+`;
+
 export {
   SIGN_IN_LANDLORD,
   SIGN_UP_LANDLORD,
@@ -153,4 +192,5 @@ export {
   UPDATE_PROPERTY,
   DELETE_PROPERTY,
   CREATE_ROOM,
+  UPDATE_ROOM,
 };
