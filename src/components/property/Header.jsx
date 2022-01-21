@@ -15,7 +15,7 @@ const UserName = styled.h2`
 
 const Header = ({ image, name, setUpdateProperty, setCreateRoom }) => (
   <HeaderStyled direction="column" justify="center" align="center" bg={image}>
-    <UserName>{name}</UserName>
+    <UserName>{name?.toUpperCase()}</UserName>
     <Buttons>
       <HeaderButton onClick={() => setCreateRoom(true)}>ADD ROOM</HeaderButton>
       <HeaderButton onClick={() => setUpdateProperty(true)}>EDIT PROPERTY</HeaderButton>
