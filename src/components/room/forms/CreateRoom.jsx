@@ -5,8 +5,9 @@ import { GET_PROPERTY } from '../../../../services/query';
 import { AvailableDropdown } from '../../common/Dropdowns';
 import { CREATE_ROOM } from '../../../../services/mutation';
 import {
-  Form,
+  RoomForm,
   Container,
+  CloseButton,
   InputContainer,
   Inputs,
   Input,
@@ -52,7 +53,7 @@ const CreateRoom = ({ setCreateRoom, propertyId }) => {
 
   return (
     <Container>
-      <Form
+      <RoomForm
         onSubmit={(event) => {
           event.preventDefault();
           createRoom({
@@ -78,6 +79,7 @@ const CreateRoom = ({ setCreateRoom, propertyId }) => {
           });
         }}
       >
+        <CloseButton color="white" onClick={() => setCreateRoom(false)} />
         <Inputs>
           <InputContainer>
             <label htmlFor="room-number">ROOM NUMBER</label>
@@ -213,7 +215,7 @@ const CreateRoom = ({ setCreateRoom, propertyId }) => {
             CANCEL
           </Button>
         </Buttons>
-      </Form>
+      </RoomForm>
       <Blur onClick={() => setCreateRoom(false)} />
     </Container>
   );

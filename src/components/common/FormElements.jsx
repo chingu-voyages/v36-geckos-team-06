@@ -27,7 +27,41 @@ export const Container = styled.section`
   align-items: center;
 `;
 
-export const Form = styled.form`
+export const PropertyForm = styled.form`
+  z-index: 3;
+  background-color: #ffffff;
+  display: grid;
+  grid-gap: 24px;
+  grid-template-areas:
+    'name name'
+    'address address'
+    'city postcode'
+    'city postcode'
+    'country capacity'
+    'category category'
+    'buttons buttons';
+  border-radius: 16px;
+  justify-content: center;
+  padding: 68px 32px;
+  width: 650px;
+  box-shadow: 3px 4px 15px -8px rgba(0, 0, 0, 0.71);
+
+  a {
+    text-align: center;
+    font-weight: 900;
+    font-size: 24px;
+    text-decoration: underline;
+    color: #a2293a;
+    cursor: pointer;
+  }
+
+  label {
+    font-weight: 600;
+    font-size: 18px;
+  }
+`;
+
+export const RoomForm = styled.form`
   z-index: 3;
   background-color: #ffffff;
   display: flex;

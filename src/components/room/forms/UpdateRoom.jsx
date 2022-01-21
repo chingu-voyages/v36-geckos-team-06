@@ -5,7 +5,8 @@ import { format } from 'fecha';
 import { AvailableDropdown } from '../../common/Dropdowns';
 import { UPDATE_ROOM } from '../../../../services/mutation';
 import {
-  Form,
+  RoomForm,
+  CloseButton,
   Container,
   InputContainer,
   Inputs,
@@ -50,7 +51,7 @@ const UpdateRoom = ({ setEditRoom, room }) => {
 
   return (
     <Container>
-      <Form
+      <RoomForm
         onSubmit={(event) => {
           event.preventDefault();
           updateRoom({
@@ -76,6 +77,7 @@ const UpdateRoom = ({ setEditRoom, room }) => {
           });
         }}
       >
+        <CloseButton color="white" onClick={() => setEditRoom(false)} />
         <Inputs>
           <InputContainer>
             <label htmlFor="room-number">ROOM NUMBER</label>
@@ -211,7 +213,7 @@ const UpdateRoom = ({ setEditRoom, room }) => {
             CANCEL
           </Button>
         </Buttons>
-      </Form>
+      </RoomForm>
       <Blur onClick={() => setEditRoom(false)} />
     </Container>
   );

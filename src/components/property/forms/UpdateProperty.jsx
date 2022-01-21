@@ -6,10 +6,8 @@ import { CountryDropdown, CategoryDropdown } from '../../common/Dropdowns';
 import { UPDATE_PROPERTY, DELETE_PROPERTY } from '../../../../services/mutation';
 import { GET_PROPERTY, GET_LANDLORD } from '../../../../services/query';
 import {
-  Form,
+  PropertyForm,
   Container,
-  InputContainer,
-  Inputs,
   Input,
   Button,
   Buttons,
@@ -55,7 +53,7 @@ const UpdateProperty = ({ setUpdateProperty, property }) => {
 
   return (
     <Container>
-      <Form
+      <PropertyForm
         onSubmit={(event) => {
           event.preventDefault();
           updateProperty({
@@ -68,8 +66,8 @@ const UpdateProperty = ({ setUpdateProperty, property }) => {
       >
         <CloseButton color="white" onClick={() => setUpdateProperty(false)} />
 
-        <InputContainer>
-          <label htmlFor="property-name">PROPERTY NAME</label>
+        <label style={{ gridArea: 'name' }} htmlFor="property-name">
+          PROPERTY NAME
           <Input
             name="name"
             type="text"
@@ -77,10 +75,10 @@ const UpdateProperty = ({ setUpdateProperty, property }) => {
             value={values.name}
             onChange={onChange}
           />
-        </InputContainer>
+        </label>
 
-        <InputContainer>
-          <label htmlFor="address">PROPERTY ADDRESS</label>
+        <label style={{ gridArea: 'address' }} htmlFor="address">
+          PROPERTY ADDRESS
           <Input
             name="address"
             type="text"
@@ -88,61 +86,52 @@ const UpdateProperty = ({ setUpdateProperty, property }) => {
             value={values.address}
             onChange={onChange}
           />
-        </InputContainer>
+        </label>
 
-        <Inputs>
-          <InputContainer>
-            <label htmlFor="city">CITY</label>
-            <Input name="city" type="text" id="city" value={values.city} onChange={onChange} />
-          </InputContainer>
+        <label style={{ gridArea: 'city' }} htmlFor="city">
+          CITY
+          <Input name="city" type="text" id="city" value={values.city} onChange={onChange} />
+        </label>
 
-          <InputContainer>
-            <label htmlFor="postcode">POSTCODE</label>
-            <Input
-              name="postcode"
-              type="text"
-              id="postcode"
-              value={values.postcode}
-              onChange={onChange}
-            />
-          </InputContainer>
-        </Inputs>
+        <label style={{ gridArea: 'postcode' }} htmlFor="postcode">
+          POSTCODE
+          <Input
+            name="postcode"
+            type="text"
+            id="postcode"
+            value={values.postcode}
+            onChange={onChange}
+          />
+        </label>
 
-        <Inputs>
-          <InputContainer>
-            <label htmlFor="country">COUNTRY</label>
-            <CountryDropdown
-              name="country"
-              id="country"
-              value={values.country}
-              onChange={onChange}
-            />
-          </InputContainer>
+        <label style={{ gridArea: 'country' }} htmlFor="country">
+          COUNTRY
+          <CountryDropdown name="country" id="country" value={values.country} onChange={onChange} />
+        </label>
 
-          <InputContainer>
-            <label htmlFor="capacity">CAPACITY</label>
-            <Input
-              name="capacity"
-              type="number"
-              id="capacity"
-              min="1"
-              value={values.capacity}
-              onChange={onChange}
-            />
-          </InputContainer>
-        </Inputs>
+        <label style={{ gridArea: 'capacity' }} htmlFor="capacity">
+          CAPACITY
+          <Input
+            name="capacity"
+            type="number"
+            id="capacity"
+            min="1"
+            value={values.capacity}
+            onChange={onChange}
+          />
+        </label>
 
-        <InputContainer>
-          <label htmlFor="category">CATEGORY</label>
+        <label style={{ gridArea: 'category' }} htmlFor="category">
+          CATEGORY
           <CategoryDropdown
             name="category"
             id="category"
             value={values.category}
             onChange={onChange}
           />
-        </InputContainer>
+        </label>
 
-        <Buttons>
+        <Buttons style={{ gridArea: 'buttons' }}>
           <Button type="submit" background="#a2293a">
             EDIT PROPERTY
           </Button>
@@ -158,11 +147,10 @@ const UpdateProperty = ({ setUpdateProperty, property }) => {
               });
             }}
           >
-            {' '}
             DELETE PROPERTY
           </Button>
         </Buttons>
-      </Form>
+      </PropertyForm>
       <Blur onClick={() => setUpdateProperty(false)} />
     </Container>
   );

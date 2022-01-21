@@ -4,7 +4,15 @@ import { useMutation } from '@apollo/client';
 import { CountryDropdown, CategoryDropdown } from '../../common/Dropdowns';
 import { CREATE_PROPERTY } from '../../../../services/mutation';
 import { GET_LANDLORD } from '../../../../services/query';
-import { Form, Container, Button, Buttons, CloseButton, Blur } from '../../common/FormElements';
+import {
+  PropertyForm,
+  Input,
+  Container,
+  Button,
+  Buttons,
+  CloseButton,
+  Blur,
+} from '../../common/FormElements';
 
 const CreateProperty = ({ setCreateProperty, landlordID }) => {
   const [values, setValues] = useState({
@@ -36,7 +44,7 @@ const CreateProperty = ({ setCreateProperty, landlordID }) => {
 
   return (
     <Container>
-      <Form
+      <PropertyForm
         onSubmit={(event) => {
           event.preventDefault();
           createProperty({
@@ -46,10 +54,11 @@ const CreateProperty = ({ setCreateProperty, landlordID }) => {
           });
         }}
       >
-        <CloseButton onClick={() => setCreateProperty(false)} />
-        <label style={{ gridArea: 'propertyName' }} htmlFor="property-name">
+        <CloseButton color="white" onClick={() => setCreateProperty(false)} />
+
+        <label style={{ gridArea: 'name' }} htmlFor="property-name">
           PROPERTY NAME
-          <input
+          <Input
             name="name"
             type="text"
             id="property-name"
@@ -58,9 +67,9 @@ const CreateProperty = ({ setCreateProperty, landlordID }) => {
           />
         </label>
 
-        <label style={{ gridArea: 'propertyAddress' }} htmlFor="address">
+        <label style={{ gridArea: 'address' }} htmlFor="address">
           PROPERTY ADDRESS
-          <input
+          <Input
             name="address"
             type="text"
             id="address"
@@ -68,14 +77,15 @@ const CreateProperty = ({ setCreateProperty, landlordID }) => {
             onChange={onChange}
           />
         </label>
+
         <label style={{ gridArea: 'city' }} htmlFor="city">
           CITY
-          <input name="city" type="text" id="city" value={values.city} onChange={onChange} />
+          <Input name="city" type="text" id="city" value={values.city} onChange={onChange} />
         </label>
 
         <label style={{ gridArea: 'postcode' }} htmlFor="postcode">
           POSTCODE
-          <input
+          <Input
             name="postcode"
             type="text"
             id="postcode"
@@ -83,13 +93,15 @@ const CreateProperty = ({ setCreateProperty, landlordID }) => {
             onChange={onChange}
           />
         </label>
+
         <label style={{ gridArea: 'country' }} htmlFor="country">
           COUNTRY
           <CountryDropdown name="country" id="country" value={values.country} onChange={onChange} />
         </label>
+
         <label style={{ gridArea: 'capacity' }} htmlFor="capacity">
           CAPACITY
-          <input
+          <Input
             name="capacity"
             type="number"
             id="capacity"
@@ -98,6 +110,7 @@ const CreateProperty = ({ setCreateProperty, landlordID }) => {
             onChange={onChange}
           />
         </label>
+
         <label style={{ gridArea: 'category' }} htmlFor="category">
           CATEGORY
           <CategoryDropdown
@@ -115,7 +128,7 @@ const CreateProperty = ({ setCreateProperty, landlordID }) => {
             CANCEL
           </Button>
         </Buttons>
-      </Form>
+      </PropertyForm>
       <Blur onClick={() => setCreateProperty(false)} />
     </Container>
   );
