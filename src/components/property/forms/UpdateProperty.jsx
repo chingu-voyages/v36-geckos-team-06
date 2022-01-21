@@ -5,7 +5,17 @@ import { useMutation } from '@apollo/client';
 import { CountryDropdown, CategoryDropdown } from '../../common/Dropdowns';
 import { UPDATE_PROPERTY, DELETE_PROPERTY } from '../../../../services/mutation';
 import { GET_PROPERTY, GET_LANDLORD } from '../../../../services/query';
-import { Form, Container, Button, Buttons, CloseButton, Blur } from '../../common/FormElements';
+import {
+  Form,
+  Container,
+  InputContainer,
+  Inputs,
+  Input,
+  Button,
+  Buttons,
+  Blur,
+  CloseButton,
+} from '../../common/FormElements';
 
 const UpdateProperty = ({ setUpdateProperty, property }) => {
   const router = useRouter();
@@ -56,66 +66,83 @@ const UpdateProperty = ({ setUpdateProperty, property }) => {
           });
         }}
       >
-        <CloseButton onClick={() => setUpdateProperty(false)} />
-        <label htmlFor="property-name" style={{ gridArea: 'propertyName' }}>
-          PROPERTY NAME
-          <input
+        <CloseButton color="white" onClick={() => setUpdateProperty(false)} />
+
+        <InputContainer>
+          <label htmlFor="property-name">PROPERTY NAME</label>
+          <Input
             name="name"
             type="text"
             id="property-name"
             value={values.name}
             onChange={onChange}
           />
-        </label>
-        <label htmlFor="address" style={{ gridArea: 'propertyAddress' }}>
-          PROPERTY ADDRESS
-          <input
+        </InputContainer>
+
+        <InputContainer>
+          <label htmlFor="address">PROPERTY ADDRESS</label>
+          <Input
             name="address"
             type="text"
             id="address"
             value={values.address}
             onChange={onChange}
           />
-        </label>
-        <label htmlFor="city" style={{ gridArea: 'city' }}>
-          CITY
-          <input name="city" type="text" id="city" value={values.city} onChange={onChange} />
-        </label>
-        <label htmlFor="postcode" style={{ gridArea: 'postcode' }}>
-          POSTCODE
-          <input
-            name="postcode"
-            type="text"
-            id="postcode"
-            value={values.postcode}
-            onChange={onChange}
-          />
-        </label>
-        <label htmlFor="country" style={{ gridArea: 'country' }}>
-          COUNTRY
-          <CountryDropdown name="country" id="country" value={values.country} onChange={onChange} />
-        </label>
-        <label htmlFor="capacity" style={{ gridArea: 'capacity' }}>
-          CAPACITY
-          <input
-            name="capacity"
-            type="number"
-            id="capacity"
-            min="1"
-            value={values.capacity}
-            onChange={onChange}
-          />
-        </label>
-        <label htmlFor="category" style={{ gridArea: 'category' }}>
-          CATEGORY
+        </InputContainer>
+
+        <Inputs>
+          <InputContainer>
+            <label htmlFor="city">CITY</label>
+            <Input name="city" type="text" id="city" value={values.city} onChange={onChange} />
+          </InputContainer>
+
+          <InputContainer>
+            <label htmlFor="postcode">POSTCODE</label>
+            <Input
+              name="postcode"
+              type="text"
+              id="postcode"
+              value={values.postcode}
+              onChange={onChange}
+            />
+          </InputContainer>
+        </Inputs>
+
+        <Inputs>
+          <InputContainer>
+            <label htmlFor="country">COUNTRY</label>
+            <CountryDropdown
+              name="country"
+              id="country"
+              value={values.country}
+              onChange={onChange}
+            />
+          </InputContainer>
+
+          <InputContainer>
+            <label htmlFor="capacity">CAPACITY</label>
+            <Input
+              name="capacity"
+              type="number"
+              id="capacity"
+              min="1"
+              value={values.capacity}
+              onChange={onChange}
+            />
+          </InputContainer>
+        </Inputs>
+
+        <InputContainer>
+          <label htmlFor="category">CATEGORY</label>
           <CategoryDropdown
             name="category"
             id="category"
             value={values.category}
             onChange={onChange}
           />
-        </label>
-        <Buttons style={{ gridArea: 'buttons' }}>
+        </InputContainer>
+
+        <Buttons>
           <Button type="submit" background="#a2293a">
             EDIT PROPERTY
           </Button>
