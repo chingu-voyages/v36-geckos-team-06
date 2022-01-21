@@ -115,9 +115,8 @@ const CreateRoom = ({ setCreateRoom, propertyId }) => {
               onChange={onChange}
             />
           </InputContainer>
-
           <InputContainer>
-            <label htmlFor="lastName">FIRST NAME</label>
+            <label htmlFor="lastName">LAST NAME</label>
             <Input
               name="lastName"
               type="text"
@@ -130,7 +129,7 @@ const CreateRoom = ({ setCreateRoom, propertyId }) => {
 
         <Inputs>
           <InputContainer>
-            <label htmlFor="phoneNumber">FIRST NAME</label>
+            <label htmlFor="phoneNumber">PHONE</label>
             <Input
               name="phoneNumber"
               type="text"
@@ -141,7 +140,7 @@ const CreateRoom = ({ setCreateRoom, propertyId }) => {
           </InputContainer>
 
           <InputContainer>
-            <label htmlFor="email">FIRST NAME</label>
+            <label htmlFor="email">EMAIL</label>
             <Input name="email" type="email" id="email" value={values.email} onChange={onChange} />
           </InputContainer>
         </Inputs>
