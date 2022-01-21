@@ -65,7 +65,7 @@ const CreateRoom = ({ setCreateRoom, propertyId }) => {
                 electricity: values.electricity,
                 parking: values.parking,
               },
-              available: values.available,
+              available: values.available || 'yes',
               occupant: {
                 firstName: values.firstName,
                 lastName: values.lastName,
