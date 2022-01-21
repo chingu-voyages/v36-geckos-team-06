@@ -30,12 +30,10 @@ const calculatePercentagePassed = (moveInDate, moveOutDate) => {
   return Math.floor(percentageRemaining);
 };
 
-function ProgressBar({ moveInDate, moveOutDate }) {
-  return (
-    <ProgressBarContainer>
-      <ProgressBarStyled percentage={calculatePercentagePassed(moveInDate, moveOutDate)} />
-    </ProgressBarContainer>
-  );
-}
+const ProgressBar = ({ moveInDate, moveOutDate }) => (
+  <ProgressBarContainer>
+    <ProgressBarStyled percentage={calculatePercentagePassed(moveInDate, moveOutDate)} />
+  </ProgressBarContainer>
+);
 
 export default ProgressBar;

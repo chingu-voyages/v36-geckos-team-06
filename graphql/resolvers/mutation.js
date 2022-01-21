@@ -144,11 +144,7 @@ const Mutation = {
   },
 
   // Update Room
-  updateRoom: async (
-    _,
-    { roomNumber, available, occupant, charges, propertyName, id },
-    { models, landlord }
-  ) => {
+  updateRoom: async (_, { roomNumber, available, occupant, charges, id }, { models, landlord }) => {
     if (!landlord) {
       throw new AuthenticationError(`You must be signed in to update the room`);
     }
@@ -161,7 +157,6 @@ const Mutation = {
           available,
           occupant,
           charges,
-          propertyName,
         },
       },
       { new: true }

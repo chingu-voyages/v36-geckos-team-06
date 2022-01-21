@@ -53,6 +53,37 @@ const GET_PROPERTY = gql`
     }
   }
 `;
+
+const GET_ROOM = gql`
+  query Room($roomId: ID) {
+    room(id: $roomId) {
+      id
+      property {
+        fullImage
+        name
+      }
+      roomNumber
+      available
+      occupant {
+        firstName
+        lastName
+        phoneNumber
+        email
+        moveInDate
+        moveOutDate
+      }
+      charges {
+        water
+        rent
+        electricity
+        parking
+      }
+      repairs {
+        id
+      }
+    }
+  }
+`;
 const GET_REPAIRS = gql`
   query Repairs {
     repairs {
@@ -67,4 +98,4 @@ const GET_REPAIRS = gql`
   }
 `;
 
-export { GET_LANDLORD, IS_LOGGED_IN, GET_PROPERTY, GET_REPAIRS };
+export { GET_LANDLORD, IS_LOGGED_IN, GET_PROPERTY, GET_REPAIRS, GET_ROOM };
