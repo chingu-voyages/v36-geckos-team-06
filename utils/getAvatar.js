@@ -1,7 +1,4 @@
 // Get random avatar for landlord & occupant
-const getAvatar = () => {
-  const randomNumber = Math.floor(Math.random() * 2000 + 1);
-  return `https://avatars.dicebear.com/api/open-peeps/${randomNumber}.svg`;
-};
+const getAvatar = () => `https://i.pravatar.cc/1000`;
 
 export default getAvatar;

@@ -7,14 +7,26 @@ const RoomHeader = styled.header`
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  background-image: url(${({ image }) => image};);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 272px;
-  border-radius: 10px;
+  background: linear-gradient(180deg, #491f1e 0%, #1f0100 100%);
+  border-radius: 16px;
+  height: 260px;
   text-transform: uppercase;
-  padding: 20px;
+  padding: 48px;
+
+  h1 {
+    font-weight: 900;
+    font-size: 72px;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  p {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    color: #ffffff;
+  }
 `;
 
 const Button = styled.button`

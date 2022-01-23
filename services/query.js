@@ -70,6 +70,7 @@ const GET_ROOM = gql`
         email
         moveInDate
         moveOutDate
+        avatar
       }
       charges {
         water
