@@ -1,21 +1,6 @@
 import styled from 'styled-components';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 
-export const Blur = styled.div`
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(9px);
-  z-index: 2;
-  position: absolute;
-  height: 100vh;
-  width: 100%;
-  padding: 40px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  cursor: pointer;
-`;
-
 export const Container = styled.section`
   position: absolute;
   height: 100vh;
@@ -38,20 +23,6 @@ export const Form = styled.form`
   padding: 68px 32px;
   width: 650px;
   box-shadow: 3px 4px 15px -8px rgba(0, 0, 0, 0.71);
-
-  a {
-    text-align: center;
-    font-weight: 900;
-    font-size: 24px;
-    text-decoration: underline;
-    color: #a2293a;
-    cursor: pointer;
-  }
-
-  label {
-    font-weight: 600;
-    font-size: 18px;
-  }
 `;
 
 export const InputContainer = styled.div`

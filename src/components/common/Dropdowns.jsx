@@ -3,15 +3,22 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Select = styled.select`
+  background: #f9f9f9;
+  border: 1px solid #491f1e;
   width: 100%;
-  padding: 18px;
-  border-radius: 8px;
-  border: 0.2px solid;
-  background-color: white;
+  padding: 16px;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 14.6095px;
+  letter-spacing: 0.208707px;
+  color: #491f1e;
 `;
 
 export const CountryDropdown = ({ onChange, value }) => (
   <Select id="country" name="country" onChange={onChange} value={value}>
+    <option value="" disabled selected>
+      Country
+    </option>
     <option value="Afganistan">Afghanistan</option>
     <option value="Albania">Albania</option>
     <option value="Algeria">Algeria</option>
@@ -263,6 +270,9 @@ export const CountryDropdown = ({ onChange, value }) => (
 
 export const CategoryDropdown = ({ onChange, value }) => (
   <Select id="category" name="category" onChange={onChange} value={value}>
+    <option value="" disabled selected>
+      Category
+    </option>
     <option value="servicedApartments">Serviced Apartments</option>
     <option value="normalApartments">Normal Apartments</option>
 
