@@ -9,7 +9,6 @@ const PropertySchema = new mongoose.Schema(
     postcode: { type: String, required: true },
     city: { type: String, required: true },
     country: { type: String, required: true },
-    capacity: { type: String, required: true },
     category: { type: String, required: true },
     fullImage: { type: String, required: true },
     thumbnail: { type: String, required: true },

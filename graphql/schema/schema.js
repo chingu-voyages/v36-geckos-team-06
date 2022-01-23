@@ -22,7 +22,6 @@ const typeDefs = gql`
       postcode: String!
       city: String!
       country: String!
-      capacity: String
       category: String!
     ): Property
 
@@ -31,7 +30,6 @@ const typeDefs = gql`
       name: String!
       address: String!
       postcode: String!
-      capacity: String
       country: String!
       category: String!
     ): Property
@@ -109,7 +107,6 @@ const typeDefs = gql`
     postcode: String!
     city: String!
     country: String!
-    capacity: String
     category: String!
     thumbnail: String!
     fullImage: String!
@@ -129,6 +126,7 @@ const typeDefs = gql`
 
   type Occupant {
     firstName: String
+    avatar: String
     lastName: String
     phoneNumber: String
     email: String
@@ -155,6 +153,7 @@ const typeDefs = gql`
   input OccupantInput {
     firstName: String
     lastName: String
+    avatar: String
     phoneNumber: String
     email: String
     moveInDate: GraphQLDate
