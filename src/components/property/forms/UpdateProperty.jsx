@@ -6,16 +6,15 @@ import { CountryDropdown, CategoryDropdown } from '../../common/Dropdowns';
 import { UPDATE_PROPERTY, DELETE_PROPERTY } from '../../../../services/mutation';
 import { GET_PROPERTY, GET_LANDLORD } from '../../../../services/query';
 import {
-  Form,
-  Container,
-  InputContainer,
-  Inputs,
   Input,
+  Form,
   Button,
   Buttons,
-  Blur,
+  Container,
   CloseButton,
-} from '../../common/FormElements';
+  Blur,
+  Header,
+} from '../../common/FormEl';
 
 const UpdateProperty = ({ setUpdateProperty, property }) => {
   const router = useRouter();
@@ -67,86 +66,53 @@ const UpdateProperty = ({ setUpdateProperty, property }) => {
         }}
       >
         <CloseButton color="white" onClick={() => setUpdateProperty(false)} />
+        <Header text="EDIT PROPERTY" />
 
-        <InputContainer>
-          <label htmlFor="property-name">PROPERTY NAME</label>
-          <Input
-            name="name"
-            type="text"
-            id="property-name"
-            value={values.name}
-            onChange={onChange}
-          />
-        </InputContainer>
+        <Input
+          placeholder="Property Name"
+          name="name"
+          type="text"
+          value={values.name}
+          onChange={onChange}
+        />
 
-        <InputContainer>
-          <label htmlFor="address">PROPERTY ADDRESS</label>
-          <Input
-            name="address"
-            type="text"
-            id="address"
-            value={values.address}
-            onChange={onChange}
-          />
-        </InputContainer>
+        <Input
+          placeholder="Property Address"
+          name="address"
+          type="text"
+          value={values.address}
+          onChange={onChange}
+        />
 
-        <Inputs>
-          <InputContainer>
-            <label htmlFor="city">CITY</label>
-            <Input name="city" type="text" id="city" value={values.city} onChange={onChange} />
-          </InputContainer>
+        <Input
+          placeholder="City"
+          name="city"
+          type="text"
+          id="city"
+          value={values.city}
+          onChange={onChange}
+        />
 
-          <InputContainer>
-            <label htmlFor="postcode">POSTCODE</label>
-            <Input
-              name="postcode"
-              type="text"
-              id="postcode"
-              value={values.postcode}
-              onChange={onChange}
-            />
-          </InputContainer>
-        </Inputs>
+        <Input
+          placeholder="Postcode"
+          name="postcode"
+          type="text"
+          id="postcode"
+          value={values.postcode}
+          onChange={onChange}
+        />
 
-        <Inputs>
-          <InputContainer>
-            <label htmlFor="country">COUNTRY</label>
-            <CountryDropdown
-              name="country"
-              id="country"
-              value={values.country}
-              onChange={onChange}
-            />
-          </InputContainer>
+        <CountryDropdown name="country" id="country" value={values.country} onChange={onChange} />
 
-          <InputContainer>
-            <label htmlFor="capacity">CAPACITY</label>
-            <Input
-              name="capacity"
-              type="number"
-              id="capacity"
-              min="1"
-              value={values.capacity}
-              onChange={onChange}
-            />
-          </InputContainer>
-        </Inputs>
-
-        <InputContainer>
-          <label htmlFor="category">CATEGORY</label>
-          <CategoryDropdown
-            name="category"
-            id="category"
-            value={values.category}
-            onChange={onChange}
-          />
-        </InputContainer>
+        <CategoryDropdown
+          name="category"
+          id="category"
+          value={values.category}
+          onChange={onChange}
+        />
 
         <Buttons>
-          <Button type="submit" background="#a2293a">
-            EDIT PROPERTY
-          </Button>
-
+          <Button type="submit" background="#a2293a" text="EDIT PROPERTY" />
           <Button
             background="#242423"
             onClick={(event) => {
@@ -157,10 +123,8 @@ const UpdateProperty = ({ setUpdateProperty, property }) => {
                 },
               });
             }}
-          >
-            {' '}
-            DELETE PROPERTY
-          </Button>
+            text="DELETE PROPERTY"
+          />
         </Buttons>
       </Form>
       <Blur onClick={() => setUpdateProperty(false)} />

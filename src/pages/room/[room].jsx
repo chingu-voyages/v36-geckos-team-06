@@ -67,7 +67,7 @@ const RoomPage = () => {
     variables: { roomId: room },
   });
 
-  console.log(data?.room?.id);
+  console.log(data);
 
   return (
     <>
@@ -79,10 +79,12 @@ const RoomPage = () => {
           setEditRoom={setEditRoom}
         />
 
-        <ProfileSection>
-          <Tenant occupant={data?.room?.occupant} />
-          {/* <Contract occupant={data?.room?.occupant} charges={data?.room?.charges} /> */}
-        </ProfileSection>
+        {data?.room?.occupant && (
+          <ProfileSection>
+            <Tenant occupant={data?.room?.occupant} />
+            <Contract occupant={data?.room?.occupant} charges={data?.room?.charges} />
+          </ProfileSection>
+        )}
 
         <RepairsHeading>Repairs</RepairsHeading>
         <RepairsContainer>

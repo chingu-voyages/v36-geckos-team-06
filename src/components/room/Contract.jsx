@@ -1,11 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
-import { BsHouse, BsWrench, BsCircle } from 'react-icons/bs';
+import { BsCircle } from 'react-icons/bs';
 import { AiFillCar, AiOutlineCarryOut } from 'react-icons/ai';
-import { GiElectric } from 'react-icons/gi';
 import { parse } from 'fecha';
-import { FaFileContract } from 'react-icons/fa';
 import ProgressBar from './ProgressBar';
 import DoughnutChart from './DoughnutChart';
 
@@ -22,24 +20,20 @@ const CurrentBalances = styled.div`
   display: grid;
   grid-gap: 20px;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
   padding: 20px;
   color: #666;
   font-size: 1.5rem;
   align-items: center;
   justify-content: center;
   flex: 1;
-  height: 300px;
   background: #491f1e;
   border-radius: 10px;
-  height: 700px;
 `;
 
 const CurrentBalanceTile = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  height: 100%;
+  height: 320px;
   border-radius: 10px;
   background: white;
   padding: 15px;
@@ -61,8 +55,14 @@ const Contract = ({ occupant, charges }) => {
     <CurrentBalances>
       <CurrentBalanceTile>
         <TileHeader>
-          <FaFileContract /> Contract
+          <AiOutlineCarryOut />
+          Overview
         </TileHeader>
+        <DoughnutChart charges={charges} />
+      </CurrentBalanceTile>
+
+      <CurrentBalanceTile>
+        <TileHeader>RENT</TileHeader>
         <p style={{ borderBottom: '1px solid #eaeaea', paddingBottom: '10px' }}>
           <BsCircle style={{ color: 'green' }} />
           Start: {moveIn}
@@ -83,34 +83,9 @@ const Contract = ({ occupant, charges }) => {
 
       <CurrentBalanceTile>
         <TileHeader>
-          <BsWrench />
-          Repairs
-        </TileHeader>
-      </CurrentBalanceTile>
-      <CurrentBalanceTile>
-        <TileHeader>
-          <GiElectric /> Utilities
-        </TileHeader>
-      </CurrentBalanceTile>
-      <CurrentBalanceTile>
-        <TileHeader>
-          <BsHouse />
-          Rent
-        </TileHeader>
-      </CurrentBalanceTile>
-
-      <CurrentBalanceTile>
-        <TileHeader>
           <AiFillCar />
-          Parking
+          CHARGES
         </TileHeader>
-      </CurrentBalanceTile>
-      <CurrentBalanceTile>
-        <TileHeader>
-          <AiOutlineCarryOut />
-          Overview
-        </TileHeader>
-        <DoughnutChart charges={charges} />
       </CurrentBalanceTile>
     </CurrentBalances>
   );

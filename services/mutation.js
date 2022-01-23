@@ -37,7 +37,6 @@ const CREATE_PROPERTY = gql`
     $city: String!
     $country: String!
     $category: String!
-    $capacity: String
   ) {
     createProperty(
       name: $name
@@ -46,7 +45,6 @@ const CREATE_PROPERTY = gql`
       city: $city
       country: $country
       category: $category
-      capacity: $capacity
     ) {
       id
       name
@@ -54,7 +52,6 @@ const CREATE_PROPERTY = gql`
       postcode
       city
       country
-      capacity
       category
       thumbnail
       fullImage
@@ -69,7 +66,6 @@ const UPDATE_PROPERTY = gql`
     $address: String!
     $postcode: String!
     $category: String!
-    $capacity: String
     $country: String!
   ) {
     updateProperty(
@@ -79,7 +75,6 @@ const UPDATE_PROPERTY = gql`
       postcode: $postcode
       country: $country
       category: $category
-      capacity: $capacity
     ) {
       id
       name
@@ -87,7 +82,6 @@ const UPDATE_PROPERTY = gql`
       city
       postcode
       country
-      capacity
       category
       thumbnail
       fullImage

@@ -16,7 +16,7 @@ const Mutation = {
   // Create Property
   createProperty: async (
     _,
-    { name, address, postcode, capacity, category, city, country },
+    { name, address, postcode, category, city, country },
     { models, landlord }
   ) => {
     if (!landlord) {
@@ -31,7 +31,6 @@ const Mutation = {
       postcode: postcode.trim().toLowerCase(),
       city: city.trim().toLowerCase(),
       country: country.trim().toLowerCase(),
-      capacity: capacity,
       category: category,
       fullImage: image.fullImage,
       thumbnail: image.thumbnail,
@@ -45,7 +44,7 @@ const Mutation = {
   // Update Property
   updateProperty: async (
     _,
-    { id, name, address, postcode, capacity, category, country },
+    { id, name, address, postcode, category, country },
     { models, landlord }
   ) => {
     if (!landlord) {
@@ -72,7 +71,6 @@ const Mutation = {
           name,
           address,
           postcode,
-          capacity,
           category,
           country,
           fullImage,
@@ -118,6 +116,7 @@ const Mutation = {
       occupant: {
         firstName: occupant.firstName,
         lastName: occupant.lastName,
+        avatar: getAvatar(),
         phoneNumber: occupant.phoneNumber,
         email: occupant.email,
         moveInDate: new Date(occupant.moveInDate),

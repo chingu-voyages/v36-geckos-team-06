@@ -20,7 +20,6 @@ const GET_LANDLORD = gql`
         postcode
         city
         country
-        capacity
         category
         thumbnail
         fullImage
@@ -38,7 +37,6 @@ const GET_PROPERTY = gql`
       postcode
       city
       country
-      capacity
       category
       thumbnail
       fullImage
@@ -66,11 +64,13 @@ const GET_ROOM = gql`
       available
       occupant {
         firstName
+        avatar
         lastName
         phoneNumber
         email
         moveInDate
         moveOutDate
+        avatar
       }
       charges {
         water

@@ -4,16 +4,7 @@ import { useMutation } from '@apollo/client';
 import { format } from 'fecha';
 import { AvailableDropdown } from '../../common/Dropdowns';
 import { UPDATE_ROOM } from '../../../../services/mutation';
-import {
-  Form,
-  Container,
-  InputContainer,
-  Inputs,
-  Input,
-  Button,
-  Buttons,
-  Blur,
-} from '../../common/FormElements';
+import { Input, Form, Inputs, Button, Buttons, Container, Blur, Header } from '../../common/FormEl';
 
 const UpdateRoom = ({ setEditRoom, room }) => {
   const [values, setValues] = useState({
@@ -76,75 +67,66 @@ const UpdateRoom = ({ setEditRoom, room }) => {
           });
         }}
       >
+        <Header text="CREATE ROOM" />
         <Inputs>
-          <InputContainer>
-            <label htmlFor="room-number">ROOM NUMBER</label>
-            <Input
-              name="roomNumber"
-              type="number"
-              id="room-number"
-              value={values.roomNumber}
-              onChange={onChange}
-            />
-          </InputContainer>
+          <Input
+            name="roomNumber"
+            type="number"
+            placeholder="Room Number"
+            value={values.roomNumber}
+            onChange={onChange}
+          />
 
-          <InputContainer>
-            <label htmlFor="available">AVAILABLE ?</label>
-            <AvailableDropdown
-              name="available"
-              value={values.available}
-              id="available"
-              onChange={onChange}
-            />
-          </InputContainer>
+          <AvailableDropdown
+            name="available"
+            value={values.available}
+            id="available"
+            onChange={onChange}
+          />
         </Inputs>
 
-        <p>OCCUPANT </p>
+        <h5>OCCUPANT</h5>
         <Inputs>
-          <InputContainer>
-            <label htmlFor="firstName">FIRST NAME</label>
-            <Input
-              name="firstName"
-              type="text"
-              id="firstName"
-              value={values.firstName}
-              onChange={onChange}
-            />
-          </InputContainer>
+          <Input
+            name="firstName"
+            type="text"
+            placeholder="First Name"
+            value={values.firstName}
+            onChange={onChange}
+          />
 
-          <InputContainer>
-            <label htmlFor="lastName">FIRST NAME</label>
-            <Input
-              name="lastName"
-              type="text"
-              id="lastName"
-              value={values.lastName}
-              onChange={onChange}
-            />
-          </InputContainer>
+          <Input
+            name="lastName"
+            placeholder="Last Name"
+            type="text"
+            id="lastName"
+            value={values.lastName}
+            onChange={onChange}
+          />
         </Inputs>
 
         <Inputs>
-          <InputContainer>
-            <label htmlFor="phoneNumber">FIRST NAME</label>
-            <Input
-              name="phoneNumber"
-              type="text"
-              id="phoneNumber"
-              value={values.phoneNumber}
-              onChange={onChange}
-            />
-          </InputContainer>
+          <Input
+            name="phoneNumber"
+            placeholder="Phone Number"
+            type="text"
+            value={values.phoneNumber}
+            onChange={onChange}
+          />
 
-          <InputContainer>
-            <label htmlFor="email">FIRST NAME</label>
-            <Input name="email" type="email" id="email" value={values.email} onChange={onChange} />
-          </InputContainer>
+          <Input
+            name="email"
+            type="email"
+            id="email"
+            value={values.email}
+            onChange={onChange}
+            placeholder="Email Address"
+          />
         </Inputs>
 
         <Inputs>
-          <InputContainer>
-            <label htmlFor="moveInDate">MOVE IN DATE</label>
+          <label htmlFor="moveInDate">
+            MOVE IN DATE
             <Input
               name="moveInDate"
               type="date"
@@ -152,10 +134,10 @@ const UpdateRoom = ({ setEditRoom, room }) => {
               value={values.moveInDate}
               onChange={onChange}
             />
-          </InputContainer>
+          </label>
 
-          <InputContainer>
-            <label htmlFor="email">MOVE OUT DATE</label>
+          <label htmlFor="email">
+            MOVE OUT DATE
             <Input
               name="moveOutDate"
               type="date"
@@ -163,53 +145,51 @@ const UpdateRoom = ({ setEditRoom, room }) => {
               value={values.moveOutDate}
               onChange={onChange}
             />
-          </InputContainer>
+          </label>
         </Inputs>
 
-        <p>CHARGES </p>
-        <Inputs>
-          <InputContainer>
-            <label htmlFor="parking">PARKING</label>
-            <Input
-              name="parking"
-              type="text"
-              id="parking"
-              value={values.parking}
-              onChange={onChange}
-            />
-          </InputContainer>
+        <h5>CHARGES</h5>
 
-          <InputContainer>
-            <label htmlFor="electricity">ELECTRICITY</label>
-            <Input
-              name="electricity"
-              type="text"
-              id="electricity"
-              value={values.electricity}
-              onChange={onChange}
-            />
-          </InputContainer>
+        <Inputs>
+          <Input
+            name="parking"
+            type="number"
+            value={values.parking}
+            onChange={onChange}
+            placeholder="Parking"
+          />
+
+          <Input
+            name="electricity"
+            type="number"
+            value={values.electricity}
+            onChange={onChange}
+            placeholder="Electricity"
+          />
         </Inputs>
 
         <Inputs>
-          <InputContainer>
-            <label htmlFor="water">WATER</label>
-            <Input name="water" type="text" id="water" value={values.water} onChange={onChange} />
-          </InputContainer>
+          <Input
+            name="water"
+            type="number"
+            value={values.water}
+            onChange={onChange}
+            placeholder="Water"
+          />
 
-          <InputContainer>
-            <label htmlFor="rent">RENT</label>
-            <Input name="rent" type="text" id="email" value={values.rent} onChange={onChange} />
-          </InputContainer>
+          <Input
+            name="rent"
+            type="number"
+            value={values.rent}
+            onChange={onChange}
+            placeholder="Rent"
+          />
         </Inputs>
 
         <Buttons>
-          <Button type="submit" background="#a2293a">
-            ADD ROOM
-          </Button>
-          <Button background="#242423" onClick={() => setEditRoom(false)}>
-            CANCEL
-          </Button>
+          <Button type="submit" background="#a2293a" text="EDIT ROOM" />
+
+          <Button background="#242423" onClick={() => setEditRoom(false)} text="CANCEL" />
         </Buttons>
       </Form>
       <Blur onClick={() => setEditRoom(false)} />

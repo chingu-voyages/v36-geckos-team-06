@@ -22,7 +22,7 @@ const Room = styled.div`
   width: 100%;
   aspect-ratio: 1/1;
   border-radius: 10px;
-  background: ${({ bg }) => bg || '#491f1e'};
+  background: linear-gradient(180deg, ${({ bg }) => bg || '#491f1e'} 0%, #1f0100 100%);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
