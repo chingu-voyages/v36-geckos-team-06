@@ -5,7 +5,7 @@ export const HeaderStyled = styled.header`
   flex-direction: ${({ direction }) => direction};
   justify-content: ${({ justify }) => justify};
   align-items: ${({ align }) => align};
-  height: 350px;
+  height: 360px;
   gap: 24px;
   width: 100%;
   background: url(${({ bg }) => bg});

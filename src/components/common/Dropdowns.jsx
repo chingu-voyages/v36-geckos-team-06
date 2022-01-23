@@ -283,6 +283,9 @@ export const CategoryDropdown = ({ onChange, value }) => (
 
 export const AvailableDropdown = ({ onChange, value }) => (
   <Select id="available" name="available" onChange={onChange} value={value}>
+    <option value="" disabled selected>
+      Available ?
+    </option>
     <option value="yes">Yes</option>
     <option value="no">No</option>
   </Select>

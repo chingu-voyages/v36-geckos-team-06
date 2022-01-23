@@ -38,6 +38,11 @@ export const CloseButton = styled(AiOutlineCloseCircle)`
   color: ${({ color }) => color || 'black'}; ;
 `;
 
+export const Inputs = styled.div`
+  display: flex;
+  gap: 16px;
+`;
+
 const InputStyled = styled.input`
   background: #f9f9f9;
   border: 1px solid #491f1e;

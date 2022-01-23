@@ -84,3 +84,18 @@ export const Inputs = styled.div`
   display: flex;
   gap: 16px;
 `;
+
+export const Blur = styled.div`
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(9px);
+  z-index: 2;
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+`;
