@@ -16,6 +16,11 @@ export const Container = styled.section`
 
 export const Blur = styled.div`
   background: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   backdrop-filter: blur(9px);
   z-index: 2;
   position: absolute;
@@ -47,6 +52,26 @@ const InputStyled = styled.input`
   background: #f9f9f9;
   border: 1px solid #491f1e;
   width: 100%;
+  padding: 16px;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 14.6095px;
+  letter-spacing: 0.208707px;
+  color: #491f1e;
+
+  &::placeholder {
+    font-weight: 500;
+    font-size: 14.6095px;
+    letter-spacing: 0.208707px;
+    color: #491f1e;
+  }
+`;
+
+export const TextArea = styled.textarea`
+  width: 100%;
+  height: 132px;
+  background: #f9f9f9;
+  border: 1px solid #491f1e;
   padding: 16px;
   border-radius: 5px;
   font-weight: 500;
@@ -130,6 +155,10 @@ export const Input = ({ placeholder, name, type, value, onChange }) => (
     value={value}
     onChange={onChange}
   />
+);
+
+export const ReadOnlyInput = ({ placeholder, name, type, value, onChange }) => (
+  <InputStyled placeholder={placeholder} name={name} type={type} value={value} readOnly disabled />
 );
 
 export const Button = ({ type, onClick, text, background }) => (
