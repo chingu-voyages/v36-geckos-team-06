@@ -2,14 +2,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import {
-  Input,
   ReadOnlyInput,
   Form,
   Button,
   Buttons,
   Container,
   Blur,
-  Header,
   TextArea,
 } from '../../common/FormEl';
 import { StatusDropdown } from '../../common/Dropdowns';
@@ -35,14 +33,10 @@ const Property = styled.p`
 `;
 
 const UpdateRepair = ({ setUpdateRepair, currentRepair }) => {
-  const [values, setStatus] = useState({
-    status: currentRepair.status,
-    issue: currentRepair.issue,
-    description: currentRepair.id,
-  });
+  const [status, setValue] = useState(currentRepair.status);
 
   const onChange = (event) => {
-    setStatus(event.target.value);
+    setValue(event.target.value);
   };
 
   return (
@@ -55,7 +49,7 @@ const UpdateRepair = ({ setUpdateRepair, currentRepair }) => {
         </TextContainer>
         <label htmlFor="issue">
           ISSUE
-          <ReadOnlyInput name="issue" type="text" placeholder="Issue" value={values.issue} />
+          <ReadOnlyInput name="issue" type="text" placeholder="Issue" value={currentRepair.issue} />
         </label>
         <label htmlFor="description">
           DESCRIPTION
@@ -64,13 +58,13 @@ const UpdateRepair = ({ setUpdateRepair, currentRepair }) => {
             name="description"
             type="text"
             placeholder="Description"
-            value={values.description}
+            value={currentRepair.details}
             disabled
           />
         </label>
         <label htmlFor="status">
           STATUS
-          <StatusDropdown onChange={onChange} name="status" value={values.status} />
+          <StatusDropdown onChange={onChange} name="status" value={status} />
         </label>
         <Buttons>
           <Button type="submit" background="#491F1E" text="UPDATE" />
