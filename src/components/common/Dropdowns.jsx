@@ -290,3 +290,11 @@ export const AvailableDropdown = ({ onChange, value }) => (
     <option value="no">No</option>
   </Select>
 );
+
+export const StatusDropdown = ({ onChange, value }) => (
+  <Select id="status" name="status" onChange={onChange} value={value}>
+    <option disabled>Status</option>
+    <option value="ongoing">Ongoing</option>
+    <option value="ongoing">Resolved</option>
+  </Select>
+);
