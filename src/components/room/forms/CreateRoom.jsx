@@ -39,8 +39,6 @@ const CreateRoom = ({ setCreateRoom, propertyId }) => {
   if (loading) return 'Submitting...';
   if (error) return `Submission error! ${error.message}`;
 
-  console.log(propertyId);
-
   return (
     <Container>
       <Form

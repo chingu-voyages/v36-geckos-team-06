@@ -1,12 +1,15 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import { useMutation } from '@apollo/client';
 import { format } from 'fecha';
 import { AvailableDropdown } from '../../common/Dropdowns';
-import { UPDATE_ROOM } from '../../../../services/mutation';
+import { UPDATE_ROOM, DELETE_ROOM } from '../../../../services/mutation';
+import { GET_PROPERTY } from '../../../../services/query';
 import { Input, Form, Inputs, Button, Buttons, Container, Blur, Header } from '../../common/FormEl';
 
 const UpdateRoom = ({ setEditRoom, room }) => {
+  const router = useRouter();
   const [values, setValues] = useState({
     roomNumber: room.roomNumber,
     water: room.charges.water,
@@ -21,6 +24,7 @@ const UpdateRoom = ({ setEditRoom, room }) => {
     moveInDate: format(new Date(room.occupant.moveInDate), 'isoDate'),
     moveOutDate: format(new Date(room.occupant.moveInDate), 'isoDate'),
   });
+  const propertyId = room.property.id;
 
   const onChange = (event) => {
     setValues({
@@ -30,9 +34,16 @@ const UpdateRoom = ({ setEditRoom, room }) => {
   };
 
   const [updateRoom, { loading, error }] = useMutation(UPDATE_ROOM, {
-    // refetchQueries: [{ query: GET_PROPERTY, variables: { propertyId: propertyId } }],
+    refetchQueries: [{ query: GET_PROPERTY, variables: { propertyId: propertyId } }],
     onCompleted: () => {
       setEditRoom(false);
+    },
+  });
+
+  const [deleteRoom] = useMutation(DELETE_ROOM, {
+    refetchQueries: [{ query: GET_PROPERTY, variables: { propertyId: propertyId } }],
+    onCompleted: () => {
+      router.push(`/property/${propertyId}`);
     },
   });
 
@@ -189,7 +200,18 @@ const UpdateRoom = ({ setEditRoom, room }) => {
         <Buttons>
           <Button type="submit" background="#a2293a" text="EDIT ROOM" />
 
-          <Button background="#242423" onClick={() => setEditRoom(false)} text="CANCEL" />
+          <Button
+            background="#242423"
+            onClick={(event) => {
+              event.preventDefault();
+              deleteRoom({
+                variables: {
+                  deleteRoomId: room.id,
+                },
+              });
+            }}
+            text="DELETE ROOM"
+          />
         </Buttons>
       </Form>
       <Blur onClick={() => setEditRoom(false)} />

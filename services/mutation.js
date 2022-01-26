@@ -166,6 +166,9 @@ const UPDATE_ROOM = gql`
         moveInDate
         moveOutDate
       }
+      property {
+        id
+      }
       charges {
         water
         rent
@@ -179,6 +182,12 @@ const UPDATE_ROOM = gql`
   }
 `;
 
+const DELETE_ROOM = gql`
+  mutation DeleteRoom($deleteRoomId: ID!) {
+    deleteRoom(id: $deleteRoomId)
+  }
+`;
+
 export {
   SIGN_IN_LANDLORD,
   SIGN_UP_LANDLORD,
@@ -187,4 +196,5 @@ export {
   DELETE_PROPERTY,
   CREATE_ROOM,
   UPDATE_ROOM,
+  DELETE_ROOM,
 };

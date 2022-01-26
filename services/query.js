@@ -57,6 +57,7 @@ const GET_ROOM = gql`
     room(id: $roomId) {
       id
       property {
+        id
         fullImage
         name
       }
