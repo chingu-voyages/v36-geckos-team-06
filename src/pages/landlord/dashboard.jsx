@@ -12,8 +12,7 @@ import { withAuth, getLandlordIdFromLocalStorage } from '../../../utils';
 import { GET_LANDLORD } from '../../../services/query';
 
 const Dashboard = () => {
-  const [showRepairs, setShowRepairs] = useState('properties');
-
+  const [showSection, setShowSection] = useState('properties');
   const [createProperty, setCreateProperty] = useState(false);
 
   const landlord = getLandlordIdFromLocalStorage();
@@ -32,11 +31,11 @@ const Dashboard = () => {
       )}
       <Layout>
         <Header setCreateProperty={setCreateProperty} firstName={data?.landlord?.firstName} />
-        <Actions setShowRepairs={setShowRepairs} showRepairs={showRepairs} />
+        <Actions setShowSection={setShowSection} showSection={showSection} />
         <Content>
-          {showRepairs === 'properties' && <Properties properties={data.landlord.properties} />}
+          {showSection === 'properties' && <Properties properties={data.landlord.properties} />}
 
-          {showRepairs === 'repairs' && <Repairs />}
+          {showSection === 'repairs' && <Repairs />}
         </Content>
       </Layout>
     </>

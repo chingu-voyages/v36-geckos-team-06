@@ -4,7 +4,7 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
+  font-size: 28px;
   background: ${({ color }) => color};
   color: ${({ color }) => (color === 'white' ? 'black' : 'white')};
   text-transform: uppercase;
