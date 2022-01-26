@@ -16,14 +16,13 @@ export const Container = styled.section`
 
 export const Blur = styled.div`
   background: rgba(0, 0, 0, 0.8);
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   backdrop-filter: blur(9px);
   z-index: 2;
-  position: absolute;
   height: 100vh;
   width: 100%;
   padding: 40px;
