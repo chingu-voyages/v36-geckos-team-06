@@ -58,7 +58,6 @@ const typeDefs = gql`
     updateRoom(
       id: ID!
       roomNumber: String!
-      propertyName: String!
       available: String!
       occupant: OccupantInput
       charges: ChargesInput!

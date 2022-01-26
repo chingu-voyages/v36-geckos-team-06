@@ -2,6 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
+import { getAvatar } from '../../../utils/index';
 
 const ImageInfoContainer = styled.div`
   display: flex;
@@ -22,11 +23,12 @@ const ImageWrapper = styled.div`
 `;
 
 const capitalize = (str) => str?.charAt(0).toUpperCase() + str?.slice(1);
+const image = getAvatar();
 
 const Tenant = ({ occupant }) => (
   <ImageInfoContainer>
     <ImageWrapper>
-      <Image src={occupant?.avatar} width={320} height={320} />
+      <Image src={occupant?.avatar || image} width={320} height={320} />
     </ImageWrapper>
     <h4>
       {capitalize(occupant?.firstName)} {`  `}
