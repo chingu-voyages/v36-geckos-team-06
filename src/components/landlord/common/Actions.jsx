@@ -2,35 +2,39 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import styled from 'styled-components';
-import Searchbar from '../../common/SearchBar';
 import Button from '../../common/Button';
 
 const ActionsContainer = styled.section`
-  display: grid;
-  grid-template-columns: 1fr 1fr 2fr;
-  grid-gap: 20px;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
-  /* @media (max-width: 768px) {
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px;
-  } */
+  background-color: #242423;
+  border-radius: 16px;
+  padding: 16px;
+  font-size: 32px;
 `;
 
-const Actions = ({ setShowRepairs, showRepairs }) => (
+const Actions = ({ setShowSection, showSection }) => (
   <ActionsContainer>
     <Button
-      onClick={() => setShowRepairs('properties')}
-      color={showRepairs === 'properties' ? '#A3293A' : '#242423'}
+      onClick={() => setShowSection('properties')}
+      color={showSection === 'properties' ? '#491f1e' : '#242423'}
     >
       Properties
     </Button>
     <Button
-      onClick={() => setShowRepairs('repairs')}
-      color={showRepairs === 'repairs' ? '#A3293A' : '#242423'}
+      onClick={() => setShowSection('repairs')}
+      color={showSection === 'repairs' ? '#491f1e' : '#242423'}
     >
       Repairs
     </Button>
-    <Searchbar />
+
+    <Button
+      onClick={() => setShowSection('summary')}
+      color={showSection === 'summary' ? '#491f1e' : '#242423'}
+    >
+      SUMMARY
+    </Button>
   </ActionsContainer>
 );
 export default Actions;
