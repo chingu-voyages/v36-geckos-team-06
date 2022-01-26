@@ -29,12 +29,12 @@ const Actions = ({ setShowSection, showSection }) => (
       Repairs
     </Button>
 
-    <Button
+    {/* <Button
       onClick={() => setShowSection('summary')}
       color={showSection === 'summary' ? '#491f1e' : '#242423'}
     >
       SUMMARY
-    </Button>
+    </Button> */}
   </ActionsContainer>
 );
 export default Actions;
