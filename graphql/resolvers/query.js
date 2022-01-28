@@ -28,6 +28,12 @@ const Query = {
     const landlordToReturn = await models.Landlord.findById(id);
     return landlordToReturn;
   },
+
+  tenant: async (_, { email }, { models }) => {
+    // Querying nested objects
+    const roomToReturn = await models.Room.findOne({ 'occupant.email': email }).exec();
+    return roomToReturn;
+  },
 };
 
 export default Query;
