@@ -7,7 +7,6 @@ export const Container = styled.section`
   position: absolute;
   height: 100vh;
   width: 100%;
-  padding: 40px;
   display: flex;
   justify-content: center;
   flex-direction: column;

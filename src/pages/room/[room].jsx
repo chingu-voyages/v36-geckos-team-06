@@ -14,6 +14,7 @@ import Header from '../../components/room/Header';
 import Tenant from '../../components/room/Tenant';
 import UpdateRoom from '../../components/room/forms/UpdateRoom';
 import UpdateRepair from '../../components/repairs/forms/UpdateRepair';
+import { RepairsHeading, RepairsContainer } from '../../components/common/Repairs';
 
 const roomData = PROPERTY_DATA[0].rooms[0];
 // name charges occupant
@@ -43,20 +44,6 @@ const ImageWrapper = styled.div`
 `;
 
 const ProfileImage = styled(Image)``;
-
-const RepairsHeading = styled.h2`
-  text-transform: uppercase;
-  font-size: 2rem;
-`;
-
-const RepairsContainer = styled.div`
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  gap: 1rem;
-  max-height: 750px;
-  overflow: scroll;
-`;
 
 const RoomPage = () => {
   const [editRoom, setEditRoom] = useState(false);
