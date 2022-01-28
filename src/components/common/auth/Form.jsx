@@ -14,6 +14,11 @@ export const Info = styled.div`
   }
 `;
 
+export const Buttons = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 export const Form = styled.form`
   background-color: #ffffff;
   display: flex;

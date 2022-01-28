@@ -5,7 +5,7 @@ import { useMutation } from '@apollo/client';
 import Link from 'next/link';
 import Layout from '../../components/common/auth/Layout';
 import { Input } from '../../components/common/FormEl';
-import { Form, Button, Info } from '../../components/common/auth/Form';
+import { Form, Button, Info, Buttons } from '../../components/common/auth/Form';
 import { SIGN_IN_TENANT } from '../../../services/mutation';
 
 const SignIn = () => {
@@ -73,12 +73,15 @@ const SignIn = () => {
         />
 
         <Button type="submit"> SIGN IN</Button>
-        <Link href="/">
-          <a href>GO BACK</a>
-        </Link>
-        <Link href="/tenant/signup">
-          <a href>SIGN UP</a>
-        </Link>
+
+        <Buttons>
+          <Link href="/">
+            <a href>GO BACK</a>
+          </Link>
+          <Link href="/tenant/signup">
+            <a href>SIGN UP</a>
+          </Link>
+        </Buttons>
       </Form>
     </Layout>
   );

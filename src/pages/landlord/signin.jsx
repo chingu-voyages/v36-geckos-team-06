@@ -4,7 +4,8 @@ import { useRouter } from 'next/router';
 import { useMutation, gql, useApolloClient } from '@apollo/client';
 import Link from 'next/link';
 import Layout from '../../components/common/auth/Layout';
-import { Form, InputContainer, Input, Button, Info } from '../../components/common/auth/Form';
+import { Input } from '../../components/common/FormEl';
+import { Form, Button, Info, Buttons } from '../../components/common/auth/Form';
 import { SIGN_IN_LANDLORD } from '../../../services/mutation';
 
 const SignIn = () => {
@@ -65,30 +66,33 @@ const SignIn = () => {
           <p>LANDLORD</p>
         </Info>
 
-        <InputContainer>
-          <label htmlFor="email">EMAIL ADDRESS</label>
-          <Input name="email" type="email" id="email" onChange={onChange} value={values.email} />
-        </InputContainer>
+        <Input
+          name="email"
+          type="email"
+          id="email"
+          onChange={onChange}
+          value={values.email}
+          placeholder="Email Address"
+        />
 
-        <InputContainer>
-          <label htmlFor="password">PASSWORD</label>
-          <Input
-            name="password"
-            type="password"
-            id="password"
-            onChange={onChange}
-            value={values.password}
-          />
-        </InputContainer>
-
+        <Input
+          name="password"
+          type="password"
+          id="password"
+          onChange={onChange}
+          value={values.password}
+          placeholder="Password"
+        />
         <Button type="submit"> Sign In</Button>
 
-        <Link href="/">
-          <a href>GO BACK</a>
-        </Link>
-        <Link href="/landlord/signup">
-          <a href>SIGN UP</a>
-        </Link>
+        <Buttons>
+          <Link href="/">
+            <a href>GO BACK</a>
+          </Link>
+          <Link href="/landlord/signup">
+            <a href>SIGN UP</a>
+          </Link>
+        </Buttons>
       </Form>
     </Layout>
   );

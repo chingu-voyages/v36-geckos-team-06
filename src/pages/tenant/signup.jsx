@@ -1,10 +1,11 @@
 /* eslint-disable no-undef */
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useMutation, gql, useApolloClient } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import Layout from '../../components/common/auth/Layout';
 import { Input } from '../../components/common/FormEl';
-import { Form, Button, Info } from '../../components/common/auth/Form';
+import { Form, Button, Info, Buttons } from '../../components/common/auth/Form';
 import { SIGN_UP_TENANT } from '../../../services/mutation';
 
 const Signup = () => {
@@ -72,13 +73,14 @@ const Signup = () => {
         />
 
         <Button type="submit"> SIGN UP</Button>
-        {/* 
-        <Link href="/">
-          <a href>GO BACK</a>
-        </Link>
-        <Link href="/landlord/signin">
-          <a href>SIGN IN</a>
-        </Link> */}
+        <Buttons>
+          <Link href="/">
+            <a href>GO BACK</a>
+          </Link>
+          <Link href="/tenant/signin">
+            <a href>SIGN IN</a>
+          </Link>
+        </Buttons>
       </Form>
     </Layout>
   );
