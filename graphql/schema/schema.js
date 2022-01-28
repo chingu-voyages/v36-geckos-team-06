@@ -46,7 +46,6 @@ const typeDefs = gql`
     ): AuthLandlord!
 
     signInLandlord(email: String!, password: String!): AuthLandlord!
-
     signUpTenant(email: String!, password: String!): AuthTenant!
     signInTenant(email: String!, password: String!): AuthTenant!
 

@@ -33,6 +33,6 @@ TenantSchema.set(`toJSON`, {
   },
 });
 
-const Tenant = mongoose.models.Landlord || mongoose.model(`Tenant`, TenantSchema);
+const Tenant = mongoose.models.Tenant || mongoose.model(`Tenant`, TenantSchema);
 
 export default Tenant;
