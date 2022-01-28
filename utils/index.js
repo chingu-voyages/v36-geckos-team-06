@@ -1,6 +1,6 @@
 import getAvatar from './getAvatar';
 import getCategoryImage from './getCategoryImage';
 import withAuth from './withAuth';
-import getLandlordIdFromLocalStorage from './getLandlordIdFromLocalStorage';
+import getUserFromLocalStorage from './getUserFromLocalStorage';
 
-export { getAvatar, getCategoryImage, withAuth, getLandlordIdFromLocalStorage };
+export { getAvatar, getCategoryImage, withAuth, getUserFromLocalStorage };

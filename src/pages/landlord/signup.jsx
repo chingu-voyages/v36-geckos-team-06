@@ -1,9 +1,11 @@
 /* eslint-disable no-undef */
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useMutation, gql, useApolloClient } from '@apollo/client';
-import Layout from '../../components/landlord/auth/Layout';
-import { Form, InputContainer, Input, Button, Info } from '../../components/landlord/auth/Form';
+import Layout from '../../components/common/auth/Layout';
+import { Input } from '../../components/common/FormEl';
+import { Form, Button, Info, Buttons } from '../../components/common/auth/Form';
 import { SIGN_UP_LANDLORD } from '../../../services/mutation';
 
 const Signup = () => {
@@ -66,52 +68,51 @@ const Signup = () => {
           <p>LANDLORD</p>
         </Info>
 
-        <InputContainer>
-          <label htmlFor="firstName">FIRST NAME</label>
-          <Input
-            name="firstName"
-            type="text"
-            id="firstName"
-            onChange={onChange}
-            value={values.firstName}
-          />
-        </InputContainer>
+        <Input
+          name="firstName"
+          type="text"
+          id="firstName"
+          onChange={onChange}
+          value={values.firstName}
+          placeholder="First Name"
+        />
 
-        <InputContainer>
-          <label htmlFor="lastName">LAST NAME</label>
-          <Input
-            name="lastName"
-            type="text"
-            id="lastName"
-            onChange={onChange}
-            value={values.lastName}
-          />
-        </InputContainer>
+        <Input
+          name="lastName"
+          type="text"
+          id="lastName"
+          onChange={onChange}
+          value={values.lastName}
+          placeholder="Last Name"
+        />
 
-        <InputContainer>
-          <label htmlFor="email">EMAIL ADDRESS</label>
-          <Input name="email" type="email" id="email" onChange={onChange} value={values.email} />
-        </InputContainer>
+        <Input
+          name="email"
+          type="email"
+          id="email"
+          onChange={onChange}
+          value={values.email}
+          placeholder="Email Address"
+        />
 
-        <InputContainer>
-          <label htmlFor="password">PASSWORD</label>
-          <Input
-            name="password"
-            type="password"
-            id="password"
-            onChange={onChange}
-            value={values.password}
-          />
-        </InputContainer>
+        <Input
+          name="password"
+          type="password"
+          id="password"
+          onChange={onChange}
+          value={values.password}
+          placeholder="Password"
+        />
 
         <Button type="submit"> SIGN UP</Button>
-        {/* 
-        <Link href="/">
-          <a href>GO BACK</a>
-        </Link>
-        <Link href="/landlord/signin">
-          <a href>SIGN IN</a>
-        </Link> */}
+        <Buttons>
+          <Link href="/">
+            <a href>GO BACK</a>
+          </Link>
+          <Link href="/landlord/signin">
+            <a href>SIGN IN</a>
+          </Link>
+        </Buttons>
       </Form>
     </Layout>
   );

@@ -313,6 +313,65 @@ const Mutation = {
     };
     return AuthLandlord;
   },
+
+  signUpTenant: async (_, { email, password, role = 'tenant' }) => {
+    // normalize email address
+    email = email.trim().toLowerCase();
+    // hash the password
+    const hashed = await bcrypt.hash(password, 10);
+
+    let returnedTenant;
+
+    try {
+      const tenant = await models.Tenant.create({
+        email,
+        avatar: getAvatar(),
+        password: hashed,
+        role,
+      });
+
+      returnedTenant = {
+        id: tenant.id,
+        email: tenant.email,
+        // create and return the json web token
+        jwt: jwt.sign({ id: tenant._id }, process.env.JWT_SECRET),
+        role: tenant.role,
+      };
+      return returnedTenant;
+    } catch (error) {
+      console.log(error);
+      // if there's a problem creating the account, throw an error
+      throw new Error('Error creating account');
+    }
+  },
+
+  signInTenant: async (_, { email, password }) => {
+    if (email) {
+      // normalize email address
+      email = email.trim().toLowerCase();
+    }
+
+    const tenant = await models.Tenant.findOne({ email });
+
+    if (!tenant) {
+      throw new AuthenticationError('Error signing in');
+    }
+
+    const valid = await bcrypt.compare(password, tenant.password);
+
+    if (!valid) {
+      throw new AuthenticationError('Error signing in');
+    }
+
+    const AuthLandlord = {
+      id: tenant.id,
+      email: tenant.lastName,
+      avatar: tenant.avatar,
+      role: tenant.role,
+      jwt: jwt.sign({ id: tenant._id }, process.env.JWT_SECRET),
+    };
+    return AuthLandlord;
+  },
 };
 
 export default Mutation;

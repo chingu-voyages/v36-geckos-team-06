@@ -24,7 +24,10 @@ const Home = () => (
           <Link href="/landlord/signin">
             <Button background="#A2293A">LANDLORD</Button>
           </Link>
-          <Button background="#242423">TENANT</Button>
+
+          <Link href="/tenant/signin">
+            <Button background="#242423">TENANT</Button>
+          </Link>
         </Buttons>
       </Container>
     </Layout>

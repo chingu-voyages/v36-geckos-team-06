@@ -14,6 +14,11 @@ export const Info = styled.div`
   }
 `;
 
+export const Buttons = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 export const Form = styled.form`
   background-color: #ffffff;
   display: flex;
@@ -22,7 +27,7 @@ export const Form = styled.form`
   border-radius: 16px;
   justify-content: center;
   padding: 48px 32px;
-  width: 650px;
+  width: 550px;
   box-shadow: 3px 4px 15px -8px rgba(0, 0, 0, 0.71);
 
   a {
@@ -55,7 +60,7 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 40px;
+  font-size: 24px;
   background: #a2293a;
   color: white;
   text-transform: uppercase;

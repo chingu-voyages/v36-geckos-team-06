@@ -1,5 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-undef */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { useQuery } from '@apollo/client';
 import Layout from '../../components/common/Layout';
 import Content from '../../components/landlord/common/Content';
@@ -8,14 +10,24 @@ import Properties from '../../components/landlord/dashboard/Properties';
 import Repairs from '../../components/landlord/dashboard/Repairs';
 import Actions from '../../components/landlord/common/Actions';
 import CreateProperty from '../../components/property/forms/CreateProperty';
-import { withAuth, getLandlordIdFromLocalStorage } from '../../../utils';
+import { getUserFromLocalStorage } from '../../../utils';
 import { GET_LANDLORD } from '../../../services/query';
 
 const Dashboard = () => {
   const [showSection, setShowSection] = useState('properties');
   const [createProperty, setCreateProperty] = useState(false);
 
-  const landlord = getLandlordIdFromLocalStorage();
+  const landlord = getUserFromLocalStorage(`authLandlord`);
+  const Router = useRouter();
+
+  useEffect(() => {
+    if (!landlord) {
+      // if landlord does not exist in local storage we push the user back to the home page where they have to sign in
+      Router.replace(`/`);
+      return null;
+    }
+    return null;
+  }, [landlord]);
 
   const { loading, error, data } = useQuery(GET_LANDLORD, {
     variables: { landlordId: landlord?.id },
@@ -42,4 +54,4 @@ const Dashboard = () => {
   );
 };
 
-export default withAuth(Dashboard);
+export default Dashboard;

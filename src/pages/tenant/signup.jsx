@@ -1,20 +1,29 @@
 /* eslint-disable no-undef */
 import React, { useState } from 'react';
-import { useRouter } from 'next/router';
-import { useMutation, gql, useApolloClient } from '@apollo/client';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useMutation } from '@apollo/client';
 import Layout from '../../components/common/auth/Layout';
 import { Input } from '../../components/common/FormEl';
 import { Form, Button, Info, Buttons } from '../../components/common/auth/Form';
-import { SIGN_IN_LANDLORD } from '../../../services/mutation';
+import { SIGN_UP_TENANT } from '../../../services/mutation';
 
-const SignIn = () => {
-  const client = useApolloClient();
+const Signup = () => {
+  // const client = useApolloClient();
   const router = useRouter();
   // set the default state of the form
   const [values, setValues] = useState({
     email: ``,
     password: ``,
+  });
+
+  const [signUpTenant, { loading, error }] = useMutation(SIGN_UP_TENANT, {
+    onCompleted: (data) => {
+      // store the authenticated tenant in local storage
+      localStorage.setItem('authTenant', JSON.stringify(data.signUpTenant));
+      // redirect landlord to dashboard
+      router.push(`/tenant/dashboard`);
+    },
   });
 
   // update the state when a user types in the form
@@ -25,27 +34,6 @@ const SignIn = () => {
     });
   };
 
-  const [signInLandlord, { loading, error }] = useMutation(SIGN_IN_LANDLORD, {
-    onCompleted: (data) => {
-      // store the authenticated landlord in local storage
-      localStorage.setItem('authLandlord', JSON.stringify(data.signInLandlord));
-      // update the local cache
-      client.writeQuery({
-        query: gql`
-          query getAuth {
-            landlordIsLoggedIn
-          }
-        `,
-        data: {
-          landlordIsLoggedIn: true,
-        },
-      });
-
-      // redirect landlord to dashboard
-      router.push(`/landlord/dashboard`);
-    },
-  });
-
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error!</p>;
 
@@ -54,7 +42,7 @@ const SignIn = () => {
       <Form
         onSubmit={(event) => {
           event.preventDefault();
-          signInLandlord({
+          signUpTenant({
             variables: {
               ...values,
             },
@@ -62,8 +50,8 @@ const SignIn = () => {
         }}
       >
         <Info>
-          <h1>SIGN IN</h1>
-          <p>LANDLORD</p>
+          <h1>SIGN UP</h1>
+          <p>TENANT</p>
         </Info>
 
         <Input
@@ -83,14 +71,14 @@ const SignIn = () => {
           value={values.password}
           placeholder="Password"
         />
-        <Button type="submit"> Sign In</Button>
 
+        <Button type="submit"> SIGN UP</Button>
         <Buttons>
           <Link href="/">
             <a href>GO BACK</a>
           </Link>
-          <Link href="/landlord/signup">
-            <a href>SIGN UP</a>
+          <Link href="/tenant/signin">
+            <a href>SIGN IN</a>
           </Link>
         </Buttons>
       </Form>
@@ -98,4 +86,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default Signup;

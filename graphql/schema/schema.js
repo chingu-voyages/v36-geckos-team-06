@@ -12,6 +12,7 @@ const typeDefs = gql`
     room(id: ID): Room
     repair(id: ID): Repair
     repairs: [Repair!]!
+    tenant(email: String): Room
   }
 
   type Mutation {
@@ -45,6 +46,8 @@ const typeDefs = gql`
     ): AuthLandlord!
 
     signInLandlord(email: String!, password: String!): AuthLandlord!
+    signUpTenant(email: String!, password: String!): AuthTenant!
+    signInTenant(email: String!, password: String!): AuthTenant!
 
     # Room
     createRoom(
@@ -96,6 +99,14 @@ const typeDefs = gql`
     role: String!
     avatar: String
     firstName: String
+    jwt: String
+  }
+
+  type AuthTenant {
+    id: ID!
+    role: String!
+    avatar: String
+    email: String
     jwt: String
   }
 

@@ -1,15 +1,14 @@
 /* eslint-disable no-undef */
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import { useMutation, gql, useApolloClient } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import Link from 'next/link';
 import Layout from '../../components/common/auth/Layout';
 import { Input } from '../../components/common/FormEl';
 import { Form, Button, Info, Buttons } from '../../components/common/auth/Form';
-import { SIGN_IN_LANDLORD } from '../../../services/mutation';
+import { SIGN_IN_TENANT } from '../../../services/mutation';
 
 const SignIn = () => {
-  const client = useApolloClient();
   const router = useRouter();
   // set the default state of the form
   const [values, setValues] = useState({
@@ -25,24 +24,13 @@ const SignIn = () => {
     });
   };
 
-  const [signInLandlord, { loading, error }] = useMutation(SIGN_IN_LANDLORD, {
+  const [signInTenant, { loading, error }] = useMutation(SIGN_IN_TENANT, {
     onCompleted: (data) => {
       // store the authenticated landlord in local storage
-      localStorage.setItem('authLandlord', JSON.stringify(data.signInLandlord));
-      // update the local cache
-      client.writeQuery({
-        query: gql`
-          query getAuth {
-            landlordIsLoggedIn
-          }
-        `,
-        data: {
-          landlordIsLoggedIn: true,
-        },
-      });
+      localStorage.setItem('authTenant', JSON.stringify(data.signInTenant));
 
       // redirect landlord to dashboard
-      router.push(`/landlord/dashboard`);
+      router.push(`/tenant/dashboard`);
     },
   });
 
@@ -54,7 +42,7 @@ const SignIn = () => {
       <Form
         onSubmit={(event) => {
           event.preventDefault();
-          signInLandlord({
+          signInTenant({
             variables: {
               ...values,
             },
@@ -63,7 +51,7 @@ const SignIn = () => {
       >
         <Info>
           <h1>SIGN IN</h1>
-          <p>LANDLORD</p>
+          <p>TENANT</p>
         </Info>
 
         <Input
@@ -83,13 +71,14 @@ const SignIn = () => {
           value={values.password}
           placeholder="Password"
         />
-        <Button type="submit"> Sign In</Button>
+
+        <Button type="submit"> SIGN IN</Button>
 
         <Buttons>
           <Link href="/">
             <a href>GO BACK</a>
           </Link>
-          <Link href="/landlord/signup">
+          <Link href="/tenant/signup">
             <a href>SIGN UP</a>
           </Link>
         </Buttons>

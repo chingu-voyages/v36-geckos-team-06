@@ -17,21 +17,25 @@ const withAuth = (WrappedComponent) => (props) => {
     const landlord = localStorage.getItem(`authLandlord`);
     const authLandlord = landlord != null && JSON.parse(landlord);
 
+    const tenant = localStorage.getItem(`authTenant`);
+    const authTenant = tenant != null && JSON.parse(tenant);
+
     // We only want the checks below to occur when the "landlord" status changes, for example when the details about the landlord is present in local storage anymore -> so we put it in a useEffect hook
     useEffect(() => {
-      if (!landlord) {
-        // if landlord does not exist in local storage we push the user back to the home page where they have to sign in
-        Router.replace(`/`);
-        return null;
-      }
-
       if (landlord && authLandlord.role === 'landlord') {
         // if the landlord does exist we push the landlord to the dashboard
         Router.replace(`/landlord/dashboard`);
         return null;
       }
+
+      if (tenant && authTenant.role === 'tenant') {
+        // if the landlord does exist we push the landlord to the dashboard
+        Router.replace(`/tenant/dashboard`);
+        return null;
+      }
+
       // The dependency array that makes sure this effect only runs when the status of 'landlord' changes
-    }, [landlord]);
+    }, [landlord, tenant]);
 
     // Here we return the enhanced component and all its potential props
     return <WrappedComponent {...props} />;
