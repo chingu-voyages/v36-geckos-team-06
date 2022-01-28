@@ -14,30 +14,14 @@ import AddRepair from '../../components/tenant/forms/AddRepair';
 import { HeaderStyled, HeaderButton } from '../../components/common/Header';
 import { RepairsContainer, RepairsHeading } from '../../components/common/Repairs';
 import Repair from '../../components/common/Repair';
+import { ProfileImageContainer, CardContainer, Card } from '../../components/tenant/Dashboard';
+import Button from '../../components/common/Button';
 
 // name charges occupant
 const roomOneRepairs = REPAIR_DATA.filter((repair) => repair.room === 'room 1');
 
-console.log(roomOneRepairs);
-
-const ProfileImageContainer = styled.div`
-  position: relative;
-  width: 213px;
-  height: 213px;
-  border-radius: 50%;
-  overflow: hidden;
-`;
-
-const CardContainer = styled.div`
-  display: flex;
-  width: 100%;
-  background: linear-gradient(#491f1e, #1f0100);
-  height: 300px;
-  border-radius: 10px;
-`;
-
 const Dashboard = () => {
-  const [createRepair, setCreateRepair] = useState(true);
+  const [createRepair, setCreateRepair] = useState(false);
   const [currentRepair, setCurrentRepair] = useState({});
   const tenant = getUserFromLocalStorage(`authTenant`);
   const router = useRouter();
@@ -63,9 +47,14 @@ const Dashboard = () => {
         <ProfileImageContainer>
           <Image layout="responsive" src={profilePic} />
         </ProfileImageContainer>
-        <HeaderButton onClick={() => setCreateRepair(true)}>Add Repair</HeaderButton>
+        <Button style={{ width: '272px' }} color="white" onClick={() => setCreateRepair(true)}>
+          Add Repair
+        </Button>
       </HeaderStyled>
-      <CardContainer>hello</CardContainer>
+      <CardContainer>
+        <Card>1</Card>
+        <Card>2</Card>
+      </CardContainer>
       <RepairsHeading>Repairs</RepairsHeading>
       <RepairsContainer>
         {roomOneRepairs.map((repair) => (
