@@ -1,5 +1,29 @@
 import { gql } from '@apollo/client';
 
+const SIGN_UP_TENANT = gql`
+  mutation signUpTenant($email: String!, $password: String!) {
+    signUpTenant(email: $email, password: $password) {
+      id
+      role
+      avatar
+      email
+      jwt
+    }
+  }
+`;
+
+const SIGN_IN_TENANT = gql`
+  mutation SignInTenant($email: String!, $password: String!) {
+    signInTenant(email: $email, password: $password) {
+      id
+      role
+      avatar
+      email
+      jwt
+    }
+  }
+`;
+
 const SIGN_IN_LANDLORD = gql`
   mutation SignInLandlord($email: String!, $password: String!) {
     signInLandlord(email: $email, password: $password) {
@@ -197,4 +221,6 @@ export {
   CREATE_ROOM,
   UPDATE_ROOM,
   DELETE_ROOM,
+  SIGN_IN_TENANT,
+  SIGN_UP_TENANT,
 };

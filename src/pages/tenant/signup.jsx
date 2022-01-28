@@ -1,0 +1,87 @@
+/* eslint-disable no-undef */
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import { useMutation, gql, useApolloClient } from '@apollo/client';
+import Layout from '../../components/common/auth/Layout';
+import { Input } from '../../components/common/FormEl';
+import { Form, Button, Info } from '../../components/common/auth/Form';
+import { SIGN_UP_TENANT } from '../../../services/mutation';
+
+const Signup = () => {
+  // const client = useApolloClient();
+  const router = useRouter();
+  // set the default state of the form
+  const [values, setValues] = useState({
+    email: ``,
+    password: ``,
+  });
+
+  const [signUpTenant, { loading, error }] = useMutation(SIGN_UP_TENANT, {
+    onCompleted: (data) => {
+      // store the authenticated tenant in local storage
+      localStorage.setItem('authTenant', JSON.stringify(data.signUpTenant));
+      // redirect landlord to dashboard
+      router.push(`/tenant/dashboard`);
+    },
+  });
+
+  // update the state when a user types in the form
+  const onChange = (event) => {
+    setValues({
+      ...values,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error!</p>;
+
+  return (
+    <Layout>
+      <Form
+        onSubmit={(event) => {
+          event.preventDefault();
+          signUpTenant({
+            variables: {
+              ...values,
+            },
+          });
+        }}
+      >
+        <Info>
+          <h1>SIGN UP</h1>
+          <p>TENANT</p>
+        </Info>
+
+        <Input
+          name="email"
+          type="email"
+          id="email"
+          onChange={onChange}
+          value={values.email}
+          placeholder="Email Address"
+        />
+
+        <Input
+          name="password"
+          type="password"
+          id="password"
+          onChange={onChange}
+          value={values.password}
+          placeholder="Password"
+        />
+
+        <Button type="submit"> SIGN UP</Button>
+        {/* 
+        <Link href="/">
+          <a href>GO BACK</a>
+        </Link>
+        <Link href="/landlord/signin">
+          <a href>SIGN IN</a>
+        </Link> */}
+      </Form>
+    </Layout>
+  );
+};
+
+export default Signup;

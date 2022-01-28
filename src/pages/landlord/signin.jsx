@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useMutation, gql, useApolloClient } from '@apollo/client';
 import Link from 'next/link';
-import Layout from '../../components/landlord/auth/Layout';
-import { Form, InputContainer, Input, Button, Info } from '../../components/landlord/auth/Form';
+import Layout from '../../components/common/auth/Layout';
+import { Form, InputContainer, Input, Button, Info } from '../../components/common/auth/Form';
 import { SIGN_IN_LANDLORD } from '../../../services/mutation';
 
 const SignIn = () => {
