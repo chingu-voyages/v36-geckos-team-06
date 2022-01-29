@@ -1,16 +1,31 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import {
-  ReadOnlyInput,
-  Form,
-  Button,
-  Buttons,
-  Container,
-  Blur,
-  TextArea,
-} from '../../common/FormEl';
+import { ReadOnlyInput, Button, Buttons, Blur, TextArea } from '../../common/FormEl';
 import { StatusDropdown } from '../../common/Dropdowns';
+
+const Container = styled.section`
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const Form = styled.form`
+  z-index: 3;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-radius: 16px;
+  justify-content: center;
+  padding: 68px 32px;
+  width: 650px;
+  box-shadow: 3px 4px 15px -8px rgba(0, 0, 0, 0.71);
+`;
 
 const TextContainer = styled.div`
   display: flex;

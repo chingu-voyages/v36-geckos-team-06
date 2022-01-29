@@ -85,6 +85,55 @@ const GET_ROOM = gql`
     }
   }
 `;
+
+const GET_TENANT = gql`
+  query Tenant($email: String) {
+    tenant(email: $email) {
+      id
+      property {
+        id
+        name
+        address
+        postcode
+        city
+        fullImage
+        thumbnail
+        category
+        country
+        landlord {
+          id
+          avatar
+        }
+      }
+      roomNumber
+      available
+      occupant {
+        firstName
+        avatar
+        lastName
+        phoneNumber
+        email
+        moveInDate
+        moveOutDate
+      }
+      charges {
+        water
+        rent
+        electricity
+        parking
+      }
+      repairs {
+        id
+        issue
+        status
+        details
+        room {
+          id
+        }
+      }
+    }
+  }
+`;
 const GET_REPAIRS = gql`
   query Repairs {
     repairs {
@@ -99,4 +148,4 @@ const GET_REPAIRS = gql`
   }
 `;
 
-export { GET_LANDLORD, IS_LOGGED_IN, GET_PROPERTY, GET_REPAIRS, GET_ROOM };
+export { GET_LANDLORD, IS_LOGGED_IN, GET_PROPERTY, GET_REPAIRS, GET_ROOM, GET_TENANT };
