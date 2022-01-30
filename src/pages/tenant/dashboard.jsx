@@ -9,7 +9,7 @@ import profilePic from '../../../public/profilePic.jpg';
 import { REPAIR_DATA } from '../../mockData';
 import Layout from '../../components/common/Layout';
 import AddRepair from '../../components/tenant/forms/AddRepair';
-import { HeaderStyled, HeaderButton } from '../../components/common/Header';
+import { HeaderStyled } from '../../components/common/Header';
 import { RepairsContainer, RepairsHeading } from '../../components/common/Repairs';
 import Repair from '../../components/common/Repair';
 import {
@@ -67,6 +67,9 @@ const Dashboard = () => {
           </ProfileImageContainer>
           <Button style={{ width: '272px' }} color="white" onClick={() => setCreateRepair(true)}>
             Add Repair
+          </Button>
+          <Button style={{ width: '272px' }} color="white" onClick={() => setCreateRepair(true)}>
+            Log Out
           </Button>
         </HeaderStyled>
         <CardContainer>
