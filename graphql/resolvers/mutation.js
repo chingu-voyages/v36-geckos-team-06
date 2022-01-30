@@ -363,14 +363,14 @@ const Mutation = {
       throw new AuthenticationError('Error signing in');
     }
 
-    const AuthLandlord = {
+    const AuthTenant = {
       id: tenant.id,
-      email: tenant.lastName,
+      email: tenant.email,
       avatar: tenant.avatar,
       role: tenant.role,
       jwt: jwt.sign({ id: tenant._id }, process.env.JWT_SECRET),
     };
-    return AuthLandlord;
+    return AuthTenant;
   },
 };
 

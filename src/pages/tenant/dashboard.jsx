@@ -31,7 +31,7 @@ const Dashboard = () => {
   const Router = useRouter();
 
   const { loading, error, data } = useQuery(GET_TENANT, {
-    variables: { email: tenant?.email },
+    variables: { email: tenant.email },
   });
 
   console.log(data?.tenant?.charges);

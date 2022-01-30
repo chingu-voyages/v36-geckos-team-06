@@ -28,7 +28,6 @@ const SignIn = () => {
     onCompleted: (data) => {
       // store the authenticated landlord in local storage
       localStorage.setItem('authTenant', JSON.stringify(data.signInTenant));
-
       // redirect landlord to dashboard
       router.push(`/tenant/dashboard`);
     },
