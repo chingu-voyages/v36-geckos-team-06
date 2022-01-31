@@ -1,13 +1,5 @@
 import styled from 'styled-components';
 
-export const ProfileImageContainer = styled.div`
-  position: relative;
-  width: 213px;
-  height: 213px;
-  border-radius: 50%;
-  overflow: hidden;
-`;
-
 export const CardContainer = styled.div`
   display: flex;
   justify-content: center;
