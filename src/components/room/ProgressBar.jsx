@@ -14,7 +14,7 @@ const ProgressBarContainer = styled.div`
   transform: scale(0.95);
 `;
 const ProgressBarStyled = styled.div`
-  background-color: rgba(255, 206, 86, 1);
+  background-color: #242423;
   width: ${({ percentage }) => `${percentage}%`};
 `;
 
