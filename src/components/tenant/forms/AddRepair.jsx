@@ -1,8 +1,11 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { ReadOnlyInput, Button, Buttons, Blur, TextArea } from '../../common/FormEl';
+import { useMutation } from '@apollo/client';
+import { Input, Button, Buttons, Blur, TextArea } from '../../common/FormEl';
 import { StatusDropdown } from '../../common/Dropdowns';
+import { CREATE_REPAIR } from '../../../../services/mutation';
+import { GET_ROOM } from '../../../../services/query';
 
 const Container = styled.section`
   position: absolute;
@@ -47,20 +50,41 @@ const Property = styled.p`
   font-size: 13px;
 `;
 
-const UpdateRepair = ({ setCreateRepair }) => {
+const UpdateRepair = ({ setCreateRepair, roomNumber }) => {
   const [values, setValue] = useState({
     issue: '',
-    description: '',
-    status: '',
+    details: '',
+    status: 'ongoing',
   });
 
   const onChange = (event) => {
     setValue({ ...values, [event.target.name]: event.target.value });
   };
 
+  const [createRepair, { loading, error }] = useMutation(CREATE_REPAIR, {
+    refetchQueries: [{ query: GET_ROOM, variables: { roomNumber: roomNumber } }],
+    onCompleted: () => {
+      setCreateRepair(false);
+    },
+  });
+
+  if (loading) return 'Submitting...';
+  if (error) return `Submission error! ${error.message}`;
+
   return (
     <Container>
-      <Form onSubmit={(e) => e.preventDefault()}>
+      <Form
+        onSubmit={(event) => {
+          event.preventDefault();
+          createRepair({
+            variables: {
+              issue: values.issue,
+              details: values.details,
+              status: values.status,
+            },
+          });
+        }}
+      >
         <TextContainer>
           <Heading>DETAILS</Heading>
           <RoomNum>ROOM 5</RoomNum>
@@ -68,17 +92,22 @@ const UpdateRepair = ({ setCreateRepair }) => {
         </TextContainer>
         <label htmlFor="issue">
           ISSUE
-          <ReadOnlyInput name="issue" type="text" placeholder="Issue" value={values.issue} />
+          <Input
+            onChange={onChange}
+            name="issue"
+            type="text"
+            placeholder="Issue"
+            value={values.issue}
+          />
         </label>
-        <label htmlFor="description">
+        <label htmlFor="details">
           DESCRIPTION
           <TextArea
-            readOnly
-            name="description"
+            onChange={onChange}
+            name="details"
             type="text"
             placeholder="Description"
-            value={values.description}
-            disabled
+            value={values.details}
           />
         </label>
         <label htmlFor="status">
@@ -86,7 +115,7 @@ const UpdateRepair = ({ setCreateRepair }) => {
           <StatusDropdown onChange={onChange} name="status" value={values.status} />
         </label>
         <Buttons>
-          <Button type="submit" background="#491F1E" text="UPDATE" />
+          <Button type="submit" background="#491F1E" text="Submit" />
           <Button onClick={() => setCreateRepair(false)} background="#242423" text="CANCEL" />
         </Buttons>
       </Form>

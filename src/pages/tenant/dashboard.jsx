@@ -36,9 +36,13 @@ const Dashboard = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error!</p>;
 
+  console.log(data?.tenant);
+
   return (
     <>
-      {createRepair && <AddRepair setCreateRepair={setCreateRepair} />}
+      {createRepair && (
+        <AddRepair setCreateRepair={setCreateRepair} roomNumber={data?.tenant?.roomNumber} />
+      )}
 
       <Layout>
         <Header
