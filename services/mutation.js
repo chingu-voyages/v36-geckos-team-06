@@ -213,8 +213,9 @@ const DELETE_ROOM = gql`
 `;
 
 const CREATE_REPAIR = gql`
-  mutation CreateRepair($issue: String, $details: String, $status: String) {
-    createRepair(issue: $issue, details: $details, status: $status) {
+  mutation Mutation($roomNumber: String, $issue: String, $details: String, $status: String) {
+    createRepair(roomNumber: $roomNumber, issue: $issue, details: $details, status: $status) {
+      id
       issue
       details
       status
