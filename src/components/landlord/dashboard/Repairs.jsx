@@ -11,7 +11,7 @@ const Container = styled.section`
   gap: 24px;
 `;
 
-const Repairs = () => {
+const Repairs = ({ setCurrentRepair, setUpdateRepair }) => {
   const { data, loading, error } = useQuery(GET_REPAIRS);
 
   if (loading) return <p>Loading...</p>;
@@ -20,7 +20,12 @@ const Repairs = () => {
   return (
     <Container>
       {data?.repairs.map((repair) => (
-        <Repair repair={repair} />
+        <Repair
+          repair={repair}
+          setUpdateRepair={setUpdateRepair}
+          setCurrentRepair={setCurrentRepair}
+          displayRoomNumber="true"
+        />
       ))}
     </Container>
   );
