@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useQuery } from '@apollo/client';
+import Repairs from '../../components/common/Repairs';
 import { getUserFromLocalStorage } from '../../../utils';
 import Layout from '../../components/common/Layout';
 import AddRepair from '../../components/tenant/forms/AddRepair';
@@ -10,7 +11,6 @@ import UpdateRepair from '../../components/tenant/forms/UpdateRepair';
 import { GET_TENANT } from '../../../services/query';
 import Header from '../../components/tenant/Header';
 import Info from '../../components/tenant/Info';
-import TenantRepair from '../../components/tenant/TenantRepair';
 
 // name charges occupant
 const Dashboard = () => {
@@ -36,7 +36,7 @@ const Dashboard = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error!</p>;
 
-  console.log(data.tenant);
+  console.log(data.tenant.repairs);
   return (
     <>
       {createRepair && (
@@ -63,10 +63,10 @@ const Dashboard = () => {
         />
         <Info charges={data?.tenant?.charges} occupant={data?.tenant?.occupant} />
 
-        <TenantRepair
-          setCurrentRepair={setCurrentRepair}
+        <Repairs
+          repairs={data?.tenant?.repairs}
           setUpdateRepair={setUpdateRepair}
-          room={data?.tenant}
+          setCurrentRepair={setCurrentRepair}
         />
       </Layout>
     </>

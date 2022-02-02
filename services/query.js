@@ -136,6 +136,10 @@ const GET_TENANT = gql`
         details
         room {
           id
+          property {
+            id
+            name
+          }
         }
       }
     }
