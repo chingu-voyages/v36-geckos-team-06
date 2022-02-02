@@ -13,7 +13,7 @@ import Header from '../../components/room/Header';
 import Tenant from '../../components/room/Tenant';
 import UpdateRoom from '../../components/room/forms/UpdateRoom';
 import UpdateRepair from '../../components/room/forms/UpdateRepair';
-import { RepairsHeading, RepairsContainer } from '../../components/common/Repairs';
+import Repairs, { RepairsHeading, RepairsContainer } from '../../components/common/Repairs';
 
 const ProfileSection = styled.div`
   display: flex;
@@ -82,17 +82,11 @@ const RoomPage = () => {
         )}
 
         <RepairsHeading>Repairs</RepairsHeading>
-        <RepairsContainer>
-          {data?.room?.repairs?.map((repair) => (
-            <RepairSection
-              key={repair.id}
-              room={data?.room}
-              repair={repair}
-              setCurrentRepair={setCurrentRepair}
-              setUpdateRepair={setUpdateRepair}
-            />
-          ))}
-        </RepairsContainer>
+        <Repairs
+          repairs={data?.room?.repairs}
+          setCurrentRepair={setCurrentRepair}
+          setUpdateRepair={setUpdateRepair}
+        />
       </Layout>
     </>
   );

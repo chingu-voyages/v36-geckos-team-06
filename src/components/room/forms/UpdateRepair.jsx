@@ -38,7 +38,9 @@ const Property = styled.p`
 const UpdateRepair = ({ setUpdateRepair, currentRepair, room }) => {
   const [status, setValue] = useState(currentRepair.status);
 
-  const onChange = (event) => {
+  console.log(status);
+
+  const handleChange = (event) => {
     setValue(event.target.value);
   };
 
@@ -48,6 +50,9 @@ const UpdateRepair = ({ setUpdateRepair, currentRepair, room }) => {
       setUpdateRepair(false);
     },
   });
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error!</p>;
 
   return (
     <Container>
@@ -87,7 +92,7 @@ const UpdateRepair = ({ setUpdateRepair, currentRepair, room }) => {
         </label>
         <label htmlFor="status">
           STATUS
-          <StatusDropdown onChange={onChange} name="status" value={status} />
+          <StatusDropdown onChange={handleChange} name="status" value={status} />
         </label>
         <Buttons>
           <Button type="submit" background="#491F1E" text="UPDATE" />

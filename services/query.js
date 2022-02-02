@@ -58,7 +58,6 @@ const GET_ROOM = gql`
       id
       property {
         id
-        fullImage
         name
       }
       roomNumber
@@ -71,7 +70,6 @@ const GET_ROOM = gql`
         email
         moveInDate
         moveOutDate
-        avatar
       }
       charges {
         water
@@ -81,12 +79,15 @@ const GET_ROOM = gql`
       }
       repairs {
         id
-        room {
-          id
-        }
         issue
         details
         status
+        room {
+          roomNumber
+          property {
+            name
+          }
+        }
       }
     }
   }
@@ -140,9 +141,11 @@ const GET_TENANT = gql`
     }
   }
 `;
+
 const GET_REPAIRS = gql`
   query Repairs {
     repairs {
+      id
       status
       details
       issue
