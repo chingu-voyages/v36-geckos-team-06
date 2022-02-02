@@ -1,23 +1,51 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { UPDATE_REPAIR } from '../../../../services/mutation';
+import { GET_ROOM } from '../../../../services/query';
 import { Input, Button, Buttons, Blur, TextArea, Container, Form } from '../../common/FormEl';
 import { FormHeader } from '../Common/FormHeader';
 import { StatusDropdown } from '../../common/Dropdowns';
 
-const UpdateRepair = ({ setUpdateRepair, roomNumber, currentRepair }) => {
+const UpdateRepair = ({ setUpdateRepair, roomNumber, currentRepair, tenant }) => {
   const [values, setValue] = useState({
     issue: currentRepair.issue,
     details: currentRepair.details,
     status: currentRepair.status,
   });
 
+  console.log(tenant);
+
   const onChange = (event) => {
     setValue({ ...values, [event.target.name]: event.target.value });
   };
 
+  const [updateRepair, { loading, error }] = useMutation(UPDATE_REPAIR, {
+    refetchQueries: [{ query: GET_ROOM, variables: { roomId: tenant.id } }],
+    onCompleted: () => {
+      setUpdateRepair(false);
+    },
+  });
+
+  if (loading) return 'Submitting...';
+  if (error) return `Submission error! ${error.message}`;
+
   return (
     <Container>
-      <Form>
+      <Form
+        onSubmit={(event) => {
+          event.preventDefault();
+          updateRepair({
+            variables: {
+              id: currentRepair.id,
+              roomNumber: roomNumber,
+              issue: values.issue,
+              details: values.details,
+              status: values.status,
+            },
+          });
+        }}
+      >
         <FormHeader roomNumber={roomNumber} property="Palm Springs" />
         <label htmlFor="issue">
           ISSUE

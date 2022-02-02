@@ -5,7 +5,6 @@ import Repair from '../common/Repair';
 
 const TenantRepair = ({ setCurrentRepair, setUpdateRepair, room }) => {
   const { repairs } = room;
-  console.log(room, repairs);
 
   return (
     <div>

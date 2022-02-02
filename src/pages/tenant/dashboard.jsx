@@ -36,6 +36,7 @@ const Dashboard = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error!</p>;
 
+  console.log(data.tenant);
   return (
     <>
       {createRepair && (
@@ -46,6 +47,7 @@ const Dashboard = () => {
           currentRepair={currentRepair}
           setUpdateRepair={setUpdateRepair}
           roomNumber={data?.tenant?.roomNumber}
+          tenant={data?.tenant}
         />
       )}
 
