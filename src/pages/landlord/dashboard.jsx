@@ -12,10 +12,13 @@ import Actions from '../../components/landlord/common/Actions';
 import CreateProperty from '../../components/property/forms/CreateProperty';
 import { getUserFromLocalStorage } from '../../../utils';
 import { GET_LANDLORD } from '../../../services/query';
+import UpdateRepair from '../../components/repairs/forms/UpdateRepair';
 
 const Dashboard = () => {
   const [showSection, setShowSection] = useState('properties');
   const [createProperty, setCreateProperty] = useState(false);
+  const [currentRepair, setCurrentRepair] = useState({});
+  const [updateRepair, setUpdateRepair] = useState(false);
 
   const landlord = getUserFromLocalStorage(`authLandlord`);
   const Router = useRouter();
@@ -38,6 +41,9 @@ const Dashboard = () => {
 
   return (
     <>
+      {updateRepair && (
+        <UpdateRepair setUpdateRepair={setUpdateRepair} currentRepair={currentRepair} />
+      )}
       {createProperty && (
         <CreateProperty setCreateProperty={setCreateProperty} landlordID={data.landlord.id} />
       )}
@@ -47,7 +53,9 @@ const Dashboard = () => {
         <Content>
           {showSection === 'properties' && <Properties properties={data.landlord.properties} />}
 
-          {showSection === 'repairs' && <Repairs />}
+          {showSection === 'repairs' && (
+            <Repairs setCurrentRepair={setCurrentRepair} setUpdateRepair={setUpdateRepair} />
+          )}
         </Content>
       </Layout>
     </>
