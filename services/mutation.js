@@ -212,6 +212,40 @@ const DELETE_ROOM = gql`
   }
 `;
 
+const CREATE_REPAIR = gql`
+  mutation Mutation($roomNumber: String, $issue: String, $details: String, $status: String) {
+    createRepair(roomNumber: $roomNumber, issue: $issue, details: $details, status: $status) {
+      id
+      issue
+      details
+      status
+    }
+  }
+`;
+
+const UPDATE_REPAIR = gql`
+  mutation Mutation(
+    $updateRepairId: ID!
+    $roomNumber: String
+    $issue: String
+    $details: String
+    $status: String
+  ) {
+    updateRepair(
+      id: $updateRepairId
+      roomNumber: $roomNumber
+      issue: $issue
+      details: $details
+      status: $status
+    ) {
+      id
+      issue
+      details
+      status
+    }
+  }
+`;
+
 export {
   SIGN_IN_LANDLORD,
   SIGN_UP_LANDLORD,
@@ -223,4 +257,6 @@ export {
   DELETE_ROOM,
   SIGN_IN_TENANT,
   SIGN_UP_TENANT,
+  CREATE_REPAIR,
+  UPDATE_REPAIR,
 };

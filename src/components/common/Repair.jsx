@@ -38,8 +38,9 @@ const TextContainer = styled.div`
 `;
 
 const Repair = ({
+  repair: { issue, details, status },
   repair,
-  repair: { room, property, issue },
+  room,
   setCurrentRepair,
   setUpdateRepair,
 }) => {
@@ -47,11 +48,12 @@ const Repair = ({
     setCurrentRepair(repair);
     setUpdateRepair(true);
   };
+
   return (
     <Container>
       <TextContainer>
-        <h3>{room}</h3>
-        <p>{property}</p>
+        <h3>{room.roomNumber}</h3>
+        <p>{room.property.name}</p>
       </TextContainer>
       <TextContainer>
         <h3>Issue:</h3>

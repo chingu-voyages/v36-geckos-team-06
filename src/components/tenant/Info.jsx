@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
+import { parse } from 'fecha';
+import { BsCircle } from 'react-icons/bs';
+import ProgressBar from '../room/ProgressBar';
 
 const CardContainer = styled.div`
   display: flex;
@@ -16,6 +19,7 @@ const CardContainer = styled.div`
 
 const Card = styled.div`
   width: 100%;
+  text-align: center;
   border-radius: 16px;
   background: #fff;
   padding: 20px;
@@ -26,26 +30,59 @@ const Card = styled.div`
 const CardContent = styled.div`
   width: 100%;
   border: solid 1px #1f0100;
-  border-radius: 16px;
+  border-radius: 10px;
   padding: 24px;
+  background-color: #242423;
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+
+  span {
+    text-decoration: underline;
+  }
 `;
 
-const Info = ({ charges }) => (
-  <CardContainer>
-    <Card>
-      <CardContent>TEST</CardContent>
-      <CardContent>TEST</CardContent>
-      <CardContent>TEST</CardContent>
-      <CardContent>TEST</CardContent>
-      <CardContent>TEST</CardContent>
-    </Card>
-    <Card>
-      <CardContent>${charges.rent}</CardContent>
-      <CardContent>${charges.water}</CardContent>
-      <CardContent>${charges.electricity}</CardContent>
-      <CardContent>${charges.parking}</CardContent>
-    </Card>
-  </CardContainer>
-);
+const Info = ({ charges, occupant }) => {
+  const moveIn = parse(occupant.moveInDate, 'isoDateTime').toDateString();
+  const moveOut = parse(occupant.moveOutDate, 'isoDateTime').toDateString();
+
+  return (
+    <CardContainer>
+      <Card>
+        <h1>RENT</h1>
+        <p style={{ borderBottom: '1px solid #eaeaea', paddingBottom: '10px' }}>
+          <BsCircle style={{ color: 'green' }} />
+          Start: {moveIn}
+        </p>
+        <p style={{ borderBottom: '1px solid #eaeaea', paddingBottom: '10px' }}>
+          <BsCircle style={{ color: '#491f1e' }} />
+          End: {moveOut}
+        </p>
+        <p>
+          <BsCircle style={{ color: 'orange' }} />
+          Remaining: 40 days
+        </p>
+        <ProgressBar
+          moveInDate={parse(occupant?.moveInDate, 'isoDateTime')}
+          moveOutDate={parse(occupant?.moveOutDate, 'isoDateTime')}
+        />
+      </Card>
+      <Card>
+        <h1>CHARGES</h1>
+        <CardContent>
+          {' '}
+          <span>Water:</span>${charges.water}
+        </CardContent>
+        <CardContent>
+          <span>Electricity:</span> ${charges.electricity}
+        </CardContent>
+        <CardContent>
+          {' '}
+          <span>Parking:</span> ${charges.parking}
+        </CardContent>
+      </Card>
+    </CardContainer>
+  );
+};
 
 export default Info;

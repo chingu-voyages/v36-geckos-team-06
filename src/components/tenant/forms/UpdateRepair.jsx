@@ -1,27 +1,29 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
+import { UPDATE_REPAIR } from '../../../../services/mutation';
+import { GET_ROOM } from '../../../../services/query';
 import { Input, Button, Buttons, Blur, TextArea, Container, Form } from '../../common/FormEl';
 import { FormHeader } from '../Common/FormHeader';
 import { StatusDropdown } from '../../common/Dropdowns';
-import { CREATE_REPAIR } from '../../../../services/mutation';
-import { GET_ROOM } from '../../../../services/query';
 
-const AddRepair = ({ setCreateRepair, roomNumber }) => {
+const UpdateRepair = ({ setUpdateRepair, roomNumber, currentRepair, tenant }) => {
   const [values, setValue] = useState({
-    issue: '',
-    details: '',
-    status: 'ongoing',
+    issue: currentRepair.issue,
+    details: currentRepair.details,
+    status: currentRepair.status,
   });
+
+  console.log(tenant);
 
   const onChange = (event) => {
     setValue({ ...values, [event.target.name]: event.target.value });
   };
 
-  const [createRepair, { loading, error }] = useMutation(CREATE_REPAIR, {
-    refetchQueries: [{ query: GET_ROOM, variables: { roomNumber: roomNumber } }],
+  const [updateRepair, { loading, error }] = useMutation(UPDATE_REPAIR, {
+    refetchQueries: [{ query: GET_ROOM, variables: { roomId: tenant.id } }],
     onCompleted: () => {
-      setCreateRepair(false);
+      setUpdateRepair(false);
     },
   });
 
@@ -33,8 +35,9 @@ const AddRepair = ({ setCreateRepair, roomNumber }) => {
       <Form
         onSubmit={(event) => {
           event.preventDefault();
-          createRepair({
+          updateRepair({
             variables: {
+              id: currentRepair.id,
               roomNumber: roomNumber,
               issue: values.issue,
               details: values.details,
@@ -69,13 +72,13 @@ const AddRepair = ({ setCreateRepair, roomNumber }) => {
           <StatusDropdown onChange={onChange} name="status" value={values.status} />
         </label>
         <Buttons>
-          <Button type="submit" background="#491F1E" text="Submit" />
-          <Button onClick={() => setCreateRepair(false)} background="#242423" text="CANCEL" />
+          <Button type="submit" background="#491F1E" text="UPDATE" />
+          <Button onClick={() => setUpdateRepair(false)} background="#242423" text="CANCEL" />
         </Buttons>
       </Form>
-      <Blur onClick={() => setCreateRepair(false)} />
+      <Blur onClick={() => setUpdateRepair(false)} />
     </Container>
   );
 };
 
-export default AddRepair;
+export default UpdateRepair;
