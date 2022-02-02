@@ -37,13 +37,7 @@ const TextContainer = styled.div`
   }
 `;
 
-const Repair = ({
-  repair: { issue, details, status },
-  repair,
-  room,
-  setCurrentRepair,
-  setUpdateRepair,
-}) => {
+const Repair = ({ repair, room, setCurrentRepair, setUpdateRepair }) => {
   const handleOnClick = () => {
     setCurrentRepair(repair);
     setUpdateRepair(true);
@@ -52,12 +46,12 @@ const Repair = ({
   return (
     <Container>
       <TextContainer>
-        <h3>{room?.roomNumber}</h3>
-        <p>{room?.property.name}</p>
+        <h3>{room.roomNumber}</h3>
+        <p>{room.property.name}</p>
       </TextContainer>
       <TextContainer>
         <h3>Issue:</h3>
-        <p>{issue}</p>
+        <p>{repair.issue}</p>
       </TextContainer>
       <Button onClick={handleOnClick} color="white">
         View Details

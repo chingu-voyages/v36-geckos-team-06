@@ -6,7 +6,7 @@ const Room = {
 
   repairs: async (room, __, { models }) => {
     // Find repairs that exist in the array in Repair document
-    const roomRepairs = await models.Repair.find({ id: { $in: room.repairs } });
+    const roomRepairs = await models.Repair.find({ _id: { $in: room.repairs } });
 
     return roomRepairs || [];
   },
