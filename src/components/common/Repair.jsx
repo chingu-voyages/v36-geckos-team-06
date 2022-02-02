@@ -38,7 +38,7 @@ const TextContainer = styled.div`
 `;
 
 const Repair = ({
-  repair: { issue, details, status, roomNumber, propertyName },
+  repair: { issue, roomNumber, propertyName },
   repair,
   setCurrentRepair,
   setUpdateRepair,
