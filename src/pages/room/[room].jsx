@@ -7,18 +7,13 @@ import Image from 'next/image';
 import RepairSection from '../../components/common/Repair';
 import Layout from '../../components/common/Layout';
 import profilePic from '../../../public/profilePic.jpg';
-import { REPAIR_DATA, PROPERTY_DATA } from '../../mockData';
 import { GET_ROOM } from '../../../services/query';
 import Contract from '../../components/room/Contract';
 import Header from '../../components/room/Header';
 import Tenant from '../../components/room/Tenant';
 import UpdateRoom from '../../components/room/forms/UpdateRoom';
-import UpdateRepair from '../../components/repairs/forms/UpdateRepair';
+import UpdateRepair from '../../components/room/forms/UpdateRepair';
 import { RepairsHeading, RepairsContainer } from '../../components/common/Repairs';
-
-const roomData = PROPERTY_DATA[0].rooms[0];
-// name charges occupant
-const roomOneRepairs = REPAIR_DATA.filter((repair) => repair.room === 'room 1');
 
 const ProfileSection = styled.div`
   display: flex;
@@ -49,6 +44,7 @@ const RoomPage = () => {
   const [editRoom, setEditRoom] = useState(false);
   const [updateRepair, setUpdateRepair] = useState(false);
   const [currentRepair, setCurrentRepair] = useState({});
+  const [repairId, setRepairId] = useState('');
   const router = useRouter();
   const { room } = router.query;
   const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
@@ -64,7 +60,11 @@ const RoomPage = () => {
     <>
       {editRoom && <UpdateRoom room={data?.room} setEditRoom={setEditRoom} />}
       {updateRepair && (
-        <UpdateRepair setUpdateRepair={setUpdateRepair} currentRepair={currentRepair} />
+        <UpdateRepair
+          setUpdateRepair={setUpdateRepair}
+          currentRepair={currentRepair}
+          room={data?.room}
+        />
       )}
       <Layout>
         <Header
@@ -82,9 +82,10 @@ const RoomPage = () => {
 
         <RepairsHeading>Repairs</RepairsHeading>
         <RepairsContainer>
-          {roomOneRepairs.map((repair) => (
+          {data?.room?.repairs?.map((repair) => (
             <RepairSection
               key={repair.id}
+              room={data?.room}
               repair={repair}
               setCurrentRepair={setCurrentRepair}
               setUpdateRepair={setUpdateRepair}

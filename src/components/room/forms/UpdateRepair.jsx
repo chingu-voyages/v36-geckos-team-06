@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
 import styled from 'styled-components';
+import { UPDATE_REPAIR } from '../../../../services/mutation';
+import { GET_ROOM } from '../../../../services/query';
 import {
   ReadOnlyInput,
   Form,
@@ -32,16 +35,36 @@ const Property = styled.p`
   font-size: 13px;
 `;
 
-const UpdateRepair = ({ setUpdateRepair, currentRepair }) => {
+const UpdateRepair = ({ setUpdateRepair, currentRepair, room }) => {
   const [status, setValue] = useState(currentRepair.status);
 
   const onChange = (event) => {
     setValue(event.target.value);
   };
 
+  const [updateRepair, { loading, error }] = useMutation(UPDATE_REPAIR, {
+    refetchQueries: [{ query: GET_ROOM, variables: { roomId: room.id } }],
+    onCompleted: () => {
+      setUpdateRepair(false);
+    },
+  });
+
   return (
     <Container>
-      <Form onSubmit={(e) => e.preventDefault()}>
+      <Form
+        onSubmit={(event) => {
+          event.preventDefault();
+          updateRepair({
+            variables: {
+              // You used id here, the correct var name is updateRepairId
+              updateRepairId: currentRepair.id,
+              issue: currentRepair.issue,
+              details: currentRepair.details,
+              status: status,
+            },
+          });
+        }}
+      >
         <TextContainer>
           <Heading>DETAILS</Heading>
           <RoomNum>ROOM 5</RoomNum>

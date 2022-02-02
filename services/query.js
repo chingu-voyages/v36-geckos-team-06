@@ -81,6 +81,12 @@ const GET_ROOM = gql`
       }
       repairs {
         id
+        room {
+          id
+        }
+        issue
+        details
+        status
       }
     }
   }
