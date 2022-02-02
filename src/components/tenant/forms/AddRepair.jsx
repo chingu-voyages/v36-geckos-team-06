@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { Input, Button, Buttons, Blur, TextArea, Container, Form } from '../../common/FormEl';
 import { FormHeader } from '../Common/FormHeader';
-import { StatusDropdown } from '../../common/Dropdowns';
 import { CREATE_REPAIR } from '../../../../services/mutation';
 import { GET_ROOM } from '../../../../services/query';
 
@@ -36,7 +35,7 @@ const AddRepair = ({ setCreateRepair, roomNumber, roomId }) => {
           event.preventDefault();
           createRepair({
             variables: {
-              roomNumber: roomNumber,
+              roomId: roomId,
               issue: values.issue,
               details: values.details,
               status: values.status,

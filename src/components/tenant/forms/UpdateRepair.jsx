@@ -5,7 +5,6 @@ import { UPDATE_REPAIR } from '../../../../services/mutation';
 import { GET_ROOM } from '../../../../services/query';
 import { Input, Button, Buttons, Blur, TextArea, Container, Form } from '../../common/FormEl';
 import { FormHeader } from '../Common/FormHeader';
-import { StatusDropdown } from '../../common/Dropdowns';
 
 const UpdateRepair = ({ setUpdateRepair, roomNumber, currentRepair, tenant }) => {
   const [values, setValue] = useState({
@@ -39,7 +38,6 @@ const UpdateRepair = ({ setUpdateRepair, roomNumber, currentRepair, tenant }) =>
             variables: {
               // You used id here, the correct var name is updateRepairId
               updateRepairId: currentRepair.id,
-              roomNumber: roomNumber,
               issue: values.issue,
               details: values.details,
               status: values.status,
@@ -70,7 +68,13 @@ const UpdateRepair = ({ setUpdateRepair, roomNumber, currentRepair, tenant }) =>
         </label>
         <label htmlFor="status">
           STATUS
-          <StatusDropdown onChange={onChange} name="status" value={values.status} />
+          <Input
+            type="text"
+            placeholder="status"
+            name="status"
+            value={values.status}
+            disabled="true"
+          />
         </label>
         <Buttons>
           <Button type="submit" background="#491F1E" text="UPDATE" />
