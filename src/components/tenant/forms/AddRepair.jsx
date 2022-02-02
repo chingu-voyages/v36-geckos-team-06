@@ -35,7 +35,7 @@ const AddRepair = ({ setCreateRepair, roomNumber, roomId }) => {
           event.preventDefault();
           createRepair({
             variables: {
-              roomNumber: roomNumber,
+              roomId: roomId,
               issue: values.issue,
               details: values.details,
               status: values.status,

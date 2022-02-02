@@ -38,7 +38,6 @@ const UpdateRepair = ({ setUpdateRepair, roomNumber, currentRepair, tenant }) =>
             variables: {
               // You used id here, the correct var name is updateRepairId
               updateRepairId: currentRepair.id,
-              roomNumber: roomNumber,
               issue: values.issue,
               details: values.details,
               status: values.status,

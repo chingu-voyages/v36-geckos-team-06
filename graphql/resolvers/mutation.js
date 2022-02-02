@@ -190,8 +190,8 @@ const Mutation = {
   // REPAIR
 
   // Create Repair
-  createRepair: async (_, { roomNumber, issue, details, status }, { models }) => {
-    const roomToRepair = await models.Room.findOne({ roomNumber: roomNumber });
+  createRepair: async (_, { roomId, issue, details, status }, { models }) => {
+    const roomToRepair = await models.Room.findById(roomId);
 
     const newRepair = {
       room: new mongoose.Types.ObjectId(roomToRepair.id),
@@ -212,12 +212,11 @@ const Mutation = {
   },
 
   // Update Repair
-  updateRepair: async (_, { roomNumber, issue, details, status, id }, { models }) => {
+  updateRepair: async (_, { issue, details, status, id }, { models }) => {
     const updatedRoom = await models.Repair.findOneAndUpdate(
       { _id: id },
       {
         $set: {
-          roomNumber,
           issue,
           details,
           status,

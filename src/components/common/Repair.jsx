@@ -52,8 +52,8 @@ const Repair = ({
   return (
     <Container>
       <TextContainer>
-        <h3>{room.roomNumber}</h3>
-        <p>{room.property.name}</p>
+        <h3>{room?.roomNumber}</h3>
+        <p>{room?.property.name}</p>
       </TextContainer>
       <TextContainer>
         <h3>Issue:</h3>

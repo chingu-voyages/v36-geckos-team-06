@@ -69,15 +69,9 @@ const typeDefs = gql`
     deleteRoom(id: ID!): Boolean!
 
     # Repair
-    createRepair(roomNumber: String, issue: String, details: String, status: String): Repair
+    createRepair(roomId: ID!, issue: String, details: String, status: String): Repair
 
-    updateRepair(
-      id: ID!
-      roomNumber: String
-      issue: String
-      details: String
-      status: String
-    ): Repair
+    updateRepair(id: ID!, issue: String, details: String, status: String): Repair
 
     deleteRepair(id: ID!): Boolean!
   }
