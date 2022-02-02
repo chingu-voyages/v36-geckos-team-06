@@ -40,7 +40,11 @@ const Dashboard = () => {
   return (
     <>
       {createRepair && (
-        <AddRepair setCreateRepair={setCreateRepair} roomNumber={data?.tenant?.roomNumber} />
+        <AddRepair
+          setCreateRepair={setCreateRepair}
+          roomNumber={data?.tenant?.roomNumber}
+          roomId={data?.tenant?.id}
+        />
       )}
       {updateRepair && (
         <UpdateRepair
