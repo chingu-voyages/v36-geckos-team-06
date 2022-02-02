@@ -20,7 +20,7 @@ const Repairs = () => {
   return (
     <Container>
       {data?.repairs.map((repair) => (
-        <Repair repair={repair} />
+        <Repair repair={repair} room={repair.room} key={repair.id} />
       ))}
     </Container>
   );

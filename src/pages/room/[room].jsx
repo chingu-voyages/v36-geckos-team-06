@@ -44,7 +44,6 @@ const RoomPage = () => {
   const [editRoom, setEditRoom] = useState(false);
   const [updateRepair, setUpdateRepair] = useState(false);
   const [currentRepair, setCurrentRepair] = useState({});
-  const [repairId, setRepairId] = useState('');
   const router = useRouter();
   const { room } = router.query;
   const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
@@ -55,6 +54,8 @@ const RoomPage = () => {
 
   if (loading) return '...loading';
   if (error) return '...error';
+
+  console.log(data?.room);
 
   return (
     <>

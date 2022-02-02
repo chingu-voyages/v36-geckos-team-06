@@ -143,13 +143,24 @@ const GET_TENANT = gql`
 const GET_REPAIRS = gql`
   query Repairs {
     repairs {
-      id
+      status
+      details
+      issue
       room {
         id
+        property {
+          name
+          id
+        }
+        roomNumber
+        available
+        repairs {
+          id
+          issue
+          details
+          status
+        }
       }
-      issue
-      details
-      status
     }
   }
 `;
