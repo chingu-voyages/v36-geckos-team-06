@@ -7,7 +7,7 @@ import { StatusDropdown } from '../../common/Dropdowns';
 import { CREATE_REPAIR } from '../../../../services/mutation';
 import { GET_ROOM } from '../../../../services/query';
 
-const AddRepair = ({ setCreateRepair, roomNumber }) => {
+const AddRepair = ({ setCreateRepair, roomNumber, roomId }) => {
   const [values, setValue] = useState({
     issue: '',
     details: '',
@@ -19,7 +19,8 @@ const AddRepair = ({ setCreateRepair, roomNumber }) => {
   };
 
   const [createRepair, { loading, error }] = useMutation(CREATE_REPAIR, {
-    refetchQueries: [{ query: GET_ROOM, variables: { roomNumber: roomNumber } }],
+    // You used passed in the wrong value here, meant to be roomId not roomNumber
+    refetchQueries: [{ query: GET_ROOM, variables: { roomId: roomId } }],
     onCompleted: () => {
       setCreateRepair(false);
     },
@@ -63,10 +64,6 @@ const AddRepair = ({ setCreateRepair, roomNumber }) => {
             placeholder="Description"
             value={values.details}
           />
-        </label>
-        <label htmlFor="status">
-          STATUS
-          <StatusDropdown onChange={onChange} name="status" value={values.status} />
         </label>
         <Buttons>
           <Button type="submit" background="#491F1E" text="Submit" />

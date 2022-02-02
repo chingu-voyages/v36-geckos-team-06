@@ -37,7 +37,8 @@ const UpdateRepair = ({ setUpdateRepair, roomNumber, currentRepair, tenant }) =>
           event.preventDefault();
           updateRepair({
             variables: {
-              id: currentRepair.id,
+              // You used id here, the correct var name is updateRepairId
+              updateRepairId: currentRepair.id,
               roomNumber: roomNumber,
               issue: values.issue,
               details: values.details,
