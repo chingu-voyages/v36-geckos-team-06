@@ -13,6 +13,7 @@ import CreateProperty from '../../components/property/forms/CreateProperty';
 import { getUserFromLocalStorage } from '../../../utils';
 import { GET_LANDLORD, GET_REPAIRS } from '../../../services/query';
 import UpdateRepair from '../../components/room/forms/UpdateRepair';
+import SpinnerLoading from '../../components/common/Loader';
 
 const Dashboard = () => {
   const [showSection, setShowSection] = useState('properties');

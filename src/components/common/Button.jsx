@@ -1,4 +1,6 @@
+/* eslint-disable import/no-named-as-default */
 import styled from 'styled-components';
+import device from './MediaQueries';
 
 const Button = styled.button`
   display: flex;
@@ -23,6 +25,10 @@ const Button = styled.button`
 
   &:active {
     transform: translateX(0rem) translateY(0.125rem);
+  }
+
+  @media ${device.tablet} {
+    font-size: 18px;
   }
 `;
 
