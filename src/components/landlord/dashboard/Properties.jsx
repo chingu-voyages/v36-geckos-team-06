@@ -1,7 +1,9 @@
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import device from '../../common/MediaQueries';
 
 const PropertyContainer = styled.section`
   display: grid;
@@ -10,6 +12,10 @@ const PropertyContainer = styled.section`
   width: 100%;
   max-height: 760px;
   overflow: scroll;
+
+  @media ${device.tablet} {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
 const Gradient = styled.div`

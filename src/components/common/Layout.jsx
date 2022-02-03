@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import React from 'react';
 
 const LayoutStyled = styled.main`
-  max-width: 1440px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 24px 120px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 32px;

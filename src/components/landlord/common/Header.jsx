@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 import React from 'react';
@@ -5,6 +6,7 @@ import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import { useQuery, gql } from '@apollo/client';
 import { HeaderStyled, HeaderButton, Buttons } from '../../common/Header';
+import device from '../../common/MediaQueries';
 
 const UserName = styled.h2`
   font-size: 58px;
@@ -13,6 +15,24 @@ const UserName = styled.h2`
   margin: 0;
   color: white;
   z-index: 1;
+
+  @media ${device.tablet} {
+    display: none;
+  }
+`;
+
+const UserNameSmall = styled.h2`
+  font-size: 48px;
+  color: white;
+  font-weight: 800;
+  line-height: 1.3;
+  margin: 0;
+  color: white;
+  z-index: 1;
+
+  @media screen and (min-width: 850px) {
+    display: none;
+  }
 `;
 
 // Query apollo cache to check if landlord is signed in
@@ -55,10 +75,12 @@ const Header = ({ setCreateProperty, firstName }) => {
       bg="https://ik.imagekit.io/txobowsaxlc/dashbaord-pic-main_Jasm7l6BB.png?ik-sdk-version=javascript-1.4.3&updatedAt=1642269286358"
     >
       <UserName>
-        Welcome,
+        WELCOME,
         <br />
-        {firstName}
+        {firstName?.toUpperCase()}
       </UserName>
+
+      <UserNameSmall>WELCOME, {firstName?.toUpperCase()}</UserNameSmall>
       <Buttons>
         <HeaderButton onClick={() => setCreateProperty(true)}>ADD PROPERTY</HeaderButton>
         <HeaderButton onClick={signOut} bg="#242423" color="#fdfdfd">

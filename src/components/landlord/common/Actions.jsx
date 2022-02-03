@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
+/* eslint-disable import/no-named-as-default */
 import React from 'react';
 import styled from 'styled-components';
+import device from '../../common/MediaQueries';
 import Button from '../../common/Button';
 
 const ActionsContainer = styled.section`
@@ -11,7 +13,10 @@ const ActionsContainer = styled.section`
   background-color: #242423;
   border-radius: 16px;
   padding: 16px;
-  font-size: 32px;
+
+  @media ${device.tablet} {
+    padding: 10px;
+  }
 `;
 
 const Actions = ({ setShowSection, showSection }) => (

@@ -1,4 +1,6 @@
+/* eslint-disable import/no-named-as-default */
 import styled from 'styled-components';
+import device from './MediaQueries';
 
 export const HeaderStyled = styled.header`
   display: flex;
@@ -14,6 +16,14 @@ export const HeaderStyled = styled.header`
   background-repeat: no-repeat;
   border-radius: 16px;
   padding: 48px;
+
+  @media ${device.tablet} {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    height: 280px;
+  }
 `;
 
 export const HeaderButton = styled.button`
@@ -36,6 +46,10 @@ export const HeaderButton = styled.button`
 
   &:active {
     transform: translateX(0rem) translateY(0.125rem);
+  }
+
+  @media ${device.tablet} {
+    font-size: 18px;
   }
 `;
 
