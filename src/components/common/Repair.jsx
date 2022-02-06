@@ -1,11 +1,13 @@
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
 import Button from './Button';
+import device from './MediaQueries';
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: 264px 264px 264px;
+  grid-template-columns: repeat(3, 1fr);
   padding: 60px;
   justify-content: space-between;
   align-items: center;
@@ -22,6 +24,10 @@ const Container = styled.div`
   button {
     height: 72px;
   }
+
+  /* @media ${device.tablet} {
+    grid-template-columns: repeat(3, 1fr);
+  } */
 `;
 
 const TextContainer = styled.div`
