@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import styled from 'styled-components';
@@ -13,11 +14,18 @@ import Header from '../../components/room/Header';
 import Tenant from '../../components/room/Tenant';
 import UpdateRoom from '../../components/room/forms/UpdateRoom';
 import UpdateRepair from '../../components/room/forms/UpdateRepair';
-import Repairs, { RepairsHeading, RepairsContainer } from '../../components/common/Repairs';
+import Repairs, { RepairsHeading } from '../../components/common/Repairs';
+import device from '../../components/common/MediaQueries';
 
 const ProfileSection = styled.div`
   display: flex;
   gap: 20px;
+
+  @media ${device.tablet} {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 const ImageInfoContainer = styled.div`

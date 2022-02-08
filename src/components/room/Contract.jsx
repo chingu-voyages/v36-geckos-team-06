@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+/* eslint-disable import/no-named-as-default */
+
 import React from 'react';
 import styled from 'styled-components';
 import { BsCircle } from 'react-icons/bs';
@@ -6,6 +8,7 @@ import { AiFillCar, AiOutlineCarryOut } from 'react-icons/ai';
 import { parse } from 'fecha';
 import ProgressBar from './ProgressBar';
 import DoughnutChart from './DoughnutChart';
+import device from '../common/MediaQueries';
 
 const TileHeader = styled.h4`
   font-weight: 300;
@@ -19,7 +22,7 @@ const TileHeader = styled.h4`
 const CurrentBalances = styled.div`
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   padding: 20px;
   color: #666;
   font-size: 1.5rem;
@@ -28,6 +31,15 @@ const CurrentBalances = styled.div`
   flex: 1;
   background: #491f1e;
   border-radius: 10px;
+  width: 100%;
+
+  @media ${device.tablet} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media ${device.mobile} {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 const CurrentBalanceTile = styled.div`
