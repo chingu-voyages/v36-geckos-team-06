@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
+import { device } from './MediaQueries';
 
 const Select = styled.select`
   background: #f9f9f9;
@@ -12,6 +13,9 @@ const Select = styled.select`
   font-size: 14.6095px;
   letter-spacing: 0.208707px;
   color: #491f1e;
+  @media ${device.mobile} {
+    padding: 10px;
+  }
 `;
 
 export const CountryDropdown = ({ onChange, value }) => (

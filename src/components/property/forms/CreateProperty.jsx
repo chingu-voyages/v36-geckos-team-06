@@ -4,16 +4,7 @@ import { useMutation } from '@apollo/client';
 import { CountryDropdown, CategoryDropdown } from '../../common/Dropdowns';
 import { CREATE_PROPERTY } from '../../../../services/mutation';
 import { GET_LANDLORD } from '../../../../services/query';
-import {
-  Input,
-  Form,
-  Button,
-  Buttons,
-  Container,
-  CloseButton,
-  Blur,
-  Header,
-} from '../../common/FormEl';
+import { Input, Form, Button, Buttons, Container, Blur, Header } from '../../common/FormEl';
 
 const CreateProperty = ({ setCreateProperty, landlordID }) => {
   const [values, setValues] = useState({
@@ -56,8 +47,6 @@ const CreateProperty = ({ setCreateProperty, landlordID }) => {
           });
         }}
       >
-        <CloseButton onClick={() => setCreateProperty(false)} />
-
         <Header text="CREATE PROPERTY" />
         <Input
           placeholder="Property Name"

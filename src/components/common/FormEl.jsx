@@ -2,6 +2,7 @@
 import styled from 'styled-components';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import React from 'react';
+import { device } from './MediaQueries';
 
 export const Container = styled.section`
   position: absolute;
@@ -33,12 +34,31 @@ export const Blur = styled.div`
 `;
 
 export const CloseButton = styled(AiOutlineCloseCircle)`
+  display: none;
   position: absolute;
   font-size: 24px;
   top: 20px;
   right: 20px;
   cursor: pointer;
   color: ${({ color }) => color || 'black'}; ;
+`;
+
+export const Form = styled.form`
+  z-index: 3;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-radius: 16px;
+  justify-content: center;
+  padding: 68px 32px;
+  width: 650px;
+  box-shadow: 3px 4px 15px -8px rgba(0, 0, 0, 0.71);
+  max-width: 95%;
+  @media ${device.mobile} {
+    gap: 10px;
+    padding: 40px 20px;
+  }
 `;
 
 export const Inputs = styled.div`
@@ -63,6 +83,10 @@ const InputStyled = styled.input`
     letter-spacing: 0.208707px;
     color: #491f1e;
   }
+
+  @media ${device.mobile} {
+    padding: 10px;
+  }
 `;
 
 export const TextArea = styled.textarea`
@@ -85,22 +109,13 @@ export const TextArea = styled.textarea`
   }
 `;
 
-export const Form = styled.form`
-  z-index: 3;
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  border-radius: 16px;
-  justify-content: center;
-  padding: 68px 32px;
-  width: 650px;
-  box-shadow: 3px 4px 15px -8px rgba(0, 0, 0, 0.71);
-`;
-
 export const Buttons = styled.div`
   display: flex;
   gap: 24px;
+  @media ${device.mobile} {
+    gap: 10px;
+    flex-direction: column;
+  }
 `;
 
 const HeaderStyled = styled.header`
