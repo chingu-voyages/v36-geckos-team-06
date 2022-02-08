@@ -24,6 +24,9 @@ export const HeaderStyled = styled.header`
     padding: 24px;
     height: 280px;
   }
+  @media ${device.mobile} {
+    height: auto;
+  }
 `;
 
 export const HeaderButton = styled.button`
@@ -51,9 +54,18 @@ export const HeaderButton = styled.button`
   @media ${device.tablet} {
     font-size: 18px;
   }
+
+  @media ${device.mobile} {
+    width: 100%;
+  }
 `;
 
 export const Buttons = styled.div`
   display: flex;
   gap: 24px;
+
+  @media ${device.mobile} {
+    flex-direction: column;
+    gap: 16px;
+  }
 `;

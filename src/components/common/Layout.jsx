@@ -5,7 +5,7 @@ import React from 'react';
 import device from './MediaQueries';
 
 const LayoutStyled = styled.main`
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 24px;
   display: flex;
@@ -13,8 +13,8 @@ const LayoutStyled = styled.main`
   gap: 32px;
 
   @media ${device.mobile} {
-    padding: 16px;
-    gap: 16px;
+    padding: 8px;
+    gap: 8px;
   }
 `;
 

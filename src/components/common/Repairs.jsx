@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
+/* eslint-disable import/no-named-as-default */
 import styled from 'styled-components';
 import React from 'react';
 import Repair from './Repair';
+import device from './MediaQueries';
 
 export const RepairsHeading = styled.h2`
   text-transform: uppercase;
@@ -18,9 +20,17 @@ export const RepairsContainer = styled.div`
 `;
 
 const Container = styled.section`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+
+  @media ${device.tablet} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media ${device.mobile} {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 const Repairs = ({ repairs, setCurrentRepair, setUpdateRepair }) => (

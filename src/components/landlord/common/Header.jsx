@@ -33,6 +33,11 @@ const UserNameSmall = styled.h2`
   @media screen and (min-width: 850px) {
     display: none;
   }
+
+  @media ${device.mobile} {
+    font-size: 32px;
+    text-align: center;
+  }
 `;
 
 // Query apollo cache to check if landlord is signed in
