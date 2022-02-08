@@ -1,7 +1,10 @@
 /* eslint-disable react/prop-types */
+/* eslint-disable import/no-named-as-default */
+
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import device from '../common/MediaQueries';
 
 const RoomsContainer = styled.section`
   display: grid;
@@ -10,6 +13,18 @@ const RoomsContainer = styled.section`
   width: 100%;
   max-height: 760px;
   overflow: scroll;
+
+  @media ${device.tablet} {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media ${device.mobile} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media ${device.mobileS} {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 const Room = styled.div`
@@ -39,8 +54,7 @@ const RoomNum = styled.p`
   font-family: Inter;
   font-style: normal;
   font-weight: 900;
-  font-size: 40px;
-  line-height: 64px;
+  font-size: 28px;
   color: #ffffff;
 `;
 
