@@ -6,28 +6,17 @@ import Button from './Button';
 import device from './MediaQueries';
 
 const Container = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  padding: 60px;
-  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  height: 200px;
-  width: 100%;
+  padding: 24px;
+  gap: 24px;
   border-radius: 16px;
   text-transform: uppercase;
   font-weight: bold;
   background: #491f1e;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
   color: #fff;
-  button {
-    height: 72px;
-  }
-
-  /* @media ${device.tablet} {
-    grid-template-columns: repeat(3, 1fr);
-  } */
+  text-align: center;
 `;
 
 const TextContainer = styled.div`
@@ -35,9 +24,7 @@ const TextContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   line-height: 1.3;
-  h3 {
-    font-size: 30px;
-  }
+
   p {
     font-size: 24px;
   }
@@ -52,12 +39,8 @@ const Repair = ({ repair, room, setCurrentRepair, setUpdateRepair }) => {
   return (
     <Container>
       <TextContainer>
-        <h3>{room.roomNumber}</h3>
+        <p>ROOM {room.roomNumber}</p>
         <p>{room.property.name}</p>
-      </TextContainer>
-      <TextContainer>
-        <h3>Issue:</h3>
-        <p>{repair.issue}</p>
       </TextContainer>
       <Button onClick={handleOnClick} color="white">
         View Details
