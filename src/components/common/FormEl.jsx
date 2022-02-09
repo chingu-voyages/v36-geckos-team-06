@@ -6,6 +6,10 @@ import { device } from './MediaQueries';
 
 export const Container = styled.section`
   position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   height: 100vh;
   width: 100%;
   display: flex;
@@ -16,16 +20,13 @@ export const Container = styled.section`
 
 export const Blur = styled.div`
   background: rgba(0, 0, 0, 0.8);
-  position: fixed;
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   backdrop-filter: blur(9px);
   z-index: 2;
-  height: 100vh;
-  width: 100%;
-  padding: 40px;
   display: flex;
   justify-content: center;
   flex-direction: column;
