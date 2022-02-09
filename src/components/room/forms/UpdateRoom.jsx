@@ -136,27 +136,26 @@ const UpdateRoom = ({ setEditRoom, room }) => {
         </Inputs>
 
         <Inputs>
-          <label htmlFor="moveInDate">
-            MOVE IN DATE
-            <Input
-              name="moveInDate"
-              type="date"
-              id="moveInDate"
-              value={values.moveInDate}
-              onChange={onChange}
-            />
-          </label>
+          <label htmlFor="moveInDate">MOVE IN DATE</label>
+          <label htmlFor="moveOutDate">MOVE OUT DATE</label>
+        </Inputs>
 
-          <label htmlFor="email">
-            MOVE OUT DATE
-            <Input
-              name="moveOutDate"
-              type="date"
-              id="moveOutDate"
-              value={values.moveOutDate}
-              onChange={onChange}
-            />
-          </label>
+        <Inputs>
+          <Input
+            name="moveInDate"
+            type="date"
+            id="moveInDate"
+            value={values.moveInDate}
+            onChange={onChange}
+          />
+
+          <Input
+            name="moveOutDate"
+            type="date"
+            id="moveOutDate"
+            value={values.moveOutDate}
+            onChange={onChange}
+          />
         </Inputs>
 
         <h5>CHARGES</h5>

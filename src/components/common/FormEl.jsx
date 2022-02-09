@@ -62,14 +62,20 @@ export const Form = styled.form`
 `;
 
 export const Inputs = styled.div`
-  display: flex;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  grid-gap: 16px;
+  @media ${device.mobile} {
+    grid-gap: 10px;
+  }
 `;
 
 const InputStyled = styled.input`
   background: #f9f9f9;
   border: 1px solid #491f1e;
   width: 100%;
+  max-width: 100%;
   padding: 16px;
   border-radius: 5px;
   font-weight: 500;
@@ -170,7 +176,7 @@ export const Input = ({ placeholder, name, type, value, onChange }) => (
   />
 );
 
-export const ReadOnlyInput = ({ placeholder, name, type, value, onChange }) => (
+export const ReadOnlyInput = ({ placeholder, name, type, value }) => (
   <InputStyled placeholder={placeholder} name={name} type={type} value={value} readOnly disabled />
 );
 
