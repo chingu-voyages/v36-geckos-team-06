@@ -46,6 +46,7 @@ const CurrentBalanceTile = styled.div`
   display: flex;
   flex-direction: column;
   height: 320px;
+  overflow: scroll;
   border-radius: 10px;
   background: white;
   padding: 15px;
@@ -59,9 +60,21 @@ const CurrentBalanceTile = styled.div`
   }
 `;
 
+const Charges = styled.div`
+  padding: 24px;
+  background-color: #242423;
+  color: white;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+`;
+
 const Contract = ({ occupant, charges }) => {
   const moveIn = parse(occupant.moveInDate, 'isoDateTime').toDateString();
   const moveOut = parse(occupant.moveOutDate, 'isoDateTime').toDateString();
+
+  console.log(charges);
 
   return (
     <CurrentBalances>
@@ -98,6 +111,20 @@ const Contract = ({ occupant, charges }) => {
           <AiFillCar />
           CHARGES
         </TileHeader>
+        <Charges>
+          Water:{` `} {charges.water}
+        </Charges>
+        <Charges>
+          Rent: {` `}
+          {charges.rent}
+        </Charges>
+        <Charges>
+          Electricity:{` `} {charges.electricity}
+        </Charges>
+        <Charges>
+          Parking:{` `}
+          {charges.parking}
+        </Charges>
       </CurrentBalanceTile>
     </CurrentBalances>
   );
