@@ -1,6 +1,8 @@
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
+import device from '../common/MediaQueries';
 
 const RoomHeader = styled.header`
   display: flex;
@@ -26,6 +28,11 @@ const RoomHeader = styled.header`
     font-weight: 600;
     font-size: 36px;
     color: #ffffff;
+  }
+
+  @media ${device.mobile} {
+    flex-direction: column;
+    text-align: center;
   }
 `;
 

@@ -1,9 +1,11 @@
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
 import { parse } from 'fecha';
 import { BsCircle } from 'react-icons/bs';
 import ProgressBar from '../room/ProgressBar';
+import device from '../common/MediaQueries';
 
 const CardContainer = styled.div`
   display: flex;
@@ -15,6 +17,14 @@ const CardContainer = styled.div`
   border-radius: 16px;
   padding: 44px;
   gap: 44px;
+
+  @media ${device.tablet} {
+    flex-direction: column;
+  }
+
+  @media ${device.mobile} {
+    padding: 24px;
+  }
 `;
 
 const Card = styled.div`

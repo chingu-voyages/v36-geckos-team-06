@@ -30,6 +30,7 @@ export const Blur = styled.div`
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+  padding: 24px;
 `;
 
 export const CloseButton = styled(AiOutlineCloseCircle)`
@@ -95,6 +96,7 @@ export const Form = styled.form`
   justify-content: center;
   padding: 68px 32px;
   width: 650px;
+  max-width: 100%;
   box-shadow: 3px 4px 15px -8px rgba(0, 0, 0, 0.71);
 `;
 
