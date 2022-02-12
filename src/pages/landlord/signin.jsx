@@ -13,8 +13,8 @@ const SignIn = () => {
   const router = useRouter();
   // set the default state of the form
   const [values, setValues] = useState({
-    email: ``,
-    password: ``,
+    email: `kola@icloud.com`,
+    password: `Kola`,
   });
 
   // update the state when a user types in the form
@@ -83,9 +83,9 @@ const SignIn = () => {
           <Link href="/">
             <a href>GO BACK</a>
           </Link>
-          <Link href="/landlord/signup">
+          {/* <Link href="/landlord/signup">
             <a href>SIGN UP</a>
-          </Link>
+          </Link> */}
         </Buttons>
       </Form>
     </Layout>
